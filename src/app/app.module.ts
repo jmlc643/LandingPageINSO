@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
+import { RecuperarContraComponent } from './recuperar-contra/recuperar-contra.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
     HeaderComponent,
     FooterComponent,
     RegistrarseComponent,
-    IniciarSesionComponent
+    IniciarSesionComponent,
+    RecuperarContraComponent
   ],
   imports: [
     BrowserModule,
