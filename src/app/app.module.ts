@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { RecuperarContraComponent } from './recuperar-contra/recuperar-contra.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RecuperarContraComponent } from './recuperar-contra/recuperar-contra.co
     FooterComponent,
     RegistrarseComponent,
     IniciarSesionComponent,
-    RecuperarContraComponent
+    RecuperarContraComponent,
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
