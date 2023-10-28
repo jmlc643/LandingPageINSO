@@ -20,11 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrarseComponent,
     IniciarSesionComponent,
     RecuperarContraComponent,
-    HttpClientModule
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
