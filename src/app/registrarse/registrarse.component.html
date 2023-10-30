@@ -19,7 +19,7 @@
                                         <i class="fas fa-user"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp">
+                                <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="usuario.user" [ngModelOptions]="{standalone : true}">
                             </div>
                         </div>
                         
@@ -31,7 +31,7 @@
                                         <i class="fas fa-envelope"></i>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" aria-describedby="emailHelp">
+                                <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" aria-describedby="emailHelp" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone : true}">
                             </div>
                         </div>
                         
@@ -55,12 +55,12 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </div>
-                                <input type="password" class="form-control" id="password-repeat" placeholder="Repetir Contraseña" aria-describedby="passwordRepeatHelp">
+                                <input type="password" class="form-control" id="password-repeat" placeholder="Repetir Contraseña" aria-describedby="passwordRepeatHelp" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone : true}">
                             </div>
                         </div>
                         
                         <div class="text-center m-3 p-3 d-grid gap-2 mx-auto col-12">
-                            <button type="submit" class="btn btn-primary mb-3">Registrarse</button>
+                            <button type="submit" class="btn btn-primary mb-3" (click)="saveUser()">Registrarse</button>
                             <button type="button" [routerLink]="['/iniciar-sesion']" class="btn btn-outline-dark">Iniciar sesion con una cuenta existente</button>
                         </div>
                     </form>
@@ -71,7 +71,7 @@
             </div>
             <div *ngFor="let user of usuarios">
                 {{user.user}}, {{user.email}}
-            </div>>
+            </div>
         </div>
     </div>
 </div>

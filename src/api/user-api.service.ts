@@ -8,6 +8,10 @@ export interface Usuario {
   email: string
 }
 
+export interface SaveUserResponse{
+  message: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +21,10 @@ export class UserApiService {
 
   getListUser(){
     return lastValueFrom(this.httpClient.get<Usuario[]>('http://localhost:8080/user/'))
+  }
+
+  saveUser(usuario: Usuario){
+    return lastValueFrom(this.httpClient.post<SaveUserResponse>('http://localhost:8080/user/', usuario))
   }
 
 }
