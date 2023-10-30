@@ -16,7 +16,7 @@ export class UserApiService {
   httpClient = inject(HttpClient)
 
   getListUser(){
-    return lastValueFrom(this.httpClient.get<Usuario[]>('localhost:8080/user/'))
+    return lastValueFrom(this.httpClient.get<Usuario[]>('http://localhost:8080/user/'))
   }
 
 }
