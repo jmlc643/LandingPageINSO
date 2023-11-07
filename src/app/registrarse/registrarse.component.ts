@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { UserApiService, Usuario } from 'src/api/user-api.service';
+import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
 
 @Component({
   selector: 'app-registrarse',
@@ -16,16 +16,11 @@ export class RegistrarseComponent implements OnInit {
     password: '',
     email: ''
   }
-  
-  async ngOnInit(){
-    await this.loadData();
-  }
-  private async loadData() {
-    this.usuarios = await this.userApiService.getListUser();
-  }
 
+  async ngOnInit(){
+
+  }
   async saveUser(){
       await this.userApiService.saveUser(this.usuario);
-      await this.loadData();
   }
 }

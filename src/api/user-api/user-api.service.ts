@@ -8,8 +8,9 @@ export interface Usuario {
   email: string
 }
 
-export interface SaveUserResponse{
-  message: string
+export interface AuthenticationUser{
+  user: string
+  password: string
 }
 
 @Injectable({
@@ -24,7 +25,11 @@ export class UserApiService {
   }
 
   saveUser(usuario: Usuario){
-    return lastValueFrom(this.httpClient.post<SaveUserResponse>('http://localhost:8080/user/', usuario))
+    return lastValueFrom(this.httpClient.post<Usuario>('http://localhost:8080/user/', usuario))
   }
+
+iniciarSesion(usuario: AuthenticationUser){
+  return lastValueFrom(this.httpClient.post<Usuario>('http://localhost:8080/user/authentication/', usuario))
+}
 
 }

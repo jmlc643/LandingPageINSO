@@ -15,20 +15,9 @@
 
 
   <!-- CONTENEDOR 1 -->
-  <div class="container" id="container-1">
-    <h2>Discusion General</h2>
-    <p>Este es el primer contenedor en cascada.</p>
-  </div>
-
-  <!-- CONTENEDOR 2 -->
-  <div class="container" id="container-2">
-    <h2>Primer ciclo</h2>
-    <p>Este es el segundo contenedor en cascada.</p>
-  </div>
-  <!-- CONTENEDOR 3-->
-  <div class="container" id="container-3">
-    <h2>Segundo ciclo</h2>
-    <p>Este es el tercer contenedor en cascada.</p>
+  <div class="container" id="container-1" *ngFor="let categoria of categorias">
+    <h2>{{categoria.nombre}}</h2>
+    <p>{{categoria.descripcion}}</p>
   </div>
 </div>
 </body>

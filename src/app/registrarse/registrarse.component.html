@@ -10,7 +10,7 @@
                         <h6 class="text-center text-black">LEARNSYNC</h6>
                         <h3 class="text-center text-primary">Registrarse</h3>
                         <p class="text-center text-black">Regístrate con una cuenta nueva</p>
-                        
+
                         <div class="mb-3 p-2">
                             <label for="username" class="form-label"></label>
                             <div class="input-group">
@@ -22,7 +22,7 @@
                                 <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="usuario.user" [ngModelOptions]="{standalone : true}">
                             </div>
                         </div>
-                        
+
                         <div class="mb-3 p-2">
                             <label for="email" class="form-label"></label>
                             <div class="input-group">
@@ -34,7 +34,7 @@
                                 <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" aria-describedby="emailHelp" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone : true}">
                             </div>
                         </div>
-                        
+
                         <div class="mb-3 p-2">
                             <label for="password" class="form-label"></label>
                             <div class="input-group">
@@ -58,7 +58,7 @@
                                 <input type="password" class="form-control" id="password-repeat" placeholder="Repetir Contraseña" aria-describedby="passwordRepeatHelp" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone : true}">
                             </div>
                         </div>
-                        
+
                         <div class="text-center m-3 p-3 d-grid gap-2 mx-auto col-12">
                             <button type="submit" class="btn btn-primary mb-3" (click)="saveUser()">Registrarse</button>
                             <button type="button" [routerLink]="['/iniciar-sesion']" class="btn btn-outline-dark">Iniciar sesion con una cuenta existente</button>
@@ -68,9 +68,6 @@
             </div>
             <div class="col-md-4">
                 <img src="\assets\images\image-14.png" alt="Imagen Derecha" class="img-fluid">
-            </div>
-            <div *ngFor="let user of usuarios">
-                {{user.user}}, {{user.email}}
             </div>
         </div>
     </div>
