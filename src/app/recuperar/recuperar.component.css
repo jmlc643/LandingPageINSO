@@ -1,0 +1,107 @@
+
+  /* Estilo del fondo del div principal */
+div {
+  background-color: #8095ff;
+}
+
+/* Estilo para el contenedor principal */
+.container {
+  padding: 1rem;
+}
+
+/* Estilo para las imágenes dentro de las columnas */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilo para el fondo blanco del formulario */
+.bg-white {
+  background-color: #ffffff;
+}
+
+/* Estilo para el borde del formulario */
+.border {
+  border: 1px solid #000000;
+}
+
+/* Estilo para la sombra del formulario */
+.shadow-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el fondo del cuerpo */
+.bg-body {
+  background-color: #f8f9fa;
+}
+
+/* Estilo para texto centrado */
+.text-center {
+  text-align: center;
+}
+
+/* Estilo para texto de color negro */
+.text-black {
+  color: #000000;
+}
+
+/* Estilo para texto de color primario (azul en este caso) */
+.text-primary {
+  color: #007bff;
+}
+
+/* Estilo para agregar margen inferior a elementos */
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+/* Estilo para agregar relleno */
+.p-2 {
+  padding: 0.5rem;
+}
+
+/* Estilo para etiquetas de formulario */
+.form-label {
+  font-weight: bold;
+}
+
+/* Estilo para el diseño de los grupos de entrada de formulario */
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo para el fondo del grupo de entrada de formulario */
+.input-group-prepend {
+  background-color: #ffffff;
+}
+
+/* Estilo para el icono en el grupo de entrada de formulario */
+.input-group-text {
+  font-size: 1.5rem;
+}
+
+/* Estilo para el botón primario (Enviar correo de confirmación) */
+.btn-primary {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilo para el botón de contorno oscuro (Regresar) */
+.btn-outline-dark {
+  border: 1px solid #343a40;
+  color: #343a40;
+}
+  /* Estilo para el fondo blanco del grupo de entrada de formulario */
+  .input-group-white-bg {
+    background-color: #fff;
+  }
+
+  /* Estilo para el fondo blanco del contenedor de los botones */
+  .container-white-bg {
+    background-color: #fff;
+  }
+
+
