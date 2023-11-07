@@ -4,6 +4,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { registerLocaleData } from '@angular/common';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
+import {RecuperarComponent} from "./recuperar/recuperar.component";
+import {CategoriasComponent} from "./categorias/categorias.component";
 
 const routes: Routes = [
   {
@@ -17,8 +19,17 @@ const routes: Routes = [
   {
     path:"registrarse",
     component: RegistrarseComponent
+  },
+  {
+    path:"recuperar",
+    component: RecuperarComponent
+  },
+  {
+    path:"categorias",
+    component: CategoriasComponent
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

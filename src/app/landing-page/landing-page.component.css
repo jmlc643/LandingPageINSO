@@ -1,0 +1,37 @@
+.intro-section {
+  background-color: #8095ff;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.images-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.images-container .image1,
+.images-container .image2 {
+  max-width: 10%; /* Reducimos el tamaño en un 20% */
+  margin: 0 25px;
+}
+
+.forum-section .btn-lg {
+  background-color: transparent;
+  border: 2px solid #dc3545;
+  color: #dc3545;
+}
+
+.forum-section .btn-lg:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.smaller-image {
+  max-width: 45%; /* Reducimos el tamaño en un 20% */
+}
+
+.align-right {
+  float: right; /* Alineamos la imagen a la derecha */
+}

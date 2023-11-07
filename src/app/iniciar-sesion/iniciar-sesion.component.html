@@ -21,7 +21,7 @@
                   <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp">
                 </div>
               </div>
-              
+
               <div class="mb-3">
                 <label for="password" class="form-label"></label>
                 <div class="input-group">
@@ -34,14 +34,14 @@
                 </div>
               </div>
               <div class="text-center m-3 p-3 d-grid gap-2 mx-auto col-12">
-              <button type="submit" class="btn btn-primary mb-3 ">Iniciar Sesion</button>
-              <a class="nav-link text-dark" href="#" [routerLink]="['/recuperar-contra']">¿Olvidaste tu contraseña?</a>
-              <button type="button" [routerLink]="['/registrarse']" class="btn btn-outline-dark">Registrarse con una nueva cuenta</button>
-            </div>
+                <button type="submit" [routerLink]= "['/categorias']" class="btn btn-primary mb-3">Iniciar Sesion</button>
+                <p><a [routerLink]="['/recuperar']">¿Olvidaste tu contraseña?</a></p>
+                <button type="button" [routerLink]="['/registrarse']" class="btn btn-outline-dark">Registrarse con una nueva cuenta</button>
+              </div>
             </form>
           </div>
-          
-          
+
+
       </div>
       <div class="col-md-4">
         <img src="\assets\images\image-14.png" alt="Imagen Derecha" class="img-fluid">

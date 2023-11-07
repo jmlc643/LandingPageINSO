@@ -1,0 +1,17 @@
+.button-container {
+  text-align: center;
+  margin: 3rem;
+  padding: 3rem;
+  display: grid;
+  gap: 2;
+  align-items: center;
+}
+
+.button-container button {
+  display: block;
+  margin-bottom: 3rem;
+}
+
+.iniciar-sesion-button {
+  color: black; /* Cambiamos el color del texto a negro */
+}
