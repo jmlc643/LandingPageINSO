@@ -1,4 +1,6 @@
 <app-header></app-header>
+<body>
+
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -31,16 +33,20 @@
             <input type="password" class="form-control" id="password" placeholder="Contraseña" aria-describedby="passwordHelp">
           </div>
         </div>
+
         <div class="text-center m-3 p-3 d-grid gap-2 mx-auto col-12">
           <button type="submit" class="btn btn-primary iniciar-sesion-button">Iniciar Sesión</button>
-          <p><a [routerLink]="['/recuperar']">¿Olvidaste tu contraseña?</a></p>
-          <button type="button" [routerLink]="['/registrarse']" class="btn btn-outline-dark">Registrarse con una nueva cuenta</button>
+          <p><a [routerLink]="['recovery']">¿Olvidaste tu contraseña?</a></p>
+          <button type="button" [routerLink]="['register']" class="btn btn-outline-dark">Registrarse con una nueva cuenta</button>
         </div>
+
       </div>
     </div>
     <div class="col-md-4">
       <img src="/assets/images/image-14.png" alt="Imagen Derecha" class="img-fluid">
     </div>
   </div>
+</div>
 
+</body>
 <app-footer></app-footer>

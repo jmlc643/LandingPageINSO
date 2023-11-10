@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import {RouterLink, RouterModule} from '@angular/router';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { RecuperarComponent } from './recuperar/recuperar.component';
@@ -18,6 +18,7 @@ import { AuthenticationRoutingModule } from './autenticacion-routing.module';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     RouterLink,
     HttpClientModule,
     LayoutModule,
