@@ -4,12 +4,14 @@ import { LayoutModule } from '../layout/layout.module';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { IntranetRoutingModule } from './intranet-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { InicioComponent } from './inicio/inicio.component';
 
 
 
 @NgModule({
   declarations: [
-    CategoriasComponent
+    CategoriasComponent,
+    InicioComponent
   ],
   imports: [
     CommonModule,

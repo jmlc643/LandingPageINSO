@@ -76,3 +76,8 @@ body {
 .create-button + .create-button {
   margin-left: 30px;
 }
+
+.container button.create-button {
+  /* Ajuste del botón "Topico" */
+  margin-top: 20px; /* Modificar el espacio entre el título y el botón */
+}
