@@ -1,37 +1,104 @@
-.intro-section {
-  background-color: #8095ff;
-  padding: 5rem 0;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333; /* Texto en tono negro */
+}
+
+.intro-section{
+  margin-top: 100px;
+  margin-left: 300px;
+}
+
+.main-content {
+  background-color: #fff; /* Fondo blanco */
+  padding: 20px;
+}
+
+.intro-section button{
+  font-size: 24px;
+  font-weight: 700;
+}
+h1 {
+  font-size: 30px;
+  font-weight: 650;
+  color: #007bff; /* Título en color azul */
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 650;
+  color: #007bff; /* Título en color azul */
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  font-size: 20px; /* Tamaño de fuente mayor */
+  line-height: 1.6; /* Aumenta el espaciado entre líneas */
+  color: #333; /* Color del texto */
+  font-family: Arial, sans-serif; /* Fuente moderna */
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: 2px solid #007bff; /* Borde del botón azul */
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #fff; /* Fondo blanco */
+  color: #007bff; /* Texto azul */
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+  background: #007bff; /* Fondo azul al pasar el cursor */
+  color: #fff; /* Texto blanco al pasar el cursor */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Fondo azul */
+  color: #fff; /* Texto blanco */
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Fondo azul más oscuro al pasar el cursor */
+}
+
+/* Estilos para los nuevos contenedores */
+.services-section {
+  background-color: #e4e8ff;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.images-container {
+.resource-exchange-section,
+.community-access-section,
+.learning-more {
+  margin-top: 40px;
+  margin-bottom: 50px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+  justify-content: center;
+  text-align: center;
+  margin-left: 350px; /* Agregar un margen a la izquierda */
 }
 
-.images-container .image1,
-.images-container .image2 {
-  max-width: 10%; /* Reducimos el tamaño en un 20% */
-  margin: 0 25px;
+
+.resource-exchange-section img,
+.community-access-section img,
+.learning-more img {
+  max-width: 300px; /* Ajusta el ancho máximo de las imágenes */
+  height: auto; /* Mantiene la proporción */
 }
 
-.forum-section .btn-lg {
-  background-color: transparent;
-  border: 2px solid #dc3545;
-  color: #dc3545;
-}
 
-.forum-section .btn-lg:hover {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.smaller-image {
-  max-width: 45%; /* Reducimos el tamaño en un 20% */
-}
-
-.align-right {
-  float: right; /* Alineamos la imagen a la derecha */
-}

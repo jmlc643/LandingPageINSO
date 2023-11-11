@@ -1,24 +1,16 @@
 	<!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar-color" aria-label="Eighth navbar example">
+  <header class="site-header">
     <div class="container">
-      <a class="navbar-brand text-dark h1" href="">
-        Learnsync
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div>
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link active text-dark" aria-current="page" href="#" [routerLink]="['/register']">Registrarse</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#" [routerLink]="['/login']">Iniciar Sesión</a>
-          </li>
-        </ul>
+      <div class="row align-items-center">
+        <div class="col-6">
+          <a routerLink="/" class="logo-text">Learn<span class="logo-span">sync</span></a>
+        </div>
+        <div class="col-6 text-end">
+          <a routerLink="/login" class="header-link">Iniciar Sesión</a>
+          <a routerLink="/register" class="header-link">Registrarse</a>
+        </div>
       </div>
     </div>
-  </nav>
+  </header>
 
 	<!-- End Navigation -->
