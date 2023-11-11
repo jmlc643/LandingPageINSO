@@ -1,0 +1,34 @@
+.forum {
+  width: 49%; /* 70% - 30% */
+  margin: 14px auto; /* 20px - 30% */
+  border: 0.7px solid #ccc; /* 1px - 30% */
+  padding: 14px; /* 20px - 30% */
+}
+
+.post-container {
+  border: 0.7px solid #ccc; /* 1px - 30% */
+  padding: 7px; /* 10px - 30% */
+  margin-bottom: 10.5px; /* 15px - 30% */
+  overflow: auto; /* Clearfix to contain floats */
+}
+
+.user-info {
+  font-weight: bold;
+  font-size: 100%; /* 100% - 30% */
+}
+
+.reply-btn {
+  float: right;
+  padding: 5.6px 10.5px; /* 8px - 30%, 15px - 30% */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  clear: both; /* Clear the float */
+}
+
+.reply-btn:hover {
+  background-color: #0056b3;
+}

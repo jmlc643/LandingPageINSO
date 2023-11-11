@@ -1,0 +1,53 @@
+.topics-container {
+  width: 100%; /* Ancho del contenedor de los temas */
+  padding: 10px;
+  margin-left: 250px;
+
+  box-sizing: border-box; /* Considerar el borde dentro del ancho */
+}
+
+.topics-list {
+  list-style: none;
+  padding: 0;
+}
+
+.topics-list li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+#orden{
+  display: grid;
+  grid-template-columns: 2fr 8fr 2fr;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.main-container {
+  display: flex;
+  height: 50%;
+}
+
+.side-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc; /* Estilos del ícono del usuario */
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+
+.publish-button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Estilos del botón de publicar */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

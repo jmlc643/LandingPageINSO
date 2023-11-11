@@ -1,0 +1,23 @@
+<body>
+<div id="orden">
+<div class="topics-container">
+  <ul class="topics-list">
+    <li>General</li>
+    <li>Topic 1</li>
+    <li>Topic 2</li>
+    <li>Topic 3</li>
+    <li>Topic 4</li>
+    <li>Topic 5</li>
+  </ul>
+</div>
+<app-foro *ngIf="c==1"></app-foro>
+  <div class="main-container">
+    <div class="side-container">
+      <div class="user-icon">
+        <!-- Icono del usuario -->
+      </div>
+      <button (click)="c=0" class="publish-button">Publicar</button>
+    </div>
+  </div>
+</div>
+</body>
