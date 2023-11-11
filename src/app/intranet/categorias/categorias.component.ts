@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CategoriaApiService, Categoria} from 'src/api/categoria-api/categoria-api.service';
-import { TopicoApiService, Topico, DeleteCategoriaRequest } from 'src/api/topico-api/topico-api.service';
+import { TopicoApiService, Topico, SaveTopicoRequest} from 'src/api/topico-api/topico-api.service';
 
 @Component({
   selector: 'app-categorias',
@@ -15,20 +15,24 @@ export class CategoriasComponent implements OnInit {
 
   categorias: Categoria[] = []
 
-  topico: Topico = {
+  guardartopico: SaveTopicoRequest = {
     nombre: '',
     descripcion: '',
     nombreCategoria: ''
   }
 
-  topicos: Topico[] = []
-
-  deleteCategoriaRequest: DeleteCategoriaRequest = {
-    nombre : ''
+  topico: Topico = {
+    nombre: '',
+    descripcion: '',
+    categoriaUnida: {
+      nombre : '',
+      descripcion : ''
+    }
   }
 
+  topicos: Topico[] = []
+
   categoriaApiService = inject(CategoriaApiService)
-  topicoApiService = inject(TopicoApiService)
 
   async ngOnInit(){
     await this.loadDataCategoria();

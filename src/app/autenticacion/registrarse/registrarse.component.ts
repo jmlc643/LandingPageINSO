@@ -28,7 +28,6 @@ export class RegistrarseComponent implements OnInit {
   async saveUser(){
     if(this.usuario.password == this.verifyPassword.passw){
       await this.userApiService.saveUser(this.usuario);
-    }
- ;     
+    }     
   }
 }
