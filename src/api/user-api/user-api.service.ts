@@ -8,9 +8,17 @@ export interface Usuario {
   email: string
 }
 
+export interface ComprobarPassword{
+  passw : string
+}
+
 export interface AuthenticationUser{
   user: string
   password: string
+}
+
+export interface AuthenticationUserResponse{
+  mensaje : string
 }
 
 @Injectable({
@@ -29,7 +37,7 @@ export class UserApiService {
   }
 
 iniciarSesion(usuario: AuthenticationUser){
-  return lastValueFrom(this.httpClient.post<Usuario>('http://localhost:8080/user/authentication/', usuario))
+  return lastValueFrom(this.httpClient.post<AuthenticationUserResponse>('http://localhost:8080/user/authentication/', usuario))
 }
 
 }
