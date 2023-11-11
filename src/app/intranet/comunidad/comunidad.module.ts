@@ -5,6 +5,7 @@ import {ComunidadRoutingModule} from "./comunidad-routing.module";
 import { ForoComponent } from './foro/foro.component';
 import { TopicosListaComponent } from './topicos-lista/topicos-lista.component';
 import { PublicarHiloComponent } from './publicar-hilo/publicar-hilo.component';
+import { HiloUsuarioComponent } from './hilo-usuario/hilo-usuario.component';
 
 
 
@@ -12,7 +13,8 @@ import { PublicarHiloComponent } from './publicar-hilo/publicar-hilo.component';
   declarations: [
     ForoComponent,
     TopicosListaComponent,
-    PublicarHiloComponent
+    PublicarHiloComponent,
+    HiloUsuarioComponent
   ],
   imports: [
     CommonModule,

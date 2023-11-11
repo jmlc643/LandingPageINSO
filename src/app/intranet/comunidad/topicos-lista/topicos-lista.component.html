@@ -11,13 +11,15 @@
   </ul>
 </div>
 <app-foro *ngIf="c==1"></app-foro>
+  <app-publicar-hilo *ngIf="c==0"></app-publicar-hilo>
   <div class="main-container">
     <div class="side-container">
       <div class="user-icon">
-        <!-- Icono del usuario -->
       </div>
       <button (click)="c=0" class="publish-button">Publicar</button>
+
     </div>
   </div>
+
 </div>
 </body>
