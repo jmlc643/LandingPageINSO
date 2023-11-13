@@ -6,6 +6,7 @@ import { ForoComponent } from './foro/foro.component';
 import { TopicosListaComponent } from './topicos-lista/topicos-lista.component';
 import { PublicarHiloComponent } from './publicar-hilo/publicar-hilo.component';
 import { HiloUsuarioComponent } from './hilo-usuario/hilo-usuario.component';
+import { PostComponent } from './post/post.component';
 
 
 
@@ -14,7 +15,8 @@ import { HiloUsuarioComponent } from './hilo-usuario/hilo-usuario.component';
     ForoComponent,
     TopicosListaComponent,
     PublicarHiloComponent,
-    HiloUsuarioComponent
+    HiloUsuarioComponent,
+    PostComponent,
   ],
   imports: [
     CommonModule,
