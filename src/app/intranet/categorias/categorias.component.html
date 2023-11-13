@@ -8,16 +8,33 @@
 
   <div class="create-buttons">
     <button class="create-button">Crear Categoría</button>
-    <button class="create-button">Crear Tópico</button>
-    <button routerLink="/intranet/comunidad" class="create-button">Comunidad</button>
+    <button routerLink="/intranet/creartopico" class="create-button">Crear Tópico</button>
+    
 
   </div>
 
 
   <!-- CONTENEDOR 1 -->
-  <div class="container" id="container-1" *ngFor="let categoria of categorias">
-    <h2>{{categoria.nombre}}</h2>
-    <button class="create-button">{{topico.nombre}}</button>
+  <div class="container" id="container-1">
+    <h2>Primer Ciclo</h2>
+    <button routerLink="/intranet/comunidad" class="create-button">LENGUAJE I</button>
+    <button routerLink="/intranet/comunidad" class="create-button">METODOLOGÍA DEL APRENDIZAJE UNIVERSITARIO </button>
+    <button routerLink="/intranet/comunidad" class="create-button">MATEMÁTICA </button>
+    <button routerLink="/intranet/comunidad" class="create-button">BIOFÍSICA MÉDICA</button>
+    <br>
+    <button routerLink="/intranet/comunidad" class="create-button">QUÍMICA GENERAL</button>
+    <button routerLink="/intranet/comunidad" class="create-button">ACTIVIDAD FORMATIVA I</button>
+    <button routerLink="/intranet/comunidad" class="create-button">BIOLOGÍA CELULAR</button>
+  </div>
+  <div class="container" id="container-1">
+    <h2>Segundo Ciclo</h2>
+    <button routerLink="/intranet/comunidad" class="create-button">LENGUAJE I</button>
+    <button routerLink="/intranet/comunidad" class="create-button">PSICOLOGÍA Y DESARROLLO HUMANO</button>
+    <button routerLink="/intranet/comunidad" class="create-button">ACTIVIDAD FORMATIVA II</button>
+    <button routerLink="/intranet/comunidad" class="create-button">ANATOMÍA</button>
+    <button routerLink="/intranet/comunidad" class="create-button">FISIOLOGÍA</button>
+    <br>
+    <button routerLink="/intranet/comunidad" class="create-button">BIOQUÍMICA Y NUTRICIÓN HUMANA</button>
   </div>
 </div>
 

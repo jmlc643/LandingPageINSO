@@ -5,11 +5,13 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { IntranetRoutingModule } from './intranet-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
+import { CrearTopicoComponent } from './creartopico/creartopico.component';
 
 @NgModule({
   declarations: [
     CategoriasComponent,
-    InicioComponent
+    InicioComponent,
+    CrearTopicoComponent
   ],
   imports: [
     CommonModule,
