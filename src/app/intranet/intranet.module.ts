@@ -6,12 +6,14 @@ import { IntranetRoutingModule } from './intranet-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
 import { CrearTopicoComponent } from './creartopico/creartopico.component';
+import { CrearCategoriaComponent } from './crearcategoria/crearcateogoria.component';
 
 @NgModule({
   declarations: [
     CategoriasComponent,
     InicioComponent,
-    CrearTopicoComponent
+    CrearTopicoComponent,
+    CrearCategoriaComponent
   ],
   imports: [
     CommonModule,
