@@ -20,7 +20,7 @@
                     <i class="fas fa-user"></i>
                   </span>
               </div>
-              <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="usuario.user" [ngModelOptions]="{standalone: true}">
+              <input type="text" class="form-control" id="username" required minlength="1" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="usuario.user" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
 
@@ -32,7 +32,7 @@
                     <i class="fas fa-envelope"></i>
                   </span>
               </div>
-              <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" aria-describedby="emailHelp" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
+              <input type="email" class="form-control" id="email" required minlength="1" placeholder="Correo Electrónico" aria-describedby="emailHelp" [(ngModel)]="usuario.email" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
 
@@ -44,7 +44,7 @@
                     <i class="fas fa-lock"></i>
                   </span>
               </div>
-              <input type="password" class="form-control" id="password" placeholder="Contraseña" aria-describedby="passwordHelp" [(ngModel)]="verifyPassword.passw" [ngModelOptions]="{standalone: true}">
+              <input type="password" class="form-control" id="password" required minlength="8" placeholder="Contraseña" aria-describedby="passwordHelp" [(ngModel)]="verifyPassword.passw" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
 
@@ -56,13 +56,13 @@
                     <i class="fas fa-lock"></i>
                   </span>
               </div>
-              <input type="password" class="form-control" id="password-repeat" placeholder="Repetir Contraseña" aria-describedby="passwordRepeatHelp" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}">
+              <input type="password" class="form-control" id="password-repeat" required minlength="8" placeholder="Repetir Contraseña" aria-describedby="passwordRepeatHelp" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
 
           <div class="button-container text-center">
             <div class="d-flex flex-column align-items-center">
-              <button type="submit" [routerLink]="['/registrarse']" class="btn btn-primary iniciar-sesion-button mb-3 col-12" (click)="saveUser()">Registrarse</button>
+              <button type="submit" [routerLink]="['/register']" class="btn btn-primary iniciar-sesion-button mb-3 col-12">Registrarse</button>
               <button type="button" [routerLink]="['/login']" class="btn btn-outline-dark col-12">Iniciar sesión con una cuenta existente</button>
             </div>
           </div>
