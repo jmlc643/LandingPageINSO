@@ -6,6 +6,10 @@
   box-sizing: border-box; /* Considerar el borde dentro del ancho */
 }
 
+.bold{
+  font: bold;
+}
+
 .topics-list {
   list-style: none;
   padding: 0;

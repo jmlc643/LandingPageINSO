@@ -1,5 +1,5 @@
 import { Component, OnInit, inject} from '@angular/core';
-import { UserApiService, Usuario, ComprobarPassword } from 'src/api/user-api/user-api.service';
+import { UserApiService, Usuario, ComprobarPassword, AuthenticationUserResponse } from 'src/api/user-api/user-api.service';
 
 @Component({
   selector: 'app-registrarse',
@@ -8,7 +8,6 @@ import { UserApiService, Usuario, ComprobarPassword } from 'src/api/user-api/use
 })
 
 export class RegistrarseComponent implements OnInit {
-  usuarios: Usuario[] = []
 
   verifyPassword: ComprobarPassword = {
     passw : ''
@@ -22,12 +21,19 @@ export class RegistrarseComponent implements OnInit {
     email: ''
   }
 
+  authenticationUserResponse : AuthenticationUserResponse = {
+    mensaje : ''
+  }
+
   async ngOnInit(){
 
   }
   async saveUser(){
     if(this.usuario.password == this.verifyPassword.passw){
       await this.userApiService.saveUser(this.usuario);
+      this.authenticationUserResponse.mensaje = 'Logeado!'
+    }else{
+      this.authenticationUserResponse.mensaje = 'Contraseñas diferentes';
     }     
   }
 }

@@ -5,17 +5,25 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { IntranetRoutingModule } from './intranet-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
+import { CrearTopicoComponent } from './creartopico/creartopico.component';
+import { CrearCategoriaComponent } from './crearcategoria/crearcateogoria.component';
+import { FormsModule } from '@angular/forms';
+import { RevisarReportesComponent } from './revisar-reportes/revisar-reportes.component';
 
 @NgModule({
   declarations: [
     CategoriasComponent,
-    InicioComponent
+    InicioComponent,
+    CrearTopicoComponent,
+    CrearCategoriaComponent,
+    RevisarReportesComponent,
   ],
   imports: [
     CommonModule,
     LayoutModule,
     IntranetRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class IntranetModule { }

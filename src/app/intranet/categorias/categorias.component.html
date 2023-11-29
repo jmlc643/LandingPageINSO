@@ -1,4 +1,3 @@
-
 <div id="page-container">
   <div id="search-container">
     <input type="text" id="search-box" placeholder="Buscar topico o categoria">
@@ -7,21 +6,21 @@
 
 
   <div class="create-buttons">
-    <button class="create-button">Crear Categoría</button>
-    <button class="create-button">Crear Tópico</button>
-    <button routerLink="/intranet/comunidad" class="create-button">Comunidad</button>
+    <button routerLink="/intranet/crearcategoria" class="create-button">Crear Categoría</button>
+    <button routerLink="/intranet/creartopico" class="create-button">Crear Tópico</button>
+    
 
   </div>
 
 
   <!-- CONTENEDOR 1 -->
-  <div class="container" id="container-1" *ngFor="let categoria of categorias">
-    <h2>{{categoria.nombre}}</h2>
-    <button class="create-button" *ngFor="let topico of topicos">{{topico.nombre}}</button>
+  <div class="container" id="container-1" *ngFor="let categoriaa of categorias">
+    <h2>{{categoriaa.nombre}}</h2>
+    <br>
+    <div class="create-button" *ngFor="let topicoo of filterTopicos(categoriaa)">
+      <button [routerLink]="['comunidad', topicoo.id]" class="create-button">
+        {{topicoo.nombre}}
+      </button>
+    </div>
   </div>
 </div>
-
-
-
-
-

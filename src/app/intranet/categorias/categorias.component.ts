@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CategoriaApiService, Categoria} from 'src/api/categoria-api/categoria-api.service';
-import { TopicoApiService, Topico, SaveTopicoRequest} from 'src/api/topico-api/topico-api.service';
+import { TopicoApiService, Topico} from 'src/api/topico-api/topico-api.service';
 
 @Component({
   selector: 'app-categorias',
@@ -8,38 +8,25 @@ import { TopicoApiService, Topico, SaveTopicoRequest} from 'src/api/topico-api/t
   styleUrls: ['./categorias.component.css']
 })
 export class CategoriasComponent implements OnInit {
-  categoria: Categoria = {
-    nombre: '',
-    descripcion: ''
-  }
 
   categorias: Categoria[] = []
 
-  guardartopico: SaveTopicoRequest = {
-    nombre: '',
-    descripcion: '',
-    nombreCategoria: ''
-  }
-
-  topico: Topico = {
-    nombre: '',
-    descripcion: '',
-    categoriaUnida: {
-      nombre : '',
-      descripcion : ''
-    }
-  }
-
   topicos: Topico[] = []
+  filteredTopicos: Topico[] = [];
 
   categoriaApiService = inject(CategoriaApiService)
+  topicoApiService = inject(TopicoApiService)
 
   async ngOnInit(){
-    await this.loadDataCategoria();
+    await this.loadData();
   }
 
-  private async loadDataCategoria() {
+  filterTopicos(categoria: Categoria): Topico[] {
+    return this.topicos.filter(topicoo => categoria.nombre === topicoo.categoria.nombre);
+  }
+  
+  private async loadData() {
     this.categorias = await this.categoriaApiService.getListCategoria();
+    this.topicos = await this.topicoApiService.getListTopicos();
   }
-
 }

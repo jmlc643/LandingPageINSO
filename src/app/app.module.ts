@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { TopicoApiService } from 'src/api/topico-api/topico-api.service';
 
 
 
@@ -19,7 +20,7 @@ import { FormsModule } from '@angular/forms';
 
   ],
 
-  providers: [],
+  providers: [TopicoApiService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

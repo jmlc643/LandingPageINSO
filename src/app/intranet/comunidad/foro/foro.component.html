@@ -1,21 +1,13 @@
 <body>
+  {{topicoEncontrado?.nombre}}
 <div class="forum">
-  <div class="post-container">
+  <div class="post-container" *ngFor="let hilo of filterHilos()">
     <div class="post-content">
       <div class="user-info">
-        Usuario 1
+        {{hilo.usuario.user}}
       </div>
-      Contenido del primer comentario...
-      <button class="reply-btn">Responder</button>
-    </div>
-  </div>
-  <div class="post-container">
-    <div class="post-content">
-      <div class="user-info">
-        Usuario 2
-      </div>
-      Contenido del segundo comentario...
-      <button class="reply-btn">Responder</button>
+      {{hilo.titulo}}
+      <button class="reply-btn" [routerLink]="['post', hilo.id]">Responder</button>
     </div>
   </div>
   <!-- Puedes agregar más publicaciones según sea necesario -->

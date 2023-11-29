@@ -7,6 +7,10 @@ export interface Categoria{
   descripcion: string
 }
 
+export interface SaveCategoriaResponse{
+  mensaje: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,5 +22,9 @@ export class CategoriaApiService {
   getListCategoria(){
       return lastValueFrom(this.httpClient.get<Categoria[]>('http://localhost:8080/categoria/'))
     }
+
+  saveCategoria(categoria: Categoria){
+    return lastValueFrom(this.httpClient.post<Categoria>('http://localhost:8080/categoria/', categoria))
+  }
 
 }

@@ -1,16 +1,15 @@
 <body>
 <div id="orden">
 <div class="topics-container">
-  <ul class="topics-list">
-    <li>General</li>
-    <li>Topic 1</li>
-    <li>Topic 2</li>
-    <li>Topic 3</li>
-    <li>Topic 4</li>
-    <li>Topic 5</li>
+  <ul class="topics-list" >
+    <div *ngFor="let topico of filterTopicos">
+      <li [routerLink]="['/intranet/comunidad', topico.id]" routerLinkActive="bold">
+        {{topico.nombre}}
+      </li>
+    </div>
   </ul>
 </div>
-<app-foro *ngIf="c==1"></app-foro>
+<app-foro *ngIf="c==1" [topicoEncontrado] = "topicoEncontrado"></app-foro>
   <app-publicar-hilo *ngIf="c==0"></app-publicar-hilo>
   <div class="main-container">
     <div class="side-container">

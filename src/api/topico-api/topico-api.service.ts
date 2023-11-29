@@ -10,13 +10,14 @@ export interface SaveTopicoRequest{
 }
 
 export interface Topico{
+  id : number;
   nombre : string,
   descripcion : string,
-  categoriaUnida : Categoria
+  categoria : Categoria
 }
-
-export interface DeleteCategoriaRequest{
-  nombre : string
+export interface saveTopicoResponse{
+  mensajeCrear : string
+  mensajeNulo : string
 }
 
 Injectable({
@@ -29,8 +30,16 @@ export class TopicoApiService {
   getListTopicos(){
     return lastValueFrom(this.httpClient.get<Topico[]>('http://localhost:8080/topico/'))
   }
-  
+
+  listarTopicoPorCategoria(topico: Topico){ //El es any es para especificar un parametro y asi no suelte un error
+    return lastValueFrom(this.httpClient.post<Topico[]>('http://localhost:8080/topico/listar/', topico))
+  }
+
   crearTopico(topico: SaveTopicoRequest){
     return lastValueFrom(this.httpClient.post<Topico>('http://localhost:8080/topico/', topico))
+  }
+
+  encontrarTopico(id: number){
+    return lastValueFrom(this.httpClient.post<Topico>('http://localhost:8080/topico/encontrar/', id))
   }
 }
