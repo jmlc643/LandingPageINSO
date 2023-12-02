@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, catchError, lastValueFrom, map, Observable, tap, throwError } from 'rxjs';
+import {environment} from "../../environments/environment";
 
 export interface Usuario {
   user: string
@@ -37,15 +38,15 @@ export class UserApiService {
   }
 
   getListUser(){
-    return lastValueFrom(this.httpClient.get<Usuario[]>('http://localhost:8080/user/listar/'))
+    return lastValueFrom(this.httpClient.get<Usuario[]>(environment.urlHost+'user/listar/'))
   }
 
   saveUser(usuario: Usuario){
-    return lastValueFrom(this.httpClient.post<Usuario>('http://localhost:8080/autenticacion/register/', usuario))
+    return lastValueFrom(this.httpClient.post<Usuario>(environment.urlHost+'autenticacion/register/', usuario))
   }
 
   iniciarSesion(usuario: AuthenticationUser):Observable<any>{
-    return this.httpClient.post<any>('http://localhost:8080/autenticacion/authentication/', usuario).pipe(
+    return this.httpClient.post<any>(environment.urlHost+'autenticacion/authentication/', usuario).pipe(
       tap((userData) => {
         sessionStorage.setItem("token", userData.token);
         this.currentUserData.next(userData.token);
