@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserApiService } from 'src/api/user-api/user-api.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class HeaderGeneralComponent implements OnInit{
   userLoginOn:boolean=false;   
   userDropdownOpen = false;
   userApiService = inject(UserApiService);
+  router = inject(Router);
 
     toggleUserDropdown() {
     this.userDropdownOpen = !this.userDropdownOpen;
@@ -21,5 +23,10 @@ export class HeaderGeneralComponent implements OnInit{
         this.userLoginOn = userLoginOn;
       }
     })
+  }
+
+  logout(){
+    this.userApiService.cerrarSesion();
+    this.router.navigate(['/login'])    
   }
 }

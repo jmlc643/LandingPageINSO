@@ -10,13 +10,17 @@ import { UserApiService, Usuario, AuthenticationUser } from 'src/api/user-api/us
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit{
-  loginError:String='';
+  loginError:String="";
   formBuilder = inject(FormBuilder)
   router = inject(Router)
   loginForm = this.formBuilder.group({
       usuario: ['',Validators.required],
       password: ['',Validators.required]
   })
+  authenticationUser:AuthenticationUser = {
+    user : "",
+    password : ""
+  }
 
     userApiService = inject(UserApiService)
 
@@ -34,14 +38,15 @@ export class IniciarSesionComponent implements OnInit{
 
     autenticarUsuario(){
       if(this.loginForm.valid){
+        this.loginError="";
         console.log("Llamando al servicio de autenticar sesion "+this.loginForm);
-        this.userApiService.iniciarSesion(this.loginForm.value as AuthenticationUser).subscribe({
+        this.userApiService.iniciarSesion(this.authenticationUser).subscribe({
           next: (userData) => {
             console.log(userData)
           },
           error : (errorData: any) => {
             console.error(errorData);
-            this.loginError=errorData;
+            this.loginError="Credenciales invalidas";
           },
           complete: () => {
             console.info("Login completo")

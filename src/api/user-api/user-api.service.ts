@@ -75,7 +75,7 @@ export class UserApiService {
     }else{
       console.error('Backend retorno el código del estado '+error);
       console.log(this.userData);
-    }return throwError(() => new Error('Error al iniciar sesión. Revise los datos enviados'))
+    }return throwError(() => new Error('Error al iniciar sesión. Revise los datos enviados'));
 
   }
 
