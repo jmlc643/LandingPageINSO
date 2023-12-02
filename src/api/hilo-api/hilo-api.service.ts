@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Usuario } from '../user-api/user-api.service';
+import { UsuarioDTO } from '../user-api/user-api.service';
 import { Topico } from '../topico-api/topico-api.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
@@ -11,7 +11,7 @@ export interface Hilo{
   cerrado: boolean,
   fechaCreacion: Date,
   topico: Topico,
-  usuario: Usuario
+  usuario: UsuarioDTO
 }
 
 export interface SaveHiloRequest{

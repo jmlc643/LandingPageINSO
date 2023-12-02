@@ -8,8 +8,15 @@ export interface Usuario {
   email: string
 }
 
+export interface UsuarioDTO{
+  user: string
+  email: string
+  nroPuntos: number
+}
+
 export interface recuperarContraRequest{
   email: string
+  firma: String
 }
 
 export interface ComprobarPassword{
@@ -62,8 +69,10 @@ export class UserApiService {
     )
   }
 
-  recuperarContra(recuperarContra : recuperarContraRequest):Observable<String>{
-    return this.httpClient.post<String>('http://localhost:8080/autenticacion/recuperar-contra/', recuperarContra);
+  recuperarContra(recuperarContra : recuperarContraRequest):Observable<any>{
+    return this.httpClient.post<any>('http://localhost:8080/autenticacion/recuperar-contra/', recuperarContra).pipe(
+      catchError(this.handleError)
+    );
   }
 
   cerrarSesion():void{

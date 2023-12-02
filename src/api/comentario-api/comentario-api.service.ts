@@ -1,16 +1,16 @@
 import { Injectable, inject } from '@angular/core';
 import { Hilo } from '../hilo-api/hilo-api.service';
-import { Usuario } from '../user-api/user-api.service';
+import { UsuarioDTO } from '../user-api/user-api.service';
 import { HttpClient } from '@angular/common/http';
-import { lastValueFrom } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 
 export interface Comentario{
   id: number,
   mensaje: string,
   esEditado: boolean,
   fechaCreacion: Date,
-  hilo: Hilo,
-  usuario: Usuario
+  hiloSerializer: Hilo,
+  userSerializer: UsuarioDTO
 }
 
 export interface SaveComentarioRequest{
@@ -26,8 +26,8 @@ export class ComentarioApiService {
 
   httpClient = inject(HttpClient)
 
-  getListComentarios(){
-    return lastValueFrom(this.httpClient.get<Comentario[]>('http://localhost:8080/comentario/'))
+  getListComentarios():Observable<Comentario[]>{
+    return this.httpClient.get<Comentario[]>('http://localhost:8080/comentario/');
   }
 
   crearComentario(comentario : Comentario){
