@@ -9,7 +9,7 @@ import { Topico, TopicoApiService } from 'src/api/topico-api/topico-api.service'
 })
 export class ForoComponent implements OnInit {
   @Input() topicoEncontrado?: Topico;
-
+  errorData:String="";
   hilos: Hilo[] = []
   topicos: Topico[] = []
 
@@ -22,7 +22,17 @@ export class ForoComponent implements OnInit {
 
   private async loadData(){
     await this.topicoApiService.getListTopicos();
-    this.hilos = await this.hiloApiService.getListHilos();
+    this.hiloApiService.getListHilos().subscribe({
+      next: (hiloData)=>{
+        this.hilos = hiloData;
+      },
+      error: (errorData) => {
+        this.errorData = errorData;
+      },
+      complete: () =>{
+        console.info("Data obtenida")
+      }
+    })
   }
 
   filterHilos(): Hilo[] {

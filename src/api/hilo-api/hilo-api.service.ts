@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Usuario } from '../user-api/user-api.service';
 import { Topico } from '../topico-api/topico-api.service';
 import { HttpClient } from '@angular/common/http';
-import { lastValueFrom } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 
 export interface Hilo{
   id: number,
@@ -28,8 +28,8 @@ export class HiloApiService {
 
   httpClient = inject(HttpClient)
 
-  getListHilos(){
-    return lastValueFrom(this.httpClient.get<Hilo[]>('http://localhost:8080/hilo/'))
+  getListHilos():Observable<Hilo[]>{
+    return this.httpClient.get<Hilo[]>('http://localhost:8080/hilo/');
   }
 
   publicarHilo(hilo : Hilo){

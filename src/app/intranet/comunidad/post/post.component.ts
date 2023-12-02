@@ -35,7 +35,7 @@ export class PostComponent implements OnInit{
   }
 
   private async loadData() {
-    this.hilos = await this.hiloApiService.getListHilos();
+    await this.hiloApiService.getListHilos();
     this.usuarios = await this.userApiService.getListUser();
     this.comentarios = await this.comentarioApiService.getListComentarios();
     console.log(this.comentarios);
