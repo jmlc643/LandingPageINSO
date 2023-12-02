@@ -27,11 +27,14 @@ export class CrearTopicoComponent implements OnInit{
 
   async ngOnInit() {
       await this.loadData();
+
   }
 
   private async loadData(){
     this.topicos = await this.topicoApiService.getListTopicos();
-    this.categorias = await this.categoriaApiService.getListCategoria();
+    await this.categoriaApiService.getListCategoria().subscribe((data)=>{
+      this.categorias = data;
+    });
   }
 
   saveTopico(){

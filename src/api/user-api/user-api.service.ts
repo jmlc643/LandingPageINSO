@@ -47,7 +47,7 @@ export class UserApiService {
   iniciarSesion(usuario: AuthenticationUser):Observable<any>{
     return this.httpClient.post<any>('http://localhost:8080/autenticacion/authentication/', usuario).pipe(
       tap((userData) => {
-        sessionStorage.setItem("token", userData.token)
+        sessionStorage.setItem("token", userData.token);
         this.currentUserData.next(userData.token);
         this.currentUserLoginOn.next(true);
       }),
@@ -76,7 +76,10 @@ export class UserApiService {
       console.error('Backend retorno el código del estado '+error);
       console.log(this.userData);
     }return throwError(() => new Error('Error al iniciar sesión. Revise los datos enviados'));
+  }
 
+  get userToken():String{
+    return this.currentUserData.value;
   }
 
 }

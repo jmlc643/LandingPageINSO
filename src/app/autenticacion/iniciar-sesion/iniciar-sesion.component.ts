@@ -51,7 +51,7 @@ export class IniciarSesionComponent implements OnInit{
           complete: () => {
             console.info("Login completo")
             this.router.navigateByUrl('/intranet');
-            this.loginForm.reset;
+            this.loginForm.reset();
           }
         });
       }else{

@@ -1,39 +1,45 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CategoriaApiService, Categoria} from 'src/api/categoria-api/categoria-api.service';
 import { TopicoApiService, Topico} from 'src/api/topico-api/topico-api.service';
 import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
+
 
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
   styleUrls: ['./categorias.component.css']
 })
-export class CategoriasComponent implements OnInit, OnDestroy {
+export class CategoriasComponent implements OnInit {
   userLoginOn:boolean=false;
-  userData?:Usuario;
+  userData?:String;
   user?:Usuario;
   userApiService = inject(UserApiService);
+  constructor(){
+    
+  }
+
+  encryptionKey:String = "Secret";
 
   categorias: Categoria[] = [];
-  usuarios: Usuario[] = [];
   topicos: Topico[] = [];
   filteredTopicos: Topico[] = [];
 
   categoriaApiService = inject(CategoriaApiService)
   topicoApiService = inject(TopicoApiService)
 
-  ngOnDestroy(): void {
-    this.userApiService.currentUserData.unsubscribe();
-    this.userApiService.currentUserLoginOn.unsubscribe();
-  }
-
   async ngOnInit(){
-    await this.loadData();
     this.userApiService.currentUserLoginOn.subscribe({
       next:(userLoginOn) => {
         this.userLoginOn = userLoginOn;
       }
     })
+    this.userApiService.currentUserData.subscribe({
+      next:(userData) => {
+        this.userData = userData;
+        console.log("Este es el token que estoy enviando: "+userData);
+      }
+    })
+    await this.loadData();
   }
 
   filterTopicos(categoria: Categoria): Topico[] {
@@ -41,8 +47,12 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   }
   
   private async loadData() {
-    this.categorias = await this.categoriaApiService.getListCategoria();
+    this.categoriaApiService.getListCategoria().subscribe((data)=>{
+      this.categorias = data;
+    });
     this.topicos = await this.topicoApiService.getListTopicos();
-    this.usuarios = await this.userApiService.getListUser();
+    this.userApiService.getListUser();
   }
+
+  
 }

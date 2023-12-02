@@ -24,7 +24,7 @@ export class CrearCategoriaComponent implements OnInit{
   }
 
   private async loadData(){
-    this.categorias = await this.categoriaApiService.getListCategoria();
+    await this.categoriaApiService.getListCategoria();
   }
 
   saveCategoria(){
