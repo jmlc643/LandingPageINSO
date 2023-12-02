@@ -2,21 +2,32 @@
     <div id="page-container">
     <div class="container" id="container-1">
         <h2>Crear Categoria</h2>
-        <form>
+        <form [formGroup]="createCategoriaForm">
+        <p class="text-danger">{{formError}}</p>
         <h3>Nombre:</h3>
         <div id="search-container">
-            <input type="text" id="search-box" placeholder="Ingresar el nombre de la categoria" [(ngModel)]="categoria.nombre" [ngModelOptions]="{standalone: true}">
+            <input formControlName="nombre" type="text" id="search-box" placeholder="Ingresar el nombre de la categoria" [(ngModel)]="categoria.nombre">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                <div *ngIf="name.errors?.['required']">
+                  <br><br><br><br>El nombre es requerido
+                </div>
+            </div>
         </div>
         <div *ngIf="saveCategoriaResponse.mensaje == 'Categoria existente'">
             <p class="text-red-500 text-xs italic">{{saveCategoriaResponse.mensaje}}</p>
         </div>
         <h3>Descripción:</h3>
         <div id="search-container">
-            <input type="text" id="search-box" placeholder="Ingresar la descripción de la categoria" [(ngModel)]="categoria.descripcion" [ngModelOptions]="{standalone: true}">
+            <input formControlName="descripcion" type="text" id="search-box" placeholder="Ingresar la descripción de la categoria" [(ngModel)]="categoria.descripcion">
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+                <div *ngIf="description.errors?.['required']">
+                  <br><br><br><br>La descripcion es requerida
+                </div>
+            </div>
         </div>
     <div class="create-buttons">
         <button routerLink="/intranet" class = "create-button">Cancelar</button>
-        <button routerLink="/intranet" class="create-button" (click)="saveCategoria()">Aceptar</button>
+        <button class="create-button" (click)="saveCategoria()">Aceptar</button>
       </div>
         </form>
     </div>

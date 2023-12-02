@@ -95,3 +95,11 @@ h3{
    /* Ajuste del botón "Topico" */
    margin-top: 20px; /* Modificar el espacio entre el título y el botón */
  }
+
+.ng-valid:not(form).ng-touched {
+  border-left: 5px solid #42a948;
+}
+
+.ng-invalid:not(form).ng-touched {
+  border-left: 5px solid #a94442;
+}
