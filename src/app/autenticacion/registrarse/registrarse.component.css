@@ -75,3 +75,11 @@ body {
 .form-control {
   background-color: #ecf6ff; /* Cambia este valor al color celeste que desees */
 }
+
+.ng-valid:not(form).ng-touched {
+  border-left: 5px solid #42a948;
+}
+
+.ng-invalid:not(form).ng-touched {
+  border-left: 5px solid #a94442;
+}

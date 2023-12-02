@@ -44,8 +44,10 @@ export class UserApiService {
     return lastValueFrom(this.httpClient.get<Usuario[]>('http://localhost:8080/user/listar/'))
   }
 
-  saveUser(usuario: Usuario){
-    return lastValueFrom(this.httpClient.post<Usuario>('http://localhost:8080/autenticacion/register/', usuario))
+  saveUser(usuario: Usuario):Observable<any>{
+    return this.httpClient.post<Usuario>('http://localhost:8080/autenticacion/register/', usuario).pipe(
+      catchError(this.handleError)
+    );
   }
 
   iniciarSesion(usuario: AuthenticationUser):Observable<any>{
