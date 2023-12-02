@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Categoria, CategoriaApiService } from 'src/api/categoria-api/categoria-api.service';
 import { TopicoApiService, Topico, SaveTopicoRequest, saveTopicoResponse} from 'src/api/topico-api/topico-api.service';
+import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
 
 @Component({
   selector: 'app-creartopico',
@@ -8,6 +9,11 @@ import { TopicoApiService, Topico, SaveTopicoRequest, saveTopicoResponse} from '
   styleUrls: ['./creartopico.component.css']
 })
 export class CrearTopicoComponent implements OnInit{
+  userLoginOn:boolean=false;
+  userData?:String;
+  user?:Usuario;
+  userApiService = inject(UserApiService);
+  errorData:String="";
   topico: SaveTopicoRequest = {
     nombre : '',
     descripcion : '',
@@ -23,7 +29,7 @@ export class CrearTopicoComponent implements OnInit{
   categoriaApiService = inject(CategoriaApiService)
 
   topicos : Topico[] = []
-  categorias : Categoria[] = []
+  categorias?: Categoria[] = [];
 
   async ngOnInit() {
       await this.loadData();
@@ -31,9 +37,27 @@ export class CrearTopicoComponent implements OnInit{
   }
 
   private async loadData(){
-    this.topicos = await this.topicoApiService.getListTopicos();
-    await this.categoriaApiService.getListCategoria().subscribe((data)=>{
-      this.categorias = data;
+    this.topicoApiService.getListTopicos().subscribe({
+      next: (topicoData)=>{
+        this.topicos = topicoData;
+      },
+      error: (errorData) => {
+        this.errorData = errorData;
+      },
+      complete: () =>{
+        console.info("Data obtenida")
+      }
+    });
+    this.categoriaApiService.getListCategoria().subscribe({
+      next: (categoriaData)=>{
+        this.categorias = categoriaData;
+      },
+      error: (errorData) => {
+        this.errorData = errorData;
+      },
+      complete: () =>{
+        console.info("Data obtenida")
+      }
     });
   }
 

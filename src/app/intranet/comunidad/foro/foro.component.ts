@@ -21,7 +21,7 @@ export class ForoComponent implements OnInit {
   }
 
   private async loadData(){
-    this.topicos = await this.topicoApiService.getListTopicos();
+    await this.topicoApiService.getListTopicos();
     this.hilos = await this.hiloApiService.getListHilos();
   }
 

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { Categoria } from '../categoria-api/categoria-api.service';
 
 export interface SaveTopicoRequest{
@@ -27,8 +27,8 @@ export class TopicoApiService {
 
   httpClient = inject(HttpClient)
 
-  getListTopicos(){
-    return lastValueFrom(this.httpClient.get<Topico[]>('http://localhost:8080/topico/'))
+  getListTopicos():Observable<Topico[]>{
+    return this.httpClient.get<Topico[]>('http://localhost:8080/topico/');
   }
 
   listarTopicoPorCategoria(topico: Topico){ //El es any es para especificar un parametro y asi no suelte un error

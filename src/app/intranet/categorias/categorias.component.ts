@@ -14,20 +14,19 @@ export class CategoriasComponent implements OnInit {
   userData?:String;
   user?:Usuario;
   userApiService = inject(UserApiService);
+  errorData:String="";
   constructor(){
     
   }
 
-  encryptionKey:String = "Secret";
-
-  categorias: Categoria[] = [];
+  categorias?: Categoria[] = [];
   topicos: Topico[] = [];
   filteredTopicos: Topico[] = [];
 
   categoriaApiService = inject(CategoriaApiService)
   topicoApiService = inject(TopicoApiService)
 
-  async ngOnInit(){
+  ngOnInit(){
     this.userApiService.currentUserLoginOn.subscribe({
       next:(userLoginOn) => {
         this.userLoginOn = userLoginOn;
@@ -39,7 +38,8 @@ export class CategoriasComponent implements OnInit {
         console.log("Este es el token que estoy enviando: "+userData);
       }
     })
-    await this.loadData();
+    this.loadData();
+    console.log(this.topicos);
   }
 
   filterTopicos(categoria: Categoria): Topico[] {
@@ -47,10 +47,28 @@ export class CategoriasComponent implements OnInit {
   }
   
   private async loadData() {
-    this.categoriaApiService.getListCategoria().subscribe((data)=>{
-      this.categorias = data;
+    this.categoriaApiService.getListCategoria().subscribe({
+      next: (categoriaData)=>{
+        this.categorias = categoriaData;
+      },
+      error: (errorData) => {
+        this.errorData = errorData;
+      },
+      complete: () =>{
+        console.info("Data obtenida")
+      }
+    })
+    this.topicoApiService.getListTopicos().subscribe({
+      next: (topicoData)=>{
+        this.topicos = topicoData;
+      },
+      error: (errorData) => {
+        this.errorData = errorData;
+      },
+      complete: () =>{
+        console.info("Data obtenida")
+      }
     });
-    this.topicos = await this.topicoApiService.getListTopicos();
     this.userApiService.getListUser();
   }
 

@@ -37,7 +37,7 @@ export class TopicosListaComponent implements OnInit{
   }
 
   private async loadData(){
-    this.topicos = await this.topicoApiService.getListTopicos();
+    await this.topicoApiService.getListTopicos();
     await this.encontrarTopico();
     console.log(this.topicoEncontrado);
     this.listarPorCategoria(this.topicoEncontrado);
