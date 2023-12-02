@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, catchError, lastValueFrom, Observable, throwError } from 'rxjs';
+import {environment} from "../../environments/environment";
 
 export interface Categoria{
   nombre: string
@@ -20,10 +21,10 @@ export class CategoriaApiService {
   httpClient = inject(HttpClient)
 
   getListCategoria():Observable<Categoria[]>{
-      return this.httpClient.get<Categoria[]>('http://localhost:8080/categoria/listar/');
+      return this.httpClient.get<Categoria[]>(environment.urlHost+'/categoria/listar/');
     }
 
   saveCategoria(categoria: Categoria){
-    return lastValueFrom(this.httpClient.post<Categoria>('http://localhost:8080/categoria/', categoria))
+    return lastValueFrom(this.httpClient.post<Categoria>(environment.urlHost+'/categoria/', categoria))
   }
 }
