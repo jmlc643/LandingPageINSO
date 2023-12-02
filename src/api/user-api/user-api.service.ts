@@ -8,6 +8,10 @@ export interface Usuario {
   email: string
 }
 
+export interface recuperarContraRequest{
+  email: string
+}
+
 export interface ComprobarPassword{
   passw : string
 }
@@ -54,6 +58,10 @@ export class UserApiService {
       map((userData) => userData.token),
       catchError(this.handleError)
     )
+  }
+
+  recuperarContra(recuperarContra : recuperarContraRequest):Observable<String>{
+    return this.httpClient.post<String>('http://localhost:8080/autenticacion/recuperar-contra/', recuperarContra);
   }
 
   cerrarSesion():void{

@@ -13,6 +13,7 @@
       <img src="/assets/images/doctora.png" alt="Imagen Izquierda" class="img-fluid">
     </div>
     <div class="col-md-4">
+     <form [formGroup]="recuperarContraForm"> 
       <div class="bg-white p-4 border shadow-lg p-3 mb-5 bg-body rounded login-form">
         <h6 class="text-center text-black learnsync-title">LEARNSYNC</h6>
         <h3 class="text-center text-primary recuperar-title">Recuperar Contraseña</h3>
@@ -25,14 +26,23 @@
                   <i class="fas fa-envelope"></i>
                 </span>
             </div>
-            <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" aria-describedby="emailHelp">
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Correo Electrónico" aria-describedby="emailHelp" [(ngModel)]="recuperarPass.email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+              <div *ngIf="email.errors?.['required']">
+                <br><br><br><br>El email es requerido
+              </div>
+              <div *ngIf="email.errors?.['email']">
+                <br><br><br><br>Formato invalido
+              </div>
+            </div>
           </div>
         </div>
         <div class="text-center m-3 p-3 d-grid gap-2 mx-auto col-12 container-white-bg">
-          <button type="submit" class="btn btn-primary enviar-correo-button">Enviar correo de confirmación</button>
+          <button type="submit" class="btn btn-primary enviar-correo-button" (click)="recuperarContra()">Enviar correo de confirmación</button>
           <button type="button" [routerLink]="['/login']" class="btn btn-outline-dark">Regresar</button>
         </div>
       </div>
+    </form>
     </div>
     <div class="col-md-4">
       <img src="/assets/images/doctor.png" alt="Imagen Derecha" class="img-fluid">
