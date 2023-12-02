@@ -1,15 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
 
 body {
-    background-color: #D32F2F;
-    font-family: 'Calibri', sans-serif !important;
+    background-color: #1976d2;
+    margin-bottom: 100px;
 }
 
 .card-no-border .card {
     border: 0px;
     border-radius: 4px;
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 .card-body {
@@ -79,11 +79,4 @@ body {
     color: #1976d2;
 }
 
-.mt-100 {
-    margin-top: 100px
-}
-
-.mb-100 {
-    margin-bottom: 100px
-}
 

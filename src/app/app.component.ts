@@ -1,5 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Usuario } from 'src/api/user-api/user-api.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

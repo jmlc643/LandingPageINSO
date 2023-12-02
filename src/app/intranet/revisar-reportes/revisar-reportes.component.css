@@ -1,0 +1,90 @@
+body {
+    background-color: #8095ff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+  
+    border-radius: 8px;
+  }
+  
+  .registration-form {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding-bottom: 35vh;
+    margin-bottom: 50px;
+  }
+  
+  h1 {
+    color: #333;
+    font-size: 20px;
+  }
+  
+  hr {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #3d3838;
+    width: 96%;
+  }
+  
+  
+  #motivoTextbox {
+    width: calc(100% - 16px); 
+    height: 20vh;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 8px;
+    border: 1px solid #a2a6ab; 
+    border-radius: 4px; 
+  }
+  .button-container {
+    text-align: right;
+  }
+  
+  .button {
+    padding: 8px 16px;
+    margin-left: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button-primary {
+    background-color: #007BFF;
+    color: #fff;
+    margin-right: 15px;
+  }
+  
+  .button-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-primary:active {
+    background-color: #004080;
+  }
+  
+  .button-secondary {
+    background-color: #6C757D;
+    color: #fff;
+  }
+  
+  .button-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  .button-secondary:active {
+    background-color: #484e55;
+  }
+  

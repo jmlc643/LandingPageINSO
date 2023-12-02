@@ -5,15 +5,18 @@
         <form>
         <h3>Nombre:</h3>
         <div id="search-container">
-            <input type="text" id="search-box" required minlength="2" maxlength="20" placeholder="Ingresar el nombre de la categoria">
+            <input type="text" id="search-box" placeholder="Ingresar el nombre de la categoria" [(ngModel)]="categoria.nombre" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div *ngIf="saveCategoriaResponse.mensaje == 'Categoria existente'">
+            <p class="text-red-500 text-xs italic">{{saveCategoriaResponse.mensaje}}</p>
         </div>
         <h3>Descripción:</h3>
         <div id="search-container">
-            <input type="text" id="search-box" required minlength="2" maxlength="20" placeholder="Ingresar la descripción de la categoria">
+            <input type="text" id="search-box" placeholder="Ingresar la descripción de la categoria" [(ngModel)]="categoria.descripcion" [ngModelOptions]="{standalone: true}">
         </div>
     <div class="create-buttons">
-        <button routerLink="/intranet"  class = "create-button">Cancelar</button>
-        <button routerLink="#" class="create-button">Aceptar</button>
+        <button routerLink="/intranet" class = "create-button">Cancelar</button>
+        <button routerLink="/intranet" class="create-button" (click)="saveCategoria()">Aceptar</button>
       </div>
         </form>
     </div>

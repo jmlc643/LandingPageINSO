@@ -1,5 +1,4 @@
-
-<div id="page-container">
+<div id="page-container" *ngIf="userLoginOn==true">
   <div id="search-container">
     <input type="text" id="search-box" placeholder="Buscar topico o categoria">
     <button id="search-button">Buscar</button>
@@ -15,30 +14,13 @@
 
 
   <!-- CONTENEDOR 1 -->
-  <div class="container" id="container-1">
-    <h2>Primer Ciclo</h2>
-    <button routerLink="/intranet/comunidad" class="create-button">LENGUAJE I</button>
-    <button routerLink="/intranet/comunidad" class="create-button">METODOLOGÍA DEL APRENDIZAJE UNIVERSITARIO </button>
-    <button routerLink="/intranet/comunidad" class="create-button">MATEMÁTICA </button>
-    <button routerLink="/intranet/comunidad" class="create-button">BIOFÍSICA MÉDICA</button>
+  <div class="container" id="container-1" *ngFor="let categoriaa of categorias">
+    <h2>{{categoriaa.nombre}}</h2>
     <br>
-    <button routerLink="/intranet/comunidad" class="create-button">QUÍMICA GENERAL</button>
-    <button routerLink="/intranet/comunidad" class="create-button">ACTIVIDAD FORMATIVA I</button>
-    <button routerLink="/intranet/comunidad" class="create-button">BIOLOGÍA CELULAR</button>
-  </div>
-  <div class="container" id="container-1">
-    <h2>Segundo Ciclo</h2>
-    <button routerLink="/intranet/comunidad" class="create-button">LENGUAJE I</button>
-    <button routerLink="/intranet/comunidad" class="create-button">PSICOLOGÍA Y DESARROLLO HUMANO</button>
-    <button routerLink="/intranet/comunidad" class="create-button">ACTIVIDAD FORMATIVA II</button>
-    <button routerLink="/intranet/comunidad" class="create-button">ANATOMÍA</button>
-    <button routerLink="/intranet/comunidad" class="create-button">FISIOLOGÍA</button>
-    <br>
-    <button routerLink="/intranet/comunidad" class="create-button">BIOQUÍMICA Y NUTRICIÓN HUMANA</button>
+    <div class="create-button" *ngFor="let topicoo of filterTopicos(categoriaa)">
+      <button [routerLink]="['comunidad', topicoo.id]" class="create-button">
+        {{topicoo.nombre}}
+      </button>
+    </div>
   </div>
 </div>
-
-
-
-
-

@@ -7,10 +7,11 @@
       <img src="/assets/images/doctora.png" alt="Imagen Izquierda" class="img-fluid">
     </div>
     <div class="col-md-4">
-      <div class="login-form">
+      <form class="login-form" [formGroup]="loginForm">
         <h6 class="text-center text-black learnsync-title">LEARNSYNC</h6>
         <h3 class="text-center text-primary iniciarsesion-title">Iniciar Sesión</h3>
         <p class="text-center text-black">Ingresa con tu cuenta</p>
+        <p class="text-danger">{{loginError}}</p>
         <div class="form-group">
           <label for="username">Nombre de usuario</label>
           <div class="input-group">
@@ -19,7 +20,12 @@
                   <i class="fas fa-user"></i>
                 </span>
             </div>
-            <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="usuario.user" [ngModelOptions]="{standalone: true}">
+            <input formControlName="usuario" type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="authenticationUser.user">
+            <div *ngIf="user.invalid && (user.dirty || user.touched)" class="text-danger">
+              <div *ngIf="user.errors?.['required']">
+                <br><br><br><br>El usuario es requerido
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -30,17 +36,21 @@
                   <i class="fas fa-lock"></i>
                 </span>
             </div>
-            <input type="password" class="form-control" id="password" placeholder="Contraseña" aria-describedby="passwordHelp" [(ngModel)]="usuario.password" [ngModelOptions]="{standalone: true}">
+            <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña" aria-describedby="passwordHelp" [(ngModel)]="authenticationUser.password">
+            <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="text-danger">
+              <div *ngIf="pass.errors?.['required']">
+                <br><br><br><br>La contraseña es requerido
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="text-center m-3 p-3 d-grid gap-2 mx-auto col-12">
-          <button type="submit" [routerLink]="['/intranet']" class="btn btn-primary iniciar-sesion-button" (click)="autenticarUsuario()">Iniciar Sesión</button>
+          <button type="submit" class="btn btn-primary iniciar-sesion-button" (click)="autenticarUsuario()">Iniciar Sesión</button>
           <p><a [routerLink]="['/recovery']">¿Olvidaste tu contraseña?</a></p>
           <button type="button" [routerLink]="['/register']" class="btn btn-outline-dark">Registrarse con una nueva cuenta</button>
         </div>
-
-      </div>
+      </form>
     </div>
     <div class="col-md-4">
       <img src="/assets/images/doctor.png" alt="Imagen Derecha" class="img-fluid">
