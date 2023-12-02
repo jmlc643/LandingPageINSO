@@ -1,4 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserApiService, Usuario, AuthenticationUser } from 'src/api/user-api/user-api.service';
 
 
@@ -8,12 +10,13 @@ import { UserApiService, Usuario, AuthenticationUser } from 'src/api/user-api/us
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit{
-  usuario: AuthenticationUser = {
-      user: '',
-      password: ''
-    }
-
-    usuarios: Usuario[] = []
+  loginError:String='';
+  formBuilder = inject(FormBuilder)
+  router = inject(Router)
+  loginForm = this.formBuilder.group({
+      usuario: ['',Validators.required],
+      password: ['',Validators.required]
+  })
 
     userApiService = inject(UserApiService)
 
@@ -21,11 +24,38 @@ export class IniciarSesionComponent implements OnInit{
         await this.loadData();
       }
 
-    async autenticarUsuario(){
-        await this.userApiService.iniciarSesion(this.usuario);
+      get user(){
+        return this.loginForm.controls.usuario;
+      }
+
+      get pass(){
+        return this.loginForm.controls.password;
+      }
+
+    autenticarUsuario(){
+      if(this.loginForm.valid){
+        console.log("Llamando al servicio de autenticar sesion "+this.loginForm);
+        this.userApiService.iniciarSesion(this.loginForm.value as AuthenticationUser).subscribe({
+          next: (userData) => {
+            console.log(userData)
+          },
+          error : (errorData: any) => {
+            console.error(errorData);
+            this.loginError=errorData;
+          },
+          complete: () => {
+            console.info("Login completo")
+            this.router.navigateByUrl('/intranet');
+            this.loginForm.reset;
+          }
+        });
+      }else{
+        this.loginForm.markAllAsTouched();
+        alert("Error de ingreso de datos")
+      } 
       }
 
      private async loadData() {
-          this.usuarios = await this.userApiService.getListUser();
+          await this.userApiService.getListUser();
       }
 }

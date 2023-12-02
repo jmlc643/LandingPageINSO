@@ -87,3 +87,11 @@ body {
   font-weight: bold; /* Hace que el texto sea negrita */
   font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto */
 }
+
+.ng-valid:not(form).ng-touched {
+  border-left: 5px solid #42a948;
+}
+
+.ng-invalid:not(form).ng-touched {
+  border-left: 5px solid #a94442;
+}

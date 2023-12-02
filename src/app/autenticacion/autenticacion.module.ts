@@ -6,7 +6,7 @@ import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { RecuperarComponent } from './recuperar/recuperar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '../layout/layout.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationRoutingModule } from './autenticacion-routing.module';
 
 
@@ -23,7 +23,8 @@ import { AuthenticationRoutingModule } from './autenticacion-routing.module';
     HttpClientModule,
     LayoutModule,
     FormsModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AutenticacionModule { }
