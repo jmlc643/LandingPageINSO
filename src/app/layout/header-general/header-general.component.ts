@@ -10,12 +10,14 @@ import { UserApiService } from 'src/api/user-api/user-api.service';
 export class HeaderGeneralComponent implements OnInit{
   userLoginOn:boolean=false;   
   userDropdownOpen = false;
+  usuario:String = "";
   userApiService = inject(UserApiService);
   router = inject(Router);
 
     toggleUserDropdown() {
     this.userDropdownOpen = !this.userDropdownOpen;
   }
+
 
   ngOnInit(): void {
     this.userApiService.currentUserLoginOn.subscribe({

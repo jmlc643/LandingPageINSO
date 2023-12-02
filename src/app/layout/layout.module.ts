@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderGeneralComponent } from './header-general/header-general.component';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -22,8 +23,15 @@ import { HeaderGeneralComponent } from './header-general/header-general.componen
   imports: [
     CommonModule,
     RouterLink,
-    HttpClientModule
-    
-  ]
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token') || '',
+        allowedDomains: ['example.com'],
+        disallowedRoutes: ['example.com/unauthorized']
+      }
+    })
+  ],
+  providers: [JwtHelperService]
 })
 export class LayoutModule { }
