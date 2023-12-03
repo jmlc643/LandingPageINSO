@@ -9,11 +9,7 @@ import { Topico, TopicoApiService } from 'src/api/topico-api/topico-api.service'
 })
 export class TopicosListaComponent implements OnInit{
   c = 1 ;
-  constructor(private activatedRoute : ActivatedRoute){
-    activatedRoute.params.subscribe( prm => {
-      console.log(`El id es: ${prm['id']}`);
-  })
-  }
+  activatedRoute = inject(ActivatedRoute);
 
   topicos: Topico[] = []
   filterTopicos: Topico[] = [] 
@@ -32,7 +28,10 @@ export class TopicosListaComponent implements OnInit{
   topicoApiService = inject(TopicoApiService)
 
   async ngOnInit(){
+    this.activatedRoute.params.subscribe( prm => {
+      console.log(`El id es: ${prm['id']}`);
       this.idd = +this.activatedRoute.snapshot.params['id'];
+  })
       await this.loadData();
   }
 

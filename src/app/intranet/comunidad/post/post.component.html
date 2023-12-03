@@ -81,7 +81,7 @@
                                     <div class="d-flex flex-row comment-row" *ngFor="let comentario of filterComentarios()">
                                         <div class="p-2"><span class="round"><img src="https://i.imgur.com/Ay76ezG.png" alt="user" width="50"></span></div>
                                         <div class="comment-text active w-100">
-                                            <h5>{{comentario.usuario.user}}</h5>
+                                            <h5>{{comentario.userSerializer.user}}</h5>
                                             <div class="comment-footer">
                                                 <span class="date">{{comentario.fechaCreacion}}</span>
                                             </div>

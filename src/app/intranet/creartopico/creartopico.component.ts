@@ -1,4 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Categoria, CategoriaApiService } from 'src/api/categoria-api/categoria-api.service';
 import { TopicoApiService, Topico, SaveTopicoRequest, saveTopicoResponse} from 'src/api/topico-api/topico-api.service';
 import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
@@ -31,12 +33,32 @@ export class CrearTopicoComponent implements OnInit{
   topicos : Topico[] = []
   categorias?: Categoria[] = [];
 
-  async ngOnInit() {
-      await this.loadData();
+  formError:String="";
+  router = inject(Router)
+  formBuilder = inject(FormBuilder)
+  createTopicoForm = this.formBuilder.group({
+      nombreT: ['',Validators.required],
+      descripcionT: ['',Validators.required],
+      categoria: ['', Validators.required]
+  })
 
+  ngOnInit() {
+      this.loadData();
   }
 
-  private async loadData(){
+  get name(){
+    return this.createTopicoForm.controls.nombreT;
+  }
+
+  get description(){
+    return this.createTopicoForm.controls.descripcionT;
+  }
+
+  get categoria(){
+    return this.createTopicoForm.controls.categoria;
+  }
+
+  private loadData(){
     this.topicoApiService.getListTopicos().subscribe({
       next: (topicoData)=>{
         this.topicos = topicoData;
@@ -62,17 +84,32 @@ export class CrearTopicoComponent implements OnInit{
   }
 
   saveTopico(){
-    this.topicos.forEach(topicoo =>{
-      if(this.topico.nombre == topicoo.nombre){
-        this.saveTopicoResponse.mensajeCrear = 'Topico existente';
+    if(this.createTopicoForm.valid){
+      this.topicos.forEach(topicoo =>{
+        if(this.topico.nombre == topicoo.nombre){
+          this.saveTopicoResponse.mensajeCrear = 'Topico existente';
+        }
+      })
+      if(this.topico.nombreCategoria == ''){
+        this.saveTopicoResponse.mensajeNulo = 'Escoja una categoría'
+      }else{ 
+        this.topicoApiService.crearTopico(this.topico).subscribe({
+          next: (userData) => {
+            console.log(userData)
+          },
+          error : (errorData: any) => {
+            console.error(errorData);
+            this.formError="Error al crear";
+          },
+          complete: () => {
+            console.info("Creacion completada")
+            this.router.navigateByUrl('/intranet');
+            this.createTopicoForm.reset();
+          }
+        }); 
+        this.saveTopicoResponse.mensajeCrear = '';
+        this.saveTopicoResponse.mensajeNulo = '';
       }
-    })
-    if(this.topico.nombreCategoria == ''){
-      this.saveTopicoResponse.mensajeNulo = 'Escoja una categoría'
-    }else{ 
-      this.topicoApiService.crearTopico(this.topico); 
-      this.saveTopicoResponse.mensajeCrear = '';
-      this.saveTopicoResponse.mensajeNulo = '';
     }
   }
 }

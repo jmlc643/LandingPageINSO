@@ -7,7 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
 import { CrearTopicoComponent } from './creartopico/creartopico.component';
 import { CrearCategoriaComponent } from './crearcategoria/crearcateogoria.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RevisarReportesComponent } from './revisar-reportes/revisar-reportes.component';
 import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
 import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-interceptor.service';
@@ -25,7 +25,8 @@ import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-int
     LayoutModule,
     IntranetRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptorService,multi:true},

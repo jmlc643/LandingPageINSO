@@ -1,4 +1,6 @@
 import { Component, OnInit, inject} from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserApiService, Usuario, ComprobarPassword, AuthenticationUserResponse } from 'src/api/user-api/user-api.service';
 
 @Component({
@@ -8,6 +10,16 @@ import { UserApiService, Usuario, ComprobarPassword, AuthenticationUserResponse 
 })
 
 export class RegistrarseComponent implements OnInit {
+
+  formError:String="";
+  formBuilder = inject(FormBuilder)
+  router = inject(Router)
+  registerForm = this.formBuilder.group({
+      usuario: ['',Validators.required],
+      email: ['',[Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.min(8)]],
+      passwordR: ['', [Validators.required, Validators.min(8)]]
+  })
 
   verifyPassword: ComprobarPassword = {
     passw : ''
@@ -28,12 +40,46 @@ export class RegistrarseComponent implements OnInit {
   async ngOnInit(){
 
   }
-  async saveUser(){
-    if(this.usuario.password == this.verifyPassword.passw){
-      await this.userApiService.saveUser(this.usuario);
-      this.authenticationUserResponse.mensaje = 'Logeado!'
+  get user(){
+    return this.registerForm.controls.usuario;
+  }
+
+  get email(){
+    return this.registerForm.controls.email;
+  }
+
+  get pass(){
+    return this.registerForm.controls.password;
+  }
+
+  get passR(){
+    return this.registerForm.controls.passwordR;
+  }
+
+  saveUser(){
+    if(this.registerForm.valid){
+      if(this.usuario.password == this.verifyPassword.passw){
+        this.userApiService.saveUser(this.usuario).subscribe({
+          next: (userData) => {
+            console.log(userData)
+          },
+          error : (errorData: any) => {
+            console.error(errorData);
+            this.formError="No se pudo crear cuenta";
+          },
+          complete: () => {
+            console.info("Register completo")
+            this.router.navigateByUrl('/login');
+            this.registerForm.reset();
+          }
+        });
+        this.authenticationUserResponse.mensaje = 'Registrado!'
+      }else{
+        this.authenticationUserResponse.mensaje = 'Contraseñas diferentes';
+      }    
     }else{
-      this.authenticationUserResponse.mensaje = 'Contraseñas diferentes';
-    }     
+      this.registerForm.markAllAsTouched();
+      alert("Error de ingreso de datos")
+    }   
   }
 }

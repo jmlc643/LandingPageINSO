@@ -1,12 +1,22 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, catchError, lastValueFrom, map, Observable, tap, throwError } from 'rxjs';
-import {environment} from "../../environments/environment";
 
 export interface Usuario {
   user: string
   password: string
   email: string
+}
+
+export interface UsuarioDTO{
+  user: string
+  email: string
+  nroPuntos: number
+}
+
+export interface recuperarContraRequest{
+  email: string
+  firma: String
 }
 
 export interface ComprobarPassword{
@@ -38,15 +48,17 @@ export class UserApiService {
   }
 
   getListUser(){
-    return lastValueFrom(this.httpClient.get<Usuario[]>(environment.urlHost+'user/listar/'))
+    return lastValueFrom(this.httpClient.get<Usuario[]>('http://localhost:8080/user/listar/'))
   }
 
-  saveUser(usuario: Usuario){
-    return lastValueFrom(this.httpClient.post<Usuario>(environment.urlHost+'autenticacion/register/', usuario))
+  saveUser(usuario: Usuario):Observable<any>{
+    return this.httpClient.post<Usuario>('http://localhost:8080/autenticacion/register/', usuario).pipe(
+      catchError(this.handleError)
+    );
   }
 
   iniciarSesion(usuario: AuthenticationUser):Observable<any>{
-    return this.httpClient.post<any>(environment.urlHost+'autenticacion/authentication/', usuario).pipe(
+    return this.httpClient.post<any>('http://localhost:8080/autenticacion/authentication/', usuario).pipe(
       tap((userData) => {
         sessionStorage.setItem("token", userData.token);
         this.currentUserData.next(userData.token);
@@ -55,6 +67,12 @@ export class UserApiService {
       map((userData) => userData.token),
       catchError(this.handleError)
     )
+  }
+
+  recuperarContra(recuperarContra : recuperarContraRequest):Observable<any>{
+    return this.httpClient.post<any>('http://localhost:8080/autenticacion/recuperar-contra/', recuperarContra).pipe(
+      catchError(this.handleError)
+    );
   }
 
   cerrarSesion():void{
