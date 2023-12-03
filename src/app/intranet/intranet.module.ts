@@ -8,7 +8,6 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CrearTopicoComponent } from './creartopico/creartopico.component';
 import { CrearCategoriaComponent } from './crearcategoria/crearcateogoria.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RevisarReportesComponent } from './revisar-reportes/revisar-reportes.component';
 import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
 import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-interceptor.service';
 
@@ -18,7 +17,6 @@ import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-int
     InicioComponent,
     CrearTopicoComponent,
     CrearCategoriaComponent,
-    RevisarReportesComponent,
   ],
   imports: [
     CommonModule,
