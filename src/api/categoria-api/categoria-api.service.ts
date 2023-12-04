@@ -23,7 +23,7 @@ export class CategoriaApiService {
       return this.httpClient.get<Categoria[]>('http://localhost:8080/categoria/listar/');
     }
 
-  saveCategoria(categoria: Categoria):Observable<Categoria>{
-    return this.httpClient.post<Categoria>('http://localhost:8080/categoria/', categoria)
+  saveCategoria(categoria: Categoria):Observable<any>{
+    return this.httpClient.post<any>('http://localhost:8080/categoria/', categoria)
   }
 }

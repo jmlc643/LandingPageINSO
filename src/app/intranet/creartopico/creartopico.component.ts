@@ -89,10 +89,7 @@ export class CrearTopicoComponent implements OnInit{
         if(this.topico.nombre == topicoo.nombre){
           this.saveTopicoResponse.mensajeCrear = 'Topico existente';
         }
-      })
-      if(this.topico.nombreCategoria == ''){
-        this.saveTopicoResponse.mensajeNulo = 'Escoja una categoría'
-      }else{ 
+      }) 
         this.topicoApiService.crearTopico(this.topico).subscribe({
           next: (userData) => {
             console.log(userData)
@@ -109,7 +106,6 @@ export class CrearTopicoComponent implements OnInit{
         }); 
         this.saveTopicoResponse.mensajeCrear = '';
         this.saveTopicoResponse.mensajeNulo = '';
-      }
     }
   }
 }

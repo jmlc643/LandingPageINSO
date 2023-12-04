@@ -35,8 +35,8 @@ export class TopicoApiService {
     return lastValueFrom(this.httpClient.post<Topico[]>('http://localhost:8080/topico/listar/', topico))
   }
 
-  crearTopico(topico: SaveTopicoRequest):Observable<Topico>{
-    return this.httpClient.post<Topico>('http://localhost:8080/topico/', topico);
+  crearTopico(topico: SaveTopicoRequest):Observable<any>{
+    return this.httpClient.post<any>('http://localhost:8080/topico/', topico);
   }
 
   encontrarTopico(id: number){

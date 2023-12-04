@@ -21,7 +21,7 @@ export class CrearCategoriaComponent implements OnInit{
   router = inject(Router)
   formBuilder = inject(FormBuilder)
   createCategoriaForm = this.formBuilder.group({
-      nombre: ['',Validators.required, Validators.max(50)],
+      nombre: ['',[Validators.required, Validators.max(50)]],
       descripcion: ['',Validators.required]
   })
 
@@ -42,7 +42,7 @@ export class CrearCategoriaComponent implements OnInit{
     return this.createCategoriaForm.controls.descripcion;
   }
 
-  private async loadData(){
+  private loadData(){
     this.categoriaApiService.getListCategoria().subscribe({
       next: (categoriaData)=>{
         this.categorias = categoriaData;
@@ -61,10 +61,10 @@ export class CrearCategoriaComponent implements OnInit{
       this.categorias.forEach(categoriaa =>{
         if(this.categoria.nombre == categoriaa.nombre){
           this.saveCategoriaResponse.mensaje = 'Categoria existente';
-        }
+        }})
         this.categoriaApiService.saveCategoria(this.categoria).subscribe({
-          next: (userData) => {
-            console.log(userData)
+          next: (categoriaData) => {
+            console.log(categoriaData)
           },
           error : (errorData: any) => {
             console.error(errorData);
@@ -76,7 +76,9 @@ export class CrearCategoriaComponent implements OnInit{
             this.createCategoriaForm.reset();
           }
         });
-      })
-    }
+    }else{
+      this.createCategoriaForm.markAllAsTouched();
+      alert("Error de ingreso de datos")
+    } 
   }
 }

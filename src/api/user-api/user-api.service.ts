@@ -8,10 +8,15 @@ export interface Usuario {
   email: string
 }
 
+export enum Role {
+  Valor1 = "STUDENT",
+  Valor2 = "ADMIN",
+}
+
 export interface UsuarioDTO{
   user: string
   email: string
-  nroPuntos: number
+  role: Role
 }
 
 export interface recuperarContraRequest{
