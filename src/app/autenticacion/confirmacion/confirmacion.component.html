@@ -1,0 +1,26 @@
+<app-header></app-header>
+<body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="/assets/images/doctora.png" alt="Imagen Izquierda" class="img-fluid">
+        </div>
+        <div class="col-md-4">
+          <form class="login-form">
+            <h6 class="text-center text-black learnsync-title">LEARNSYNC</h6>
+            <h3 class="text-center text-primary iniciarsesion-title">ACTIVACION DE CUENTA</h3>
+            <p class="text-center text-black">Se activó la cuenta correctamente.</p>
+                <div class="d-flex flex-column align-items-center">
+                  <button type="button" [routerLink]="['/login']" class="btn btn-primary iniciar-sesion-button mb-3 col-12">Iniciar sesión</button>
+                </div>
+          </form>
+        </div>
+        <div class="col-md-4">
+          <img src="/assets/images/doctor.png" alt="Imagen Derecha" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    
+</body>
+<app-footer></app-footer>
