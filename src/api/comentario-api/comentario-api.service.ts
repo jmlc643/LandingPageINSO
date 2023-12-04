@@ -14,8 +14,8 @@ export interface Comentario{
 }
 
 export interface SaveComentarioRequest{
-  mensaje: string,
-  username: string,
+  mensaje: string
+  username: string
   idHilo: number
 }
 
@@ -30,7 +30,7 @@ export class ComentarioApiService {
     return this.httpClient.get<Comentario[]>('http://localhost:8080/comentario/');
   }
 
-  crearComentario(comentario : Comentario){
-    return lastValueFrom(this.httpClient.post<Comentario>('http://localhost:8080/comentario/', comentario))
+  crearComentario(comentario : SaveComentarioRequest):Observable<any>{
+    return this.httpClient.post<any>('http://localhost:8080/comentario/', comentario);
   }
 }

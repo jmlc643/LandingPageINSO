@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Topico, TopicoApiService } from 'src/api/topico-api/topico-api.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { Topico, TopicoApiService } from 'src/api/topico-api/topico-api.service'
 export class TopicosListaComponent implements OnInit{
   c = 1 ;
   activatedRoute = inject(ActivatedRoute);
+  router = inject(Router);
 
   topicos: Topico[] = []
   filterTopicos: Topico[] = [] 
@@ -48,5 +49,10 @@ export class TopicosListaComponent implements OnInit{
 
   private async encontrarTopico(){
     this.topicoEncontrado = await this.topicoApiService.encontrarTopico(this.idd);
+  }
+
+  link(topico:Topico){
+    this.router.navigateByUrl('/intranet/comunidad/'+ topico.id);
+    location.reload();
   }
 }

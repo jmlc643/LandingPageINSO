@@ -1,7 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Comentario, ComentarioApiService } from 'src/api/comentario-api/comentario-api.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Comentario, ComentarioApiService, SaveComentarioRequest } from 'src/api/comentario-api/comentario-api.service';
 import { Hilo, HiloApiService } from 'src/api/hilo-api/hilo-api.service';
+import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
 import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
 
 @Component({
@@ -12,6 +14,14 @@ import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
 export class PostComponent implements OnInit {
   errorData: String = "";
   activatedRoute = inject(ActivatedRoute);
+  comentario : SaveComentarioRequest = {
+    mensaje: '',
+    username: '',
+    idHilo : 0
+  }
+
+  usuarioLogeado :any = {};
+  userLoginOn : boolean = false;
 
   hilos: Hilo[] = [];
   usuarios: Usuario[] = [];
@@ -20,17 +30,61 @@ export class PostComponent implements OnInit {
   hiloApiService = inject(HiloApiService);
   userApiService = inject(UserApiService);
   comentarioApiService = inject(ComentarioApiService);
+  jwtApiService = inject(JwtInterceptorService);
 
   hiloEncontrado?: Hilo;
   idd: number = 0;
 
+  formError : String = "";
+  router = inject(Router)
+  formBuilder = inject(FormBuilder)
+  createComentarioForm = this.formBuilder.group({
+      mensaje: ['',Validators.required],
+  })
+
   ngOnInit() {
+    let token = this.userApiService.userToken;
+    this.usuarioLogeado = this.decodificarjwt(token);
+    console.log(this.usuarioLogeado);
+    this.hiloApiService.getListHilos().subscribe({
+      next: (hiloData)=>{
+        this.hilos = hiloData;
+      },
+      error: (errorData) => {
+        this.errorData = errorData;
+      },
+      complete: () =>{
+        console.info("Data obtenida")
+      }
+    })
     this.activatedRoute.params.subscribe(prm => {
       console.log(`El id es: ${prm['id']}`);
       this.idd = +this.activatedRoute.snapshot.params['id'];
     });
+    this.userApiService.currentUserLoginOn.subscribe({
+      next:(userLoginOn) => {
+        this.userLoginOn = userLoginOn;
+      }
+    })
 
     this.loadData();
+  }
+
+  get message(){
+    return this.createComentarioForm.controls.mensaje;
+  }
+
+  public decodificarjwt(token:String):any{
+    console.log("Este es el token que he recibido "+ token);
+    var base64Url = token.split('.')[1];
+    console.log("Token base64url: "+ base64Url);
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    console.log("Token base64: "+base64);
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    console.log("JSON: "+jsonPayload);
+    return JSON.parse(jsonPayload);
   }
 
   private async loadData() {
@@ -76,5 +130,31 @@ export class PostComponent implements OnInit {
 
   filterComentarios(): Comentario[] {
     return this.comentarios.filter(comentarioo => this.hiloEncontrado?.id === comentarioo.hiloSerializer?.id);
+  }
+
+  saveComentario(){
+    if(this.createComentarioForm.valid){
+      this.formError = "";
+      this.comentario.username = this.usuarioLogeado.sub as string;
+      this.comentario.idHilo = this.idd as number;
+      this.comentarioApiService.crearComentario(this.comentario).subscribe({
+        next: (comentarioData) => {
+          console.log(comentarioData)
+        },
+        error : (errorData: any) => {
+          console.error(errorData);
+          this.formError="Error al crear";
+        },
+        complete: () => {
+          console.info("Creacion completada")
+          this.router.navigateByUrl('/intranet/comunidad/'+this.hiloEncontrado?.topico.id+'/post/'+this.hiloEncontrado?.id);
+          this.createComentarioForm.reset();
+          location.reload();
+        }
+      });
+  }else{
+    this.createComentarioForm.markAllAsTouched();
+    alert("Error de ingreso de datos")
+  } 
   }
 }

@@ -112,5 +112,4 @@ export class UserApiService {
   get userToken():String{
     return this.currentUserData.value;
   }
-
 }

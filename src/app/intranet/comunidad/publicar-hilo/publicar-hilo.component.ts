@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserApiService } from 'src/api/user-api/user-api.service';
 import { Topico } from 'src/api/topico-api/topico-api.service';
+import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
 
 @Component({
   selector: 'app-publicar-hilo',
@@ -29,6 +30,7 @@ export class PublicarHiloComponent implements OnInit {
   hiloApiService = inject(HiloApiService)
   formError : String = "";
   router = inject(Router)
+  jwtApiService = inject(JwtInterceptorService);
   formBuilder = inject(FormBuilder)
   createHiloForm = this.formBuilder.group({
       titulo: ['',[Validators.required, Validators.max(50)]],
@@ -41,6 +43,19 @@ export class PublicarHiloComponent implements OnInit {
         this.userLoginOn = userLoginOn;
       }
     })
+  }
+
+  public decodificarjwt(token:String):any{
+    console.log("Este es el token que he recibido "+ token);
+    var base64Url = token.split('.')[1];
+    console.log("Token base64url: "+ base64Url);
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    console.log("Token base64: "+base64);
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    console.log("JSON: "+jsonPayload);
+    return JSON.parse(jsonPayload);
   }
   
   get name(){
@@ -65,18 +80,7 @@ export class PublicarHiloComponent implements OnInit {
     this.loadData();
   }
 
-  private decodificarjwt(token:String):any{
-    console.log("Este es el token que he recibido "+ token);
-    var base64Url = token.split('.')[1];
-    console.log("Token base64url: "+ base64Url);
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    console.log("Token base64: "+base64);
-    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    console.log("JSON: "+jsonPayload);
-    return JSON.parse(jsonPayload);
-  }
+  
 
   saveHilo(){
     if(this.createHiloForm.valid){
