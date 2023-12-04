@@ -7,12 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '../layout/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationRoutingModule } from './autenticacion-routing.module';
+import { PorconfirmarComponent } from './porconfirmar/porconfirmar.component';
+import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 
 
 @NgModule({
   declarations: [
    IniciarSesionComponent,
    RegistrarseComponent,
+   PorconfirmarComponent,
+   ConfirmacionComponent,
   ],
   imports: [
     CommonModule,
