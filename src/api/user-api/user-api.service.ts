@@ -19,6 +19,13 @@ export interface UsuarioDTO{
   role: Role
 }
 
+export interface UsuarioLogeado{
+  "sub": String
+  "aud": String
+  "exp": number
+  "iat": number
+}
+
 export interface recuperarContraRequest{
   email: string
   firma: String

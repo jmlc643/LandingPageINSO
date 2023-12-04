@@ -20,8 +20,8 @@ export class ForoComponent implements OnInit {
       this.loadData();
   }
 
-  private async loadData(){
-    await this.topicoApiService.getListTopicos();
+  private loadData(){
+    this.topicoApiService.getListTopicos();
     this.hiloApiService.getListHilos().subscribe({
       next: (hiloData)=>{
         this.hilos = hiloData;

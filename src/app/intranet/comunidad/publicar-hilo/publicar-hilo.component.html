@@ -1,13 +1,17 @@
 <body>
 <div id="formulario">
-  <form>
+  <form [formGroup]="createHiloForm">
     <label for="titulo">Título:</label>
-    <input type="text" id="titulo" name="titulo" required>
-
+    <input formControlName="titulo" type="text" id="titulo" name="titulo" [(ngModel)]="hilo.titulo">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+      <div *ngIf="name.errors?.['required']">
+        <br><br><br><br>El titulo es requerido
+      </div>
+    </div>
     <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" name="descripcion" required></textarea>
+    <textarea id="descripcion" name="descripcion" [(ngModel)]="hilo.mensaje" [ngModelOptions]="{standalone: true}"></textarea>
 
-    <button type="submit">Subir Pregunta</button>
+    <button type="submit" (click)="saveHilo()">Subir Pregunta</button>
   </form>
      <button>Regresar</button>
   </div>

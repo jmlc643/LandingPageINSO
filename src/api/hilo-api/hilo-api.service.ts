@@ -8,7 +8,6 @@ export interface Hilo{
   id: number,
   titulo: string,
   mensaje: string,
-  cerrado: boolean,
   fechaCreacion: Date,
   topico: Topico,
   usuario: UsuarioDTO
@@ -32,8 +31,8 @@ export class HiloApiService {
     return this.httpClient.get<Hilo[]>('http://localhost:8080/hilo/');
   }
 
-  publicarHilo(hilo : Hilo){
-    return lastValueFrom(this.httpClient.post<Hilo>('http://localhost:8080/hilo/', hilo))
+  publicarHilo(hilo : SaveHiloRequest):Observable<any>{
+    return this.httpClient.post<any>('http://localhost:8080/hilo/', hilo);
   }
 
   encontrarHilo(id: number){

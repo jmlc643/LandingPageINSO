@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ComunidadRoutingModule} from "./comunidad-routing.module";
 import { ForoComponent } from './foro/foro.component';
 import { TopicosListaComponent } from './topicos-lista/topicos-lista.component';
@@ -21,7 +21,8 @@ import { PostComponent } from './post/post.component';
   imports: [
     CommonModule,
     FormsModule,
-    ComunidadRoutingModule
+    ComunidadRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ComunidadModule { }

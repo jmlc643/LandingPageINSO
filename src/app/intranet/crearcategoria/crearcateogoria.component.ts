@@ -21,8 +21,7 @@ export class CrearCategoriaComponent implements OnInit{
   router = inject(Router)
   formBuilder = inject(FormBuilder)
   createCategoriaForm = this.formBuilder.group({
-      nombre: ['',[Validators.required, Validators.max(50)]],
-      descripcion: ['',Validators.required]
+      nombre: ['',[Validators.required, Validators.max(50)]]
   })
 
   categoriaApiService = inject(CategoriaApiService)
@@ -36,10 +35,6 @@ export class CrearCategoriaComponent implements OnInit{
 
   get name(){
     return this.createCategoriaForm.controls.nombre;
-  }
-
-  get description(){
-    return this.createCategoriaForm.controls.descripcion;
   }
 
   private loadData(){

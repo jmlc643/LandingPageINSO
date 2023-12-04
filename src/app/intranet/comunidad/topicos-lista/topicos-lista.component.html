@@ -10,7 +10,7 @@
   </ul>
 </div>
 <app-foro *ngIf="c==1" [topicoEncontrado] = "topicoEncontrado"></app-foro>
-  <app-publicar-hilo *ngIf="c==0"></app-publicar-hilo>
+  <app-publicar-hilo *ngIf="c==0" [topicoEncontrado] = "topicoEncontrado"></app-publicar-hilo>
   <div class="main-container">
     <div class="side-container">
       <div class="user-icon">
