@@ -18,7 +18,7 @@
         </div>
         <h3>Descripción:</h3>
         <div id="search-container">
-            <input class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripción de la categoria" [(ngModel)]="categoria.descripcion">
+            <input class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripción de la categoria" [(ngModel)]="categoria.descripcion" [ngModelOptions]="{standalone: true}">
         </div>
     <div class="create-buttons">
         <button routerLink="/intranet" class = "create-button">Cancelar</button>

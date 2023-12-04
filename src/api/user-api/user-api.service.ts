@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, catchError, lastValueFrom, map, Observable, tap, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 export interface Usuario {
   user: string
@@ -59,18 +60,19 @@ export class UserApiService {
     this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("token")||"");
   }
 
+
   getListUser(){
-    return lastValueFrom(this.httpClient.get<Usuario[]>('http://localhost:8080/user/listar/'))
+    return lastValueFrom(this.httpClient.get<Usuario[]>(environment.urlHost+'/user/listar/'))
   }
 
   saveUser(usuario: Usuario):Observable<any>{
-    return this.httpClient.post<Usuario>('http://localhost:8080/autenticacion/register/', usuario).pipe(
+    return this.httpClient.post<Usuario>(environment.urlHost + '/autenticacion/register/', usuario).pipe(
       catchError(this.handleError)
     );
   }
 
   iniciarSesion(usuario: AuthenticationUser):Observable<any>{
-    return this.httpClient.post<any>('http://localhost:8080/autenticacion/authentication/', usuario).pipe(
+    return this.httpClient.post<any>(environment.urlHost + '/autenticacion/authentication/', usuario).pipe(
       tap((userData) => {
         sessionStorage.setItem("token", userData.token);
         this.currentUserData.next(userData.token);
@@ -82,7 +84,7 @@ export class UserApiService {
   }
 
   recuperarContra(recuperarContra : recuperarContraRequest):Observable<any>{
-    return this.httpClient.post<any>('http://localhost:8080/autenticacion/recuperar-contra/', recuperarContra).pipe(
+    return this.httpClient.post<any>(environment.urlHost + '/autenticacion/recuperar-contra/', recuperarContra).pipe(
       catchError(this.handleError)
     );
   }

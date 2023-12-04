@@ -3,6 +3,7 @@ import { UsuarioDTO } from '../user-api/user-api.service';
 import { Topico } from '../topico-api/topico-api.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 export interface Hilo{
   id: number,
@@ -28,15 +29,15 @@ export class HiloApiService {
   httpClient = inject(HttpClient)
 
   getListHilos():Observable<Hilo[]>{
-    return this.httpClient.get<Hilo[]>('http://localhost:8080/hilo/');
+    return this.httpClient.get<Hilo[]>(environment.urlHost+ '/hilo/');
   }
 
   publicarHilo(hilo : SaveHiloRequest):Observable<any>{
-    return this.httpClient.post<any>('http://localhost:8080/hilo/', hilo);
+    return this.httpClient.post<any>(environment.urlHost+'/hilo/', hilo);
   }
 
   encontrarHilo(id: number){
-    return lastValueFrom(this.httpClient.post<Hilo>('http://localhost:8080/hilo/encontrar/', id))
+    return lastValueFrom(this.httpClient.post<Hilo>(environment.urlHost+ '/hilo/encontrar/', id))
   }
   
 }
