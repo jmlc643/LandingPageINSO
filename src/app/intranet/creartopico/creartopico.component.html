@@ -1,51 +1,60 @@
 <body>
-    <div id="page-container" >
+    <div id="page-container" *ngIf="tieneAcceso()">
         <div class="container" id="container-1">
             <h2>Crear Topico</h2>
             <form [formGroup]="createTopicoForm">
-            <p class="text-danger">{{formError}}</p>
-            <h3>Nombre:</h3>
-            <div id="search-container">
-                <input formControlName="nombreT" type="text" id="search-box" placeholder="Ingresar el nombre del tópico" [(ngModel)]="topico.nombre">
-                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
-                    <div *ngIf="name.errors?.['required']">
-                      El nombre es requerido
-                    </div>
-                    <div *ngIf="name.errors?.['max']">
-                        El nombre puede tener máximo 25 carácteres
-                    </div>
-                </div>
-            </div>
-            <div *ngIf="saveTopicoResponse.mensajeCrear != ''">
-                <p class="text-red-500 text-xs italic">{{saveTopicoResponse.mensajeCrear}}</p>
-            </div>
-            <h3>Descripción:</h3>
-            <div id="search-container">
-                <input formControlName="descripcion" type="text" id="search-box" placeholder="Ingresar la descripción del tópico" [(ngModel)]="topico.descripcion">
-                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="text-danger">
-                    <div *ngIf="descripcion.errors?.['max']">
-                        La descripcion puede tener máximo 50 carácteres
+                <p class="text-danger">{{formError}}</p>
+                <h3>Nombre:</h3>
+                <div id="search-container">
+                    <input formControlName="nombreT" type="text" id="search-box" placeholder="Ingresar el nombre del tópico" [(ngModel)]="topico.nombre">
+                    <div *ngIf="name.invalid && (name.touched)" class="text-danger">
+                        <div *ngIf="createTopicoForm.get('nombreT')?.hasError('required')">
+                            El nombre es requerido
+                        </div>
+                        <div *ngIf="createTopicoForm.get('nombreT')?.hasError('maxlength')">
+                            El nombre puede tener máximo 50 carácteres
+                        </div>
                     </div>
                 </div>
+                <div *ngIf="saveTopicoResponse.mensajeCrear != ''">
+                    <p class="text-red-500 text-xs italic">{{saveTopicoResponse.mensajeCrear}}</p>
+                </div>
+                <h3>Descripción:</h3>
+                <div id="search-container">
+                    <input formControlName="descripcionT" type="text" id="search-box" placeholder="Ingresar la descripción del tópico" [(ngModel)]="topico.descripcion">
+                    <div *ngIf="descripcion.invalid && (descripcion.touched)" class="text-danger">
+                        <div *ngIf="createTopicoForm.get('descripcionT')?.hasError('maxlength')">
+                            La descripción puede tener máximo 50 caracteres
+                        </div>
+                    </div>
+                </div>
+                <h3>Categoria:</h3>
+                <select formControlName="categoria" name="favoriteOnly" id="favoriteOnly" [(ngModel)]="topico.nombreCategoria">
+                <option></option>
+                <option *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
+            </select>
+            <div *ngIf="categoria.invalid && (categoria.touched)" class="text-danger">
+                <div *ngIf="categoria.errors?.['required']">
+                La categoria es requerida
+                </div>
             </div>
-            <h3>Categoria:</h3>
-            <select formControlName="categoria" name="favoriteOnly" id="favoriteOnly" [(ngModel)]="topico.nombreCategoria">
-            <option></option>
-            <option *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
-        </select>
-        <div *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)" class="text-danger">
-            <div *ngIf="categoria.errors?.['required']">
-              La categoria es requerida
+            <div *ngIf="saveTopicoResponse.mensajeNulo != ''">
+                <p class="text-red-500 text-xs italic">Escoja una categoría</p>
             </div>
-        </div>
-        <div *ngIf="saveTopicoResponse.mensajeNulo != ''">
-            <p class="text-red-500 text-xs italic">Escoja una categoría</p>
-        </div>
-        <div class="create-buttons">
-            <button routerLink="/intranet"  class = "create-button">Cancelar</button>
-            <button class="create-button" (click)="saveTopico()">Aceptar</button>
-        </div>
+            <div class="create-buttons">
+                <button routerLink="/intranet"  class = "create-button">Cancelar</button>
+                <button class="create-button" (click)="saveTopico()">Aceptar</button>
+            </div>
             </form>
+        </div>
+    </div>
+    <div *ngIf="!tieneAcceso()">
+        <div class="col-md-4">
+          <div class="login-container">
+            <img src="/assets/images/robot.jpg"><br>
+            <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
+            <p class="text-center text-black">Lo siento, no te has autenticado o no estas autorizado. Autentícate como Administrador para que puedas tener acceso a Learnsync.</p>
+          </div>    
         </div>
     </div>
 </body>

@@ -12,6 +12,7 @@ import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
 })
 export class CrearTopicoComponent implements OnInit{
   userLoginOn:boolean=false;
+  usuarioLogeado : any = {};
   userData?:String;
   user?:Usuario;
   userApiService = inject(UserApiService);
@@ -37,13 +38,20 @@ export class CrearTopicoComponent implements OnInit{
   router = inject(Router)
   formBuilder = inject(FormBuilder)
   createTopicoForm = this.formBuilder.group({
-      nombreT: ['',[Validators.required, Validators.max(50)]],
-      descripcionT: ['', Validators.max(50)],
+      nombreT: ['',[Validators.required, Validators.maxLength(50)]],
+      descripcionT: ['', Validators.maxLength(50)],
       categoria: ['', Validators.required]
   })
 
   ngOnInit() {
+    this.userApiService.currentUserLoginOn.subscribe({
+      next:(userLoginOn) => {
+        this.userLoginOn = userLoginOn;
+      }
+    })
       this.loadData();
+      let token = this.userApiService.userToken;
+      this.usuarioLogeado = this.decodificarjwt(token);
   }
 
   get name(){
@@ -99,13 +107,33 @@ export class CrearTopicoComponent implements OnInit{
             this.formError="Error al crear";
           },
           complete: () => {
+            this.saveTopicoResponse.mensajeCrear = '';
             console.info("Creacion completada")
             this.router.navigateByUrl('/intranet');
             this.createTopicoForm.reset();
           }
-        }); 
-        this.saveTopicoResponse.mensajeCrear = '';
-        this.saveTopicoResponse.mensajeNulo = '';
-    }
+        });       
+    }else{
+      this.createTopicoForm.markAllAsTouched();
+      alert("Error de ingreso de datos")
+    } 
+  }
+
+  private decodificarjwt(token:String):any{
+    console.log("Este es el token que he recibido "+ token);
+    var base64Url = token.split('.')[1];
+    console.log("Token base64url: "+ base64Url);
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    console.log("Token base64: "+base64);
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    console.log("JSON: "+jsonPayload);
+    return JSON.parse(jsonPayload);
+  }
+
+  tieneAcceso():boolean{
+    console.log("Valor del userLoginOn: "+this.userLoginOn);
+    return this.userLoginOn && this.usuarioLogeado.aud=='ADMIN';
   }
 }

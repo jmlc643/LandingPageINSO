@@ -21,14 +21,13 @@
                   </span>
               </div>
               <input formControlName="usuario" type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="usuario.user">
-              <div *ngIf="user.invalid && (user.dirty || user.touched)" class="text-danger">
-                <div *ngIf="user.errors?.['required']">
+              <div *ngIf="user?.invalid && (user?.dirty || user?.touched)" class="text-danger">
+                <div *ngIf="user?.errors?.['required']">
                   El usuario es requerido
                 </div>
+              </div>
             </div>
           </div>
-          </div>
-
           <div class="form-group">
             <label for="email">Correo Electrónico</label>
             <div class="input-group">
@@ -38,11 +37,11 @@
                   </span>
               </div>
               <input formControlName="email" type="email" class="form-control" id="email" placeholder="Correo Electrónico" aria-describedby="emailHelp" [(ngModel)]="usuario.email">
-              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
-                <div *ngIf="email.errors?.['required']">
+              <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
+                <div *ngIf="email?.errors?.['required']">
                   El email es requerido
                 </div>
-                <div *ngIf="email.errors?.['email']">
+                <div *ngIf="email?.errors?.['email']">
                  Formato invalido
                 </div>
             </div>
@@ -57,12 +56,12 @@
                     <i class="fas fa-lock"></i>
                   </span>
               </div>
-              <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña" aria-describedby="passwordHelp" [(ngModel)]="verifyPassword.passw">
-              <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="text-danger">
-                <div *ngIf="pass.errors?.['required']">
+              <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña" aria-describedby="passwordHelp" [(ngModel)]="usuario.password">
+              <div *ngIf="pass?.invalid && (pass?.dirty || pass?.touched)" class="text-danger">
+                <div *ngIf="pass?.errors?.['required']">
                   La contraseña es requerida
                 </div>
-                <div *ngIf="pass.errors?.['min']">
+                <div *ngIf="pass?.errors?.['minlength']">
                   El tamaño mínimo es de 8 caracteres
                 </div>
               </div>
@@ -77,14 +76,14 @@
                     <i class="fas fa-lock"></i>
                   </span>
               </div>
-              <input formControlName="passwordR" type="password" class="form-control" id="password-repeat" placeholder="Repetir Contraseña" aria-describedby="passwordRepeatHelp" [(ngModel)]="usuario.password">
-              <div *ngIf="passR.invalid && (passR.dirty || passR.touched)" class="text-danger">
-                <div *ngIf="passR.errors?.['required']">
+              <input formControlName="passwordR" type="password" class="form-control" id="password-repeat" placeholder="Repetir Contraseña" aria-describedby="passwordRepeatHelp">
+              <div *ngIf="passR?.invalid && (passR?.dirty || passR?.touched)" class="text-danger">
+                <div *ngIf="passR?.errors?.['required']">
                   La contraseña es requerida
                 </div>
-                <div *ngIf="passR.errors?.['min']">
-                  El tamaño mínimo es de 8 caracteres
-                </div>
+                <div *ngIf="registerForm.hasError('passwordMismatch')" class="text-danger">
+                  Las contraseñas no coinciden
+                </div>                                      
               </div>
             </div>
             <div *ngIf="authenticationUserResponse.mensaje != ''">

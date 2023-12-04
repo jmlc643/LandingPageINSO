@@ -23,7 +23,7 @@
             <input formControlName="usuario" type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="authenticationUser.user">
             <div *ngIf="user.invalid && (user.dirty || user.touched)" class="text-danger">
               <div *ngIf="user.errors?.['required']">
-                <br><br><br><br>El usuario es requerido
+                El usuario es requerido
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@
             <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña" aria-describedby="passwordHelp" [(ngModel)]="authenticationUser.password">
             <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="text-danger">
               <div *ngIf="pass.errors?.['required']">
-                <br><br><br><br>La contraseña es requerido
+                La contraseña es requerido
               </div>
             </div>
           </div>

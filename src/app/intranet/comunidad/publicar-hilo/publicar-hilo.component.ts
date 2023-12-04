@@ -33,8 +33,8 @@ export class PublicarHiloComponent implements OnInit {
   jwtApiService = inject(JwtInterceptorService);
   formBuilder = inject(FormBuilder)
   createHiloForm = this.formBuilder.group({
-      titulo: ['',[Validators.required, Validators.max(30)]],
-      mensaje: ['', Validators.max(200)]
+      titulo: ['',[Validators.required, Validators.maxLength(30)]],
+      mensaje: ['', Validators.maxLength(200)]
   })
   errorData: String="";
 

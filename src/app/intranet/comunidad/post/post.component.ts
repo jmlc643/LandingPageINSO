@@ -39,7 +39,7 @@ export class PostComponent implements OnInit {
   router = inject(Router)
   formBuilder = inject(FormBuilder)
   createComentarioForm = this.formBuilder.group({
-      mensaje: ['',[Validators.required, Validators.max(200)]],
+      mensaje: ['',[Validators.required, Validators.maxLength(200)]],
   })
 
   ngOnInit() {

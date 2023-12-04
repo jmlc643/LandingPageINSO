@@ -7,14 +7,14 @@
       <div *ngIf="name.errors?.['required']">
         El titulo es requerido
       </div>
-      <div *ngIf="name.errors?.['max']">
+      <div *ngIf="createHiloForm.get('titulo')?.hasError('maxlength')">
         El titulo debe tener un máximo de 30 carácteres
       </div>
     </div>
     <label for="descripcion">Descripción:</label>
     <textarea formControlName="mensaje" id="descripcion" name="descripcion" [(ngModel)]="hilo.mensaje"></textarea>
     <div *ngIf="message.invalid && (message.dirty || message.touched)" class="text-danger">
-      <div *ngIf="message.errors?.['max']">
+      <div *ngIf="createHiloForm.get('mensaje')?.hasError('maxlength')">
         El mensaje debe tener un máximo de 200 carácteres
       </div>
     </div>

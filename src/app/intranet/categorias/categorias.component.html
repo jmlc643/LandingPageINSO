@@ -5,11 +5,9 @@
     <h5>{{usuarioLogeado.sub!}}</h5>
   </div>
   <div class="create-buttons">
-    <button routerLink="/intranet/crearcategoria" class="create-button">Crear Categoría</button>
-    <button routerLink="/intranet/creartopico" class="create-button">Crear Tópico</button>
+    <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/crearcategoria" class="create-button">Crear Categoría</button>
+    <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/creartopico" class="create-button">Crear Tópico</button>
   </div>
-
-
   <!-- CONTENEDOR 1 -->
   <div class="container" id="container-1" *ngFor="let categoriaa of categorias">
     <h2>{{categoriaa.nombre}}</h2>
@@ -26,7 +24,7 @@
   <body>
   <div class="col-md-4">
     <div class="login-container">
-      <!-- AGREGAR IMAGEN  -->
+      <img src="/assets/images/robot.jpg"><br>
       <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
       <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
     </div>    
