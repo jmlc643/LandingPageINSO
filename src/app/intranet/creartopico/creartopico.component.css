@@ -95,3 +95,18 @@ h3{
    /* Ajuste del botón "Topico" */
    margin-top: 20px; /* Modificar el espacio entre el título y el botón */
  }
+
+ .body-secundario {
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 20px;
+  text-align: center; /* Centrado del contenido */
+  margin: auto; /* Centrado horizontal */
+  width: 60%; /* Ancho del cuerpo secundario */
+  height: 500px;
+}
+
+.login-container {
+  width: 300px; /* Ancho del contenedor */
+  margin: auto; /* Auto-margin para centrar horizontalmente */
+  text-align: center; /* Centrar texto */
+}
