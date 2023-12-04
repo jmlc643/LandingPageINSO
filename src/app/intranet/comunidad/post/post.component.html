@@ -27,6 +27,9 @@
                                         <div *ngIf="message.errors?.['required']">
                                         El mensaje es obligatorio
                                         </div>
+                                        <div *ngIf="message.errors?.['max']">
+                                            El mensaje puede tener un máximo de 200 carácteres.
+                                        </div>
                                     </div>
                                     <button type="button" class="btn btn-primary float-end mt-2 " style="margin-right: 10px; " (click)="saveComentario()">Comentar</button>
                                     </form>

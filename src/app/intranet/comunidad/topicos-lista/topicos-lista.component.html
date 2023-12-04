@@ -3,7 +3,7 @@
 <div class="topics-container">
   <ul class="topics-list" >
     <div *ngFor="let topico of filterTopicos">
-      <li [routerLink]="['/intranet/comunidad', topico.id]" routerLinkActive="bold">
+      <li (click)="link(topico)" routerLinkActive="bold">
         {{topico.nombre}}
       </li>
     </div>

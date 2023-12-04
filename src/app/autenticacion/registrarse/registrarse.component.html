@@ -23,7 +23,7 @@
               <input formControlName="usuario" type="text" class="form-control" id="username" placeholder="Nombre de usuario" aria-describedby="usernameHelp" [(ngModel)]="usuario.user">
               <div *ngIf="user.invalid && (user.dirty || user.touched)" class="text-danger">
                 <div *ngIf="user.errors?.['required']">
-                  <br><br><br><br>El usuario es requerido
+                  El usuario es requerido
                 </div>
             </div>
           </div>
@@ -40,10 +40,10 @@
               <input formControlName="email" type="email" class="form-control" id="email" placeholder="Correo Electrónico" aria-describedby="emailHelp" [(ngModel)]="usuario.email">
               <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
                 <div *ngIf="email.errors?.['required']">
-                  <br><br><br><br>El email es requerido
+                  El email es requerido
                 </div>
                 <div *ngIf="email.errors?.['email']">
-                  <br><br><br><br>Formato invalido
+                 Formato invalido
                 </div>
             </div>
             </div>
@@ -60,10 +60,10 @@
               <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña" aria-describedby="passwordHelp" [(ngModel)]="verifyPassword.passw">
               <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="text-danger">
                 <div *ngIf="pass.errors?.['required']">
-                  <br><br><br><br>La contraseña es requerida
+                  La contraseña es requerida
                 </div>
                 <div *ngIf="pass.errors?.['min']">
-                  <br><br><br><br>El tamaño mínimo es de 8 caracteres
+                  El tamaño mínimo es de 8 caracteres
                 </div>
               </div>
             </div>
@@ -80,10 +80,10 @@
               <input formControlName="passwordR" type="password" class="form-control" id="password-repeat" placeholder="Repetir Contraseña" aria-describedby="passwordRepeatHelp" [(ngModel)]="usuario.password">
               <div *ngIf="passR.invalid && (passR.dirty || passR.touched)" class="text-danger">
                 <div *ngIf="passR.errors?.['required']">
-                  <br><br><br><br>La contraseña es requerida
+                  La contraseña es requerida
                 </div>
                 <div *ngIf="passR.errors?.['min']">
-                  <br><br><br><br>El tamaño mínimo es de 8 caracteres
+                  El tamaño mínimo es de 8 caracteres
                 </div>
               </div>
             </div>

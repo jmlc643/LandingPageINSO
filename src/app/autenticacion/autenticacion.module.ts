@@ -8,7 +8,6 @@ import { LayoutModule } from '../layout/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationRoutingModule } from './autenticacion-routing.module';
 import { PorconfirmarComponent } from './porconfirmar/porconfirmar.component';
-import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 
 
 @NgModule({
@@ -16,7 +15,6 @@ import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
    IniciarSesionComponent,
    RegistrarseComponent,
    PorconfirmarComponent,
-   ConfirmacionComponent,
   ],
   imports: [
     CommonModule,

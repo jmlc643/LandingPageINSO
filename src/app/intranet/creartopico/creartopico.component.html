@@ -9,7 +9,10 @@
                 <input formControlName="nombreT" type="text" id="search-box" placeholder="Ingresar el nombre del tópico" [(ngModel)]="topico.nombre">
                 <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
                     <div *ngIf="name.errors?.['required']">
-                      <br><br><br><br>El nombre es requerido
+                      El nombre es requerido
+                    </div>
+                    <div *ngIf="name.errors?.['max']">
+                        El nombre puede tener máximo 25 carácteres
                     </div>
                 </div>
             </div>
@@ -18,10 +21,10 @@
             </div>
             <h3>Descripción:</h3>
             <div id="search-container">
-                <input formControlName="descripcionT" type="text" id="search-box" placeholder="Ingresar la descripción del tópico" [(ngModel)]="topico.descripcion">
-                <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
-                    <div *ngIf="description.errors?.['required']">
-                      <br><br><br><br>La descripciones requerido
+                <input formControlName="descripcion" type="text" id="search-box" placeholder="Ingresar la descripción del tópico" [(ngModel)]="topico.descripcion">
+                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="text-danger">
+                    <div *ngIf="descripcion.errors?.['max']">
+                        La descripcion puede tener máximo 50 carácteres
                     </div>
                 </div>
             </div>
@@ -32,7 +35,7 @@
         </select>
         <div *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)" class="text-danger">
             <div *ngIf="categoria.errors?.['required']">
-              <br><br><br><br>La categoria es requerida
+              La categoria es requerida
             </div>
         </div>
         <div *ngIf="saveTopicoResponse.mensajeNulo != ''">

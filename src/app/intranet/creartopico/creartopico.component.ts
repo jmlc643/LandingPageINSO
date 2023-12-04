@@ -37,8 +37,8 @@ export class CrearTopicoComponent implements OnInit{
   router = inject(Router)
   formBuilder = inject(FormBuilder)
   createTopicoForm = this.formBuilder.group({
-      nombreT: ['',Validators.required],
-      descripcionT: ['',Validators.required],
+      nombreT: ['',[Validators.required, Validators.max(50)]],
+      descripcionT: ['', Validators.max(50)],
       categoria: ['', Validators.required]
   })
 
@@ -50,7 +50,7 @@ export class CrearTopicoComponent implements OnInit{
     return this.createTopicoForm.controls.nombreT;
   }
 
-  get description(){
+  get descripcion(){
     return this.createTopicoForm.controls.descripcionT;
   }
 

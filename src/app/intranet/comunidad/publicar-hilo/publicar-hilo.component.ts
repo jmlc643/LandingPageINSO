@@ -33,7 +33,8 @@ export class PublicarHiloComponent implements OnInit {
   jwtApiService = inject(JwtInterceptorService);
   formBuilder = inject(FormBuilder)
   createHiloForm = this.formBuilder.group({
-      titulo: ['',[Validators.required, Validators.max(50)]],
+      titulo: ['',[Validators.required, Validators.max(30)]],
+      mensaje: ['', Validators.max(200)]
   })
   errorData: String="";
 
@@ -60,6 +61,10 @@ export class PublicarHiloComponent implements OnInit {
   
   get name(){
     return this.createHiloForm.controls.titulo;
+  }
+
+  get message(){
+    return this.createHiloForm.controls.mensaje;
   }
 
   ngOnInit(): void {

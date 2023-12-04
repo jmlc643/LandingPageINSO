@@ -69,11 +69,10 @@ export class RegistrarseComponent implements OnInit {
           },
           complete: () => {
             console.info("Register completo")
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/porconfirmar');
             this.registerForm.reset();
           }
         });
-        this.authenticationUserResponse.mensaje = 'Registrado!'
       }else{
         this.authenticationUserResponse.mensaje = 'Contraseñas diferentes';
       }    

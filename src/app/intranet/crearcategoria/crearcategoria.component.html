@@ -9,7 +9,10 @@
             <input formControlName="nombre" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el nombre de la categoria" [(ngModel)]="categoria.nombre">
             <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
                 <div *ngIf="name.errors?.['required']">
-                  <br><br><br><br>El nombre es requerido
+                  El nombre es requerido
+                </div>
+                <div *ngIf="name.errors?.['max']">
+                    El nombre puede tener máximo 25 carácteres
                 </div>
             </div>
         </div>
@@ -18,7 +21,12 @@
         </div>
         <h3>Descripción:</h3>
         <div id="search-container">
-            <input class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripción de la categoria" [(ngModel)]="categoria.descripcion" [ngModelOptions]="{standalone: true}">
+            <input formControlName="descripcion" class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripción de la categoria" [(ngModel)]="categoria.descripcion">
+            <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="text-danger">
+                <div *ngIf="descripcion.errors?.['max']">
+                    La descripción puede tener máximo 50 carácteres
+                </div>
+            </div>
         </div>
     <div class="create-buttons">
         <button routerLink="/intranet" class = "create-button">Cancelar</button>
