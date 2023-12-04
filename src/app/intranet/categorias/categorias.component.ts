@@ -13,6 +13,7 @@ export class CategoriasComponent implements OnInit {
   userLoginOn:boolean=false;
   userData?:String;
   user?:Usuario;
+  public usuarioLogeado:any = {};
   userApiService = inject(UserApiService);
   errorData:String="";
   constructor(){
@@ -32,6 +33,12 @@ export class CategoriasComponent implements OnInit {
         this.userLoginOn = userLoginOn;
       }
     })
+  
+    let token = this.userApiService.userToken;
+    this.usuarioLogeado = this.decodificarjwt(token);
+    console.log(this.usuarioLogeado);
+    
+  
     this.userApiService.currentUserData.subscribe({
       next:(userData) => {
         this.userData = userData;
@@ -72,5 +79,17 @@ export class CategoriasComponent implements OnInit {
     this.userApiService.getListUser();
   }
 
+  private decodificarjwt(token:String):any{
+    console.log("Este es el token que he recibido "+ token);
+    var base64Url = token.split('.')[1];
+    console.log("Token base64url: "+ base64Url);
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    console.log("Token base64: "+base64);
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    console.log("JSON: "+jsonPayload);
+    return JSON.parse(jsonPayload);
+  }
   
 }

@@ -3,12 +3,7 @@
 body {
     background-color: #1976d2;
     padding: 50px;
-    margin: 0; 
-    padding: 0; 
-    height: 90vh; 
-    display: flex; 
-    justify-content: center;
-    align-items: center; 
+
 }
 
 .card-no-border .card {
