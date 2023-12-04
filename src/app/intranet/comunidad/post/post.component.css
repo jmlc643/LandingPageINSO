@@ -82,3 +82,18 @@ body {
 }
 
 
+.body-secundario {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 15px;
+    border: 1px solid #999;
+    text-align: center; /* Centrado del contenido */
+    margin: 0 auto; /* Centrado horizontal */
+    width: 60%; /* Ancho del cuerpo secundario */
+    height: 500px;
+  }
+
+  .login-container {
+    width: 300px; /* Ancho del contenedor */
+    margin: auto; /* Auto-margin para centrar horizontalmente */
+    text-align: center; /* Centrar texto */
+  }
