@@ -5,14 +5,15 @@
     <input formControlName="titulo" type="text" id="titulo" name="titulo" [(ngModel)]="hilo.titulo">
     <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
       <div *ngIf="name.errors?.['required']">
-        <br><br><br><br>El titulo es requerido
+        El titulo es requerido
       </div>
     </div>
     <label for="descripcion">Descripción:</label>
     <textarea id="descripcion" name="descripcion" [(ngModel)]="hilo.mensaje" [ngModelOptions]="{standalone: true}"></textarea>
 
-    <button type="submit" (click)="saveHilo()">Subir Pregunta</button>
+    <button class="custom-button" type="submit" (click)="saveHilo()">Subir Pregunta</button>
+    <button class="custom-button" (click)="regresarHilo()">Regresar</button>
   </form>
-     <button>Regresar</button>
+     
   </div>
 </body>

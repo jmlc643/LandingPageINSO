@@ -80,7 +80,10 @@ export class PublicarHiloComponent implements OnInit {
     this.loadData();
   }
 
-  
+  regresarHilo(){
+    this.router.navigateByUrl('/intranet/comunidad/'+ this.topicoEncontrado?.id);
+    window.location.reload(); 
+  }
 
   saveHilo(){
     if(this.createHiloForm.valid){
@@ -97,8 +100,9 @@ export class PublicarHiloComponent implements OnInit {
           },
           complete: () => {
             console.info("Creacion completada")
-            this.router.navigateByUrl('/intranet');
+            this.router.navigateByUrl('/intranet/comunidad/'+ this.topicoEncontrado?.id);
             this.createHiloForm.reset();
+            window.location.reload();
           }
         });
     }else{

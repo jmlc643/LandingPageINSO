@@ -2,7 +2,13 @@
 
 body {
     background-color: #1976d2;
-    margin-bottom: 100px;
+    padding: 50px;
+    margin: 0; 
+    padding: 0; 
+    height: 90vh; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
 }
 
 .card-no-border .card {
@@ -10,6 +16,7 @@ body {
     border-radius: 4px;
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    
 }
 
 .card-body {
