@@ -74,6 +74,7 @@ export class UserApiService {
   iniciarSesion(usuario: AuthenticationUser):Observable<any>{
     return this.httpClient.post<any>(environment.urlHost + '/autenticacion/authentication/', usuario).pipe(
       tap((userData) => {
+        console.log("User Data : "+userData);
         sessionStorage.setItem("token", userData.token);
         this.currentUserData.next(userData.token);
         this.currentUserLoginOn.next(true);
