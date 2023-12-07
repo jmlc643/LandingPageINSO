@@ -8,20 +8,26 @@ import { Topico, TopicoApiService } from 'src/api/topico-api/topico-api.service'
   styleUrls: ['./foro.component.css']
 })
 export class ForoComponent implements OnInit {
-  @Input() topicoEncontrado?: Topico;
-  errorData:String="";
-  hilos: Hilo[] = []
-  topicos: Topico[] = []
 
+  @Input() topicoEncontrado?: Topico; //Devuelve el topico del componente padre
+  errorData:String="";
+  
+  //Listas
+  hilos: Hilo[] = []
+
+  //Inyeccion de servicios
   hiloApiService = inject(HiloApiService)
   topicoApiService = inject(TopicoApiService)
 
+  //Carga de datos
   async ngOnInit(){
       this.loadData();
   }
 
   private loadData(){
+    //Carga de los topicos de la BD
     this.topicoApiService.getListTopicos();
+    //Carga de los hilos
     this.hiloApiService.getListHilos().subscribe({
       next: (hiloData)=>{
         this.hilos = hiloData;

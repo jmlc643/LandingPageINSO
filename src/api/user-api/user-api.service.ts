@@ -84,7 +84,7 @@ export class UserApiService {
     )
   }
 
-  recuperarContra(recuperarContra : recuperarContraRequest):Observable<any>{
+  recuperarContra(recuperarContra : String):Observable<any>{
     return this.httpClient.post<any>(environment.urlHost + '/autenticacion/recuperar-contra/', recuperarContra).pipe(
       catchError(this.handleError)
     );
@@ -93,6 +93,12 @@ export class UserApiService {
   cerrarSesion():void{
     sessionStorage.removeItem("token");
     this.currentUserLoginOn.next(false);
+  }
+
+  resetPass(password : String, token: String):Observable<any>{
+    return this.httpClient.post<any>(environment.urlHost+'/autenticacion/change-pass/'+token, password).pipe(
+      catchError(this.handleError)
+    );
   }
 
   get userData():Observable<String>{

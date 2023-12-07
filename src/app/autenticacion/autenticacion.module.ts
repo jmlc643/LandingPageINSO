@@ -8,6 +8,8 @@ import { LayoutModule } from '../layout/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationRoutingModule } from './autenticacion-routing.module';
 import { PorconfirmarComponent } from './porconfirmar/porconfirmar.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RecuperarComponent } from './recuperar/recuperar.component';
 
 
 @NgModule({
@@ -15,6 +17,8 @@ import { PorconfirmarComponent } from './porconfirmar/porconfirmar.component';
    IniciarSesionComponent,
    RegistrarseComponent,
    PorconfirmarComponent,
+   ResetPasswordComponent,
+   RecuperarComponent,
   ],
   imports: [
     CommonModule,
