@@ -5,7 +5,7 @@
             <form [formGroup]="createCategoriaForm">
             <p class="text-danger">{{formError}}</p>
             <h3>Nombre:</h3>
-            <div id="search-container">
+            <div class="search-container">
                 <input formControlName="nombre" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el nombre de la categoria" [(ngModel)]="categoria.nombre">
                 <div *ngIf="name.invalid && (name.touched)" class="text-danger">
                     <!-- Corregir el nombre de las variables para representar los controles del formulario -->
@@ -23,7 +23,7 @@
                 <p class="text-red-500 text-xs italic">{{saveCategoriaResponse.mensaje}}</p>
             </div>
             <h3>Descripción:</h3>
-            <div id="search-container">
+            <div class="search-container">
                 <input formControlName="descripcion" class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripción de la categoria" [(ngModel)]="categoria.descripcion">
                 <div *ngIf="descripcion.invalid && (descripcion.touched)" class="text-danger">
                     <div *ngIf="createCategoriaForm.get('descripcion')?.hasError('maxlength')">
@@ -44,7 +44,7 @@
               <img src="/assets/images/robot.jpg"><br>
               <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
               <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
-            </div>    
+            </div>
           </div>
     </div>
 </body>

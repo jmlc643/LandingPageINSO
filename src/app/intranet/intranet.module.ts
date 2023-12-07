@@ -10,6 +10,8 @@ import { CrearCategoriaComponent } from './crearcategoria/crearcateogoria.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
 import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-interceptor.service';
+import { PremiosComponent } from './premios/premios.component';
+import { CrearpremioComponent } from './crearpremio/crearpremio.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-int
     InicioComponent,
     CrearTopicoComponent,
     CrearCategoriaComponent,
+    PremiosComponent,
+    CrearpremioComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,69 @@
+<body>
+<div id="page-container" *ngIf="tieneAcceso()">
+  <div class="container" id="container-1">
+    <h2>Crear Premio</h2>
+    <form [formGroup]="createPremioForm">
+      <p class="text-danger">{{formError}}</p>
+      <h3>Nombre:</h3>
+      <div class="search-container">
+        <input formControlName="nombre" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el nombre del premio" [(ngModel)]="premio.nombre">
+        <div *ngIf="name.invalid && (name.touched)" class="text-danger">
+          <!-- Corregir el nombre de las variables para representar los controles del formulario -->
+          <div *ngIf="createPremioForm.get('nombre')?.hasError('required') || createPremioForm.get('nombre')?.hasError('maxlength')">
+            <div *ngIf="createPremioForm.get('nombre')?.hasError('required')">
+              El nombre es requerido
+            </div>
+            <div *ngIf="createPremioForm.get('nombre')?.hasError('maxlength')">
+              El nombre puede tener máximo 25 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="premioErrorResponse == 'Premio existente'">
+        <p class="text-red-500 text-xs italic">{{premioErrorResponse}}</p>
+      </div>
+      <h3>Descripción:</h3>
+      <div class="search-container">
+        <input formControlName="descripcion" class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripción del premio" [(ngModel)]="premio.descripcion">
+        <div *ngIf="descripcion.invalid && (descripcion.touched)" class="text-danger">
+          <div *ngIf="createPremioForm.get('descripcion')?.hasError('maxlength')">
+            La descripción puede tener máximo 50 caracteres
+          </div>
+        </div>
+      </div>
+      <div class="search-container">
+        <input formControlName="precio" class="form-control" type="number" id="precio-premio" placeholder="Ingresar el precio del premio" [(ngModel)]="premio.precio">
+        <div *ngIf="prize.invalid && (prize.touched)" class="text-danger">
+          <div *ngIf="createPremioForm.get('precio')?.hasError('required')">
+            El precio es requerido
+          </div>
+          <div *ngIf="createPremioForm.get('precio')?.hasError('min')">
+            Escoja un número desde 0.
+          </div>
+        </div>
+      </div>
+      <div class="search-container">
+        <input formControlName="imagen" (change)="handleImageSelect($event)" class="form-control" type="file" id="imageInput" accept="image/*" [(ngModel)]="premio.precio">
+        <div *ngIf="imagen.invalid && (imagen.touched)" class="text-danger">
+          <div *ngIf="createPremioForm.get('imagen')?.hasError('required')">
+            La imagen es requerida
+          </div>
+        </div>
+      </div>
+      <div class="create-buttons">
+        <button routerLink="/intranet" class = "create-button">Cancelar</button>
+        <button class="create-button" (click)="savePremio()">Aceptar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="!tieneAcceso()">
+  <div class="body-secundario">
+    <div class="login-container">
+      <img src="/assets/images/robot.jpg"><br>
+      <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
+      <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
+    </div>
+  </div>
+</div>
+</body>
