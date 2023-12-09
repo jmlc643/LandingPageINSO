@@ -4,27 +4,24 @@
     <h2>Crear Mazo</h2>
     <form [formGroup]="createMazoForm">
       <p class="text-danger">{{formError}}</p>
-      <h3>Nombre:</h3>
+      <h3>Título:</h3>
       <div class="search-container">
-        <input formControlName="titulo" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el nombre del mazo" [(ngModel)]="mazo.titulo">
+        <input formControlName="titulo" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el titulo" [(ngModel)]="tituloo">
         <div *ngIf="title.invalid && (title.touched)" class="text-danger">
-          <!-- Corregir el nombre de las variables para representar los controles del formulario -->
-          <div *ngIf="createMazoForm.get('titulo')?.hasError('required') || createMazoForm.get('nombre')?.hasError('maxlength')">
-            <div *ngIf="createMazoForm.get('titulo')?.hasError('required')">
-              El nombre es requerido
-            </div>
-            <div *ngIf="createMazoForm.get('titulo')?.hasError('maxlength')">
-              El nombre puede tener máximo 30 caracteres
-            </div>
+          <div *ngIf="createMazoForm.get('titulo')?.hasError('required')">
+            El concepto es requerido
+          </div>
+          <div *ngIf="createMazoForm.get('titulo')?.hasError('maxlength')">
+            El nombre puede tener máximo 30 caracteres
           </div>
         </div>
       </div>
       <h3>Descripción:</h3>
       <div class="search-container">
-        <input formControlName="descripcion" class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripción del mazo" [(ngModel)]="mazo.descripcion">
+        <input formControlName="descripcion" class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripcion" [(ngModel)]="descripcioon">
         <div *ngIf="descripcion.invalid && (descripcion.touched)" class="text-danger">
           <div *ngIf="createMazoForm.get('descripcion')?.hasError('maxlength')">
-            La descripción puede tener máximo 200 caracteres
+            El nombre puede tener máximo 200 caracteres
           </div>
         </div>
       </div>
@@ -37,8 +34,8 @@
         </div>
       </div>
       <div class="create-buttons">
-        <button routerLink="/intranet" class = "create-button">Cancelar</button>
-        <button class="create-button" (click)="saveMazo()">Aceptar</button>
+        <button routerLink="/intranet/tusmazo" class = "create-button">Cancelar</button>
+        <button class="create-button" (click)="saveMazo()">Crear</button>
       </div>
     </form>
   </div>

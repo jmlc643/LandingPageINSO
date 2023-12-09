@@ -3,7 +3,7 @@ import {MazoApiService, SaveMazoRequest} from "../../../api/mazo-api/mazo-api.se
 import {Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {UserApiService} from "../../../api/user-api/user-api.service";
-//import {DialogApiService} from "../../../api/dialog-api/dialog-api.service";
+import {DialogApiService} from "../../../api/dialog-api/dialog-api.service";
 
 @Component({
   selector: 'app-crearmazo',
@@ -25,6 +25,11 @@ export class CrearmazoComponent implements OnInit{
     username: ''
   };
 
+  tituloo : string = '';
+  descripcioon: string = '';
+  imagenn : string = '';
+  usernamee : string = '';
+
   //En caso salga algun error
   formError: String = "";
   errorData: String = "";
@@ -34,7 +39,7 @@ export class CrearmazoComponent implements OnInit{
   formBuilder = inject(FormBuilder);
   userApiService = inject(UserApiService);
   mazoApiService = inject(MazoApiService);
-  //dialogApiService = inject(DialogApiService);
+  dialogApiService = inject(DialogApiService);
 
   //Validaciones del formulario
   createMazoForm = this.formBuilder.group({
@@ -52,7 +57,7 @@ export class CrearmazoComponent implements OnInit{
     let token = this.userApiService.userToken;
     this.usuarioLogeado = this.decodificarjwt(token);
     console.log(this.usuarioLogeado);
-    this.mazo.username = this.usuarioLogeado.sub as string;
+    this.usernamee = this.usuarioLogeado.sub as string;
   }
 
 
@@ -82,8 +87,11 @@ export class CrearmazoComponent implements OnInit{
 
   //Funcion de crear Mazo
   saveMazo() {
-    console.log(this.mazo)
     if (this.createMazoForm.valid) {
+      this.mazo.titulo = this.tituloo;
+      this.mazo.descripcion = this.descripcioon;
+      this.mazo.imagen = this.imagenn;
+      this.mazo.username = this.usernamee;
       console.log("Estado del formulario:", this.createMazoForm.value);
       this.formError = "";
       console.log("Este es mi mazo: "+this.mazo);
@@ -97,7 +105,7 @@ export class CrearmazoComponent implements OnInit{
         },
         complete: () => {
           console.info("Creacion completada");
-    //      this.dialogApiService.openDialogCustom();
+          this.dialogApiService.openDialogCustom();
           this.createMazoForm.reset();
         }
       });
@@ -113,7 +121,7 @@ export class CrearmazoComponent implements OnInit{
     if (inputElement.files && inputElement.files[0]) {
       const imageFile = inputElement.files[0];
       this.convertImageToBase64(imageFile, (base64String) => {
-        this.mazo.imagen = base64String as string;
+        this.imagenn = base64String as string;
       });
     }
   }
