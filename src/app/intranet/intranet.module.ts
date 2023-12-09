@@ -17,6 +17,7 @@ import { CrearflashcardComponent } from './crearflashcard/crearflashcard.compone
 import { TusmazosComponent } from './tusmazos/tusmazos.component';
 import { MazosComponent } from './mazos/mazos.component';
 import { FlashcardComponent } from './flashcard/flashcard.component';
+import {SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FlashcardComponent } from './flashcard/flashcard.component';
     IntranetRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SlickCarouselModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptorService,multi:true},

@@ -10,7 +10,8 @@ import {environment} from "../../environments/environment";
 
 export interface Flashcard{
   concepto: string,
-  respuesta: string
+  respuesta: string,
+  idMazo : number
 }
 
 export interface SaveFlashcardRequest{

@@ -1,1 +1,20 @@
-<p>flashcard works!</p>
+<div>
+  <div *ngIf="message!==''">
+    {{message}}
+  </div>
+  <div *ngIf="flashcards[i]!= null">
+    <div>
+      Concepto: {{flashcards[i].concepto}}
+    </div>
+    <div>
+      <button (click) = "showAnswer()">Mostrar respuesta</button>
+    </div>
+    <div *ngIf="mostrarRespuesta">
+      Respuesta: {{flashcards[i].respuesta}}
+    </div>
+    <div>
+      <button (click) = "sumarPunto()">Sumar punto</button>
+      <button (click) = "restarPunto()">Restar punto</button>
+    </div>
+  </div>
+</div>
