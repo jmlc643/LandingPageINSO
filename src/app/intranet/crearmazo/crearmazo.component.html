@@ -1,0 +1,54 @@
+<body>
+<div id="page-container" *ngIf="tieneAcceso()">
+  <div class="container" id="container-1">
+    <h2>Crear Premio</h2>
+    <form [formGroup]="createMazoForm">
+      <p class="text-danger">{{formError}}</p>
+      <h3>Nombre:</h3>
+      <div class="search-container">
+        <input formControlName="titulo" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el titulo del mazo" [(ngModel)]="mazo.titulo">
+        <div *ngIf="title.invalid && (title.touched)" class="text-danger">
+          <div *ngIf="createMazoForm.get('titulo')?.hasError('required') || createMazoForm.get('titulo')?.hasError('maxlength')">
+            <div *ngIf="createMazoForm.get('titulo')?.hasError('required')">
+              El titulo es requerido
+            </div>
+            <div *ngIf="createMazoForm.get('titulo')?.hasError('maxlength')">
+              El titulo puede tener máximo 30 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Descripción:</h3>
+      <div class="search-container">
+        <input formControlName="descripcion" class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la descripción del mazo" [(ngModel)]="mazo.descripcion">
+        <div *ngIf="descripcion.invalid && (descripcion.touched)" class="text-danger">
+          <div *ngIf="createMazoForm.get('descripcion')?.hasError('maxlength')">
+            La descripción puede tener máximo 200 caracteres
+          </div>
+        </div>
+      </div>
+      <div class="search-container">
+        <input formControlName="imagen" (change)="handleImageSelect($event)" class="form-control" type="file" id="imageInput" accept="image/*">
+        <div *ngIf="imagen.invalid && (imagen.touched)" class="text-danger">
+          <div *ngIf="createMazoForm.get('imagen')?.hasError('required')">
+            La imagen es requerida
+          </div>
+        </div>
+      </div>
+      <div class="create-buttons">
+        <button routerLink="/intranet" class = "create-button">Cancelar</button>
+        <button class="create-button" (click)="saveMazo()">Aceptar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="!tieneAcceso()">
+  <div class="body-secundario">
+    <div class="login-container">
+      <img src="/assets/images/robot.jpg"><br>
+      <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
+      <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
+    </div>
+  </div>
+</div>
+</body>
