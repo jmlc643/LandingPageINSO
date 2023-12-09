@@ -1,19 +1,23 @@
 
 <div id="page-container" *ngIf="userLoginOn==true">
-  <div>
+
+
+  <div id="bienvenido">
     <h3>Bienvenido, </h3>
     <h5>{{usuarioLogeado.sub!}}</h5>
   </div>
+
+
   <div class="create-buttons">
     <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/crearcategoria" class="create-button">Crear Categoría</button>
     <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/creartopico" class="create-button">Crear Tópico</button>
   </div>
   <!-- CONTENEDOR 1 -->
   <div class="container" id="container-1" *ngFor="let categoriaa of categorias">
-    <h2>{{categoriaa.nombre}}</h2>
+    <h2 class="categoria-titulo">{{categoriaa.nombre}}</h2>
     <br>
     <div class="create-button" *ngFor="let topicoo of filterTopicos(categoriaa)">
-      <button [routerLink]="['comunidad', topicoo.id]" class="create-button">
+      <button class="boton-topico" [routerLink]="['comunidad', topicoo.id]" class="create-button">
         {{topicoo.nombre}}
       </button>
     </div>

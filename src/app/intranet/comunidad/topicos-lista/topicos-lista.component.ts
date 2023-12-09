@@ -9,17 +9,33 @@ import { UserApiService } from 'src/api/user-api/user-api.service';
   styleUrls: ['./topicos-lista.component.css']
 })
 export class TopicosListaComponent implements OnInit{
-  
+
+  public decodificarjwt(token:String):any{
+
+    //Lo pasa a base 64
+    console.log("Este es el token que he recibido "+ token);
+    var base64Url = token.split('.')[1];
+    console.log("Token base64url: "+ base64Url);
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    console.log("Token base64: "+base64);
+    //Convertir a JSON
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    console.log("JSON: "+jsonPayload);
+    return JSON.parse(jsonPayload); //Devuelve JSON
+  }
+
   userLoginOn:boolean=false; //Identificador de si el usuario esta logeado
-  
+
   //Routers
   activatedRoute = inject(ActivatedRoute); //Para recibir el id enrutado
   router = inject(Router); //Para hacer navegaciones
 
   //Listas
   topicos: Topico[] = [] //Lista de topicos en general
-  filterTopicos: Topico[] = [] //Topicos filtrado segun la categoria a la que esta asignado 
-  
+  filterTopicos: Topico[] = [] //Topicos filtrado segun la categoria a la que esta asignado
+
   //Topico encontrado
   topicoEncontrado: Topico = {
     id: 0,
@@ -30,6 +46,9 @@ export class TopicosListaComponent implements OnInit{
       descripcion: ''
     }
   }
+
+  //Devolver los datos del usuario logeado
+  usuarioLogeado :any = {};
 
   c = 1 ; //Para saber si mostrar el componente de publicar hilo
 
@@ -43,6 +62,10 @@ export class TopicosListaComponent implements OnInit{
 
 //Metodo para inicializar
   async ngOnInit(){
+    //Recibe el valor del token
+    let token = this.userApiService.userToken;
+    //Desencripta y da el valor del JSON a una variable
+    this.usuarioLogeado = this.decodificarjwt(token);
     //Actualiza el valor del userLoginOn
     this.userApiService.currentUserLoginOn.subscribe({
       next:(userLoginOn) => {

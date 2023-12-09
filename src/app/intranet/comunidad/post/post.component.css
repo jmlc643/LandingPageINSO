@@ -11,13 +11,13 @@ body {
     border-radius: 4px;
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
-    
+
 }
 
 .card-body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 1.25rem
+    padding: 1.25rem;
 }
 
 .comment-widgets .comment-row:hover {
@@ -43,6 +43,7 @@ body {
     font-weight: 400;
     border-radius: 4px;
     font-size: 75%;
+
 }
 
 .round img {
@@ -96,4 +97,5 @@ body {
     width: 300px; /* Ancho del contenedor */
     margin: auto; /* Auto-margin para centrar horizontalmente */
     text-align: center; /* Centrar texto */
+
   }
