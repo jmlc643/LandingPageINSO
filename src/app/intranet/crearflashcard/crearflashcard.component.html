@@ -1,0 +1,45 @@
+<body>
+<div id="page-container" *ngIf="tieneAcceso()">
+  <div class="container" id="container-1">
+    <h2>Crear Flashcard</h2>
+    <form [formGroup]="createFlashCardForm">
+      <p class="text-danger">{{formError}}</p>
+      <h3>Concepto:</h3>
+      <div class="search-container">
+        <input formControlName="concepto" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el concepto" [(ngModel)]="flashcard.concepto">
+        <div *ngIf="concept.invalid && (concept.touched)" class="text-danger">
+            <div *ngIf="createFlashCardForm.get('concepto')?.hasError('required')">
+              El concepto es requerido
+            </div>
+        </div>
+      </div>
+      <h3>Respuesta:</h3>
+      <div class="search-container">
+        <input formControlName="respuesta" class="form-control" type="text" id="descripcion-categoria" placeholder="Ingresar la respuesta" [(ngModel)]="flashcard.respuesta">
+        <div *ngIf="rpta.invalid && (rpta.touched)" class="text-danger">
+          <div *ngIf="createFlashCardForm.get('respuesta')?.hasError('required')">
+            La respuesta es requerida
+          </div>
+        </div>
+      </div>
+      <div *ngIf="formComplete !== '' ">
+        {{formComplete}}
+      </div>
+      <div class="create-buttons">
+        <button routerLink="/intranet/tusmazo" class = "create-button">Terminar</button>
+        <button class="create-button" (click)="saveFlashcard()">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="!tieneAcceso()">
+  <div class="body-secundario">
+    <div class="login-container">
+      <img src="/assets/images/robot.jpg"><br>
+      <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
+      <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
+    </div>
+  </div>
+</div>
+</body>
+

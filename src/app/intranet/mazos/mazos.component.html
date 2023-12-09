@@ -1,0 +1,7 @@
+<body>
+<div *ngFor="let mazo of mazos">
+  <img [src]="mazo.imagen" alt="Image">
+  <p>{{mazo.titulo}}</p>
+  <p>{{mazo.usuario.user}}</p>
+  <button (click) = "practicar(mazo)" class = "create-button">Practicar</button>
+</div>
