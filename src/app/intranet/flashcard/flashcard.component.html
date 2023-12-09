@@ -2,15 +2,15 @@
   <div *ngIf="message!==''">
     {{message}}
   </div>
-  <div *ngIf="flashcards[i]!= null">
+  <div *ngIf="filterFlashCards()[i]!= null">
     <div>
-      Concepto: {{flashcards[i].concepto}}
+      Concepto: {{filterFlashCards()[i].concepto}}
     </div>
     <div>
       <button (click) = "showAnswer()">Mostrar respuesta</button>
     </div>
     <div *ngIf="mostrarRespuesta">
-      Respuesta: {{flashcards[i].respuesta}}
+      Respuesta: {{filterFlashCards()[i].respuesta}}
     </div>
     <div>
       <button (click) = "sumarPunto()">Sumar punto</button>
