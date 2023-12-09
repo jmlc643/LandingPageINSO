@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderGeneralComponent } from './header-general/header-general.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { DialogCustomComponent } from './dialog-mazo/dialog-custom.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
     FooterComponent,
     HeaderComponent,
     HeaderGeneralComponent,
+    DialogCustomComponent,
   ],
 
   exports: [

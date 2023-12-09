@@ -8,6 +8,8 @@ import { TopicoApiService } from 'src/api/topico-api/topico-api.service';
 import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
 import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-interceptor.service';
 import {PremioApiService} from "../api/premio-api/premio-api.service";
+import {MatDialogModule} from "@angular/material/dialog";
+import {FlashcardApiService} from "../api/flashcard-api/flashcard-api.service";
 
 
 
@@ -20,14 +22,16 @@ import {PremioApiService} from "../api/premio-api/premio-api.service";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
 
   providers: [
     TopicoApiService,
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptorService,multi:true},
     {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptorService, multi:true},
-    PremioApiService
+    PremioApiService,
+    FlashcardApiService
   ],
   bootstrap: [AppComponent]
 })

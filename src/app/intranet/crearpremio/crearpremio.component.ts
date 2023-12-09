@@ -22,8 +22,7 @@ export class CrearpremioComponent implements OnInit {
     nombre: "",
     descripcion: "",
     precio: 0,
-    imagen: "",
-    username: ""
+    imagen: ""
   }
 
   //En caso salga algun error
@@ -39,8 +38,8 @@ export class CrearpremioComponent implements OnInit {
 
   //Validaciones del formulario
   createPremioForm = this.formBuilder.group({
-    nombre: ['', [Validators.required, Validators.maxLength(25)]],
-    descripcion: ['', Validators.maxLength(50)],
+    nombre: ['', [Validators.required, Validators.maxLength(30)]],
+    descripcion: ['', Validators.maxLength(200)],
     precio: ['', [Validators.required, Validators.min(0)]],
     imagen: ['', Validators.required]
   })
@@ -104,7 +103,6 @@ export class CrearpremioComponent implements OnInit {
           this.premioErrorResponse = 'Premio existente';
         }
       })
-      this.premio.username = this.usuarioLogeado.sub as string;
       this.premioApiService.savePremio(this.premio).subscribe({
         next: (premioData) => {
           console.log(premioData)

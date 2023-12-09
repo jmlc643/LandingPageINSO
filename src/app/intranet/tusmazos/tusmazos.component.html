@@ -1,0 +1,8 @@
+<body>
+<div *ngFor="let mazo of filterMazos(usuarioLogeado.sub)">
+  <img [src]="mazo.imagen" alt="Image">
+  <p>{{mazo.titulo}}</p>
+  <p>{{mazo.usuario.user}}</p>
+  <button (click) = "irACrearFlashCard(mazo)" class = "create-button">Añadir FlashCards</button>
+</div>
+</body>

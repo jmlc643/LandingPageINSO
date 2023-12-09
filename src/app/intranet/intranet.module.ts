@@ -12,6 +12,11 @@ import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
 import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-interceptor.service';
 import { PremiosComponent } from './premios/premios.component';
 import { CrearpremioComponent } from './crearpremio/crearpremio.component';
+import { CrearmazoComponent } from './crearmazo/crearmazo.component';
+import { CrearflashcardComponent } from './crearflashcard/crearflashcard.component';
+import { TusmazosComponent } from './tusmazos/tusmazos.component';
+import { MazosComponent } from './mazos/mazos.component';
+import { FlashcardComponent } from './flashcard/flashcard.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,11 @@ import { CrearpremioComponent } from './crearpremio/crearpremio.component';
     CrearCategoriaComponent,
     PremiosComponent,
     CrearpremioComponent,
+    CrearmazoComponent,
+    CrearflashcardComponent,
+    TusmazosComponent,
+    MazosComponent,
+    FlashcardComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +43,6 @@ import { CrearpremioComponent } from './crearpremio/crearpremio.component';
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptorService,multi:true},
     {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptorService, multi:true}
-  ], 
+  ],
 })
 export class IntranetModule { }

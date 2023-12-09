@@ -14,30 +14,37 @@ import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
 export class PostComponent implements OnInit {
   errorData: String = "";
   activatedRoute = inject(ActivatedRoute);
+
+  //Objeto a ser mapeado
   comentario : SaveComentarioRequest = {
     mensaje: '',
     username: '',
     idHilo : 0
   }
 
+  //Identificador para saber que usuario esta logeado
   usuarioLogeado :any = {};
+
+  //Identificador para saber si esta logeado
   userLoginOn : boolean = false;
 
+  //Listas
   hilos: Hilo[] = [];
   usuarios: Usuario[] = [];
   comentarios: Comentario[] = [];
 
+  //Inyeccion de servicios
   hiloApiService = inject(HiloApiService);
   userApiService = inject(UserApiService);
   comentarioApiService = inject(ComentarioApiService);
-  jwtApiService = inject(JwtInterceptorService);
+  router = inject(Router)
+  formBuilder = inject(FormBuilder)
 
   hiloEncontrado?: Hilo;
   idd: number = 0;
 
   formError : String = "";
-  router = inject(Router)
-  formBuilder = inject(FormBuilder)
+
   createComentarioForm = this.formBuilder.group({
       mensaje: ['',[Validators.required, Validators.maxLength(200)]],
   })
@@ -155,6 +162,6 @@ export class PostComponent implements OnInit {
   }else{
     this.createComentarioForm.markAllAsTouched();
     alert("Error de ingreso de datos")
-  } 
+  }
   }
 }

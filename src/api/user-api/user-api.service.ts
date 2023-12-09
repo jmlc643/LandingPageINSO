@@ -18,6 +18,7 @@ export interface UsuarioDTO{
   user: string
   email: string
   role: Role
+  nroPuntos : number
 }
 
 export interface UsuarioLogeado{
