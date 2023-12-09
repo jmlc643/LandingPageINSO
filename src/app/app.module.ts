@@ -10,6 +10,7 @@ import { ErrorInterceptorService } from 'src/api/error-interceptor-api/error-int
 import {PremioApiService} from "../api/premio-api/premio-api.service";
 import {MatDialogModule} from "@angular/material/dialog";
 import {FlashcardApiService} from "../api/flashcard-api/flashcard-api.service";
+import {MazoApiService} from "../api/mazo-api/mazo-api.service";
 
 
 
@@ -31,7 +32,8 @@ import {FlashcardApiService} from "../api/flashcard-api/flashcard-api.service";
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptorService,multi:true},
     {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptorService, multi:true},
     PremioApiService,
-    FlashcardApiService
+    FlashcardApiService,
+    MazoApiService
   ],
   bootstrap: [AppComponent]
 })
