@@ -33,21 +33,21 @@ export class ResetPasswordComponent implements OnInit{
   passwordMatchValidator(control: AbstractControl): {[key: string]: boolean} | null {
     const password = control.get('password')?.value;
     const repeat_password = control.get('passwordR')?.value;
-  
+
     if (password !== repeat_password) {
       control.get('passwordR')?.setErrors({ passwordMismatch: true });
       return { passwordMismatch: true };
     } else {
       control.get('passwordR')?.setErrors(null);
     }
-  
+
     if (password && password.length < 8) {
       control.get('password')?.setErrors({ minlength: true });
       return { minlength: true };
     } else {
       control.get('password')?.setErrors(null);
     }
-  
+
     return null;
   }
 
@@ -56,7 +56,7 @@ export class ResetPasswordComponent implements OnInit{
 
   //Variable donde se guardara el password
   password : String = ""
-  
+
   ngOnInit(): void {
     //Recibe el parametro del id enrutado y lo guarda en una variable
     this.activatedRoute.params.subscribe( prm => {
@@ -70,7 +70,7 @@ export class ResetPasswordComponent implements OnInit{
   get pass() {
     return this.resetPassForm.get('password');
   }
-  
+
   get passR() {
     return this.resetPassForm.get('passwordR');
   }
@@ -96,10 +96,10 @@ export class ResetPasswordComponent implements OnInit{
           this.router.navigateByUrl('/login');
           this.resetPassForm.reset();
         }
-      }); 
+      });
     }else{
       this.resetPassForm.markAllAsTouched();
       alert("Error de ingreso de datos")
-    }   
+    }
   }
 }
