@@ -33,6 +33,17 @@ h3{
   border-radius: 15px; /* Borde redondo de 15px */
 }
 
+.container-1 {
+  background-color: white; /* Color de fondo celeste claro */
+  border: 2px solid black;
+  margin: 50px 0; /* Margen de separación de 50px arriba y abajo */
+  padding: 20px; /* Espacio interno dentro de los contenedores */
+  width: 1150px; /* Ancho de 1150px */
+  height: 100px; /* Altura de 280px */
+  position: relative;
+  border-radius: 15px; /* Borde redondo de 15px */
+}
+
 .container h2 {
   position: relative; /* Añadimos posición relativa para el título */
   margin-top: 5px; /* Añadimos un margen superior de 5 píxeles */
