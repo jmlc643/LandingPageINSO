@@ -52,10 +52,10 @@ export class ResetPasswordComponent implements OnInit{
   }
 
   //Variable donde se guardara el token
-  tokenn : String = ""
+  tokenn : string = ""
 
   //Variable donde se guardara el password
-  password : String = ""
+  password : string = ""
 
   ngOnInit(): void {
     //Recibe el parametro del id enrutado y lo guarda en una variable
