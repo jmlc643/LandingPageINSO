@@ -9,19 +9,20 @@
 
     <div>
       <h2>{{usuarioLogeado.sub!}}</h2>
-
-      <p>Ubicación: Ciudad, País</p>
+      <p>Correo: {{usuarioEncontrado?.email}}</p>
+      <p>Puntos: {{usuarioEncontrado?.nroPuntos}}</p>
       <!-- Agrega más información según sea necesario -->
     </div>
   </section>
 
   <section class="deck-list">
     <h2>Mis Mazos</h2>
-    <ul>
-      <li>Mazo 1</li>
-      <li>Mazo 2</li>
-      <!-- Agrega más mazos según sea necesario -->
-    </ul>
+
+    <div *ngFor="let mazo of traerMazos()" class="container">
+      <h2>Titulo: {{mazo.titulo}}</h2>
+      <p> Descripcion: {{mazo.descripcion}}</p>
+
+    </div>
   </section>
 
 

@@ -1,11 +1,10 @@
 import {Component, inject} from '@angular/core';
 import {Premio, PremioApiService} from "../../../api/premio-api/premio-api.service";
 import {PuntuarRequest, UserApiService, UsuarioDTO} from "../../../api/user-api/user-api.service";
+import {Mazo, MazoApiService} from "../../../api/mazo-api/mazo-api.service";
 
 @Component({
   selector: 'app-perfil-usuario',
-  standalone: true,
-  imports: [],
   templateUrl: './perfil-usuario.component.html',
   styleUrl: './perfil-usuario.component.css'
 })
@@ -21,10 +20,12 @@ export class PerfilUsuarioComponent {
 
   //Listas
   premios: Premio[] = [];
+  mazos: Mazo[] = [];
 
   //Inyeccion de los servicios
   userApiService = inject(UserApiService);
   premioApiService = inject(PremioApiService);
+  mazoApiService = inject(MazoApiService)
 
   base64Array: string[] = [];
   images : string[] = []
@@ -58,6 +59,7 @@ export class PerfilUsuarioComponent {
     //Carga de la lista de los premios
     this.premios = await this.premioApiService.getListPremios();
     this.usuarios = await this.userApiService.getListUser();
+    this.mazos = await this.mazoApiService.getListMazos()
   }
 
   //Metodo para desencriptar token
@@ -90,6 +92,10 @@ export class PerfilUsuarioComponent {
 
   tieneAcceso(){
     return this.userLoginOn;
+  }
+
+  traerMazos(){
+    return this.mazos.filter(mazo => mazo.usuario.user===this.usuarioEncontrado?.user)
   }
 
   canjeo(premio : Premio){
