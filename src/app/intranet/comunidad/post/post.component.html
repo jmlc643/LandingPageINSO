@@ -48,11 +48,9 @@
             <p class="m-b-5 m-t-10">{{comentario.mensaje}}</p>
           </div>
 
-          <a href="#" data-abc="true" ><i class="fas fa-thumbs-up"></i> Fue de ayuda</a>
+          <a data-abc="true" (click)="puntos(1)"><i class="fas fa-thumbs-up"></i> Fue de ayuda +1</a>
 
-          <a href="#" data-abc="true" ><i class="fas fa-thumbs-up"></i> </a>
-
-          <a href="#" data-abc="true" ><i class="fas fa-star" id="estrella"></i></a>
+          <a data-abc="true" (click)="puntos(5)"><i class="fas fa-star" id="estrella">Agradecido contigo +5</i></a>
 
         </div>
       </div>
