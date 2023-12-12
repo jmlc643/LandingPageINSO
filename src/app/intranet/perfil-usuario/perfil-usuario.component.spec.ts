@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrearmazoComponent } from './crearmazo.component';
+import { PerfilUsuarioComponent } from './perfil-usuario.component';
 
-describe('CrearmazoComponent', () => {
-  let component: CrearmazoComponent;
-  let fixture: ComponentFixture<CrearmazoComponent>;
+describe('PerfilUsuarioComponent', () => {
+  let component: PerfilUsuarioComponent;
+  let fixture: ComponentFixture<PerfilUsuarioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrearmazoComponent]
+      imports: [PerfilUsuarioComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CrearmazoComponent);
+    fixture = TestBed.createComponent(PerfilUsuarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

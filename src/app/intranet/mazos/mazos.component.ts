@@ -19,6 +19,7 @@ export class MazosComponent implements OnInit{
 
   //Listas
   mazos : Mazo[] = [];
+  public usuarioLogeado:any = {};
 
   async ngOnInit() {
     this.userApiService.currentUserLoginOn.subscribe({
@@ -26,6 +27,12 @@ export class MazosComponent implements OnInit{
         this.userLoginOn = userLoginOn;
       }
     })
+    //Asigna el token a una variable
+    let token = this.userApiService.userToken;
+    //Devuelve un JSON con el token desencriptado
+    this.usuarioLogeado = this.decodificarjwt(token);
+    console.log(this.usuarioLogeado);
+    //Carga de datos
     await this.loadData();
   }
 
@@ -33,6 +40,20 @@ export class MazosComponent implements OnInit{
     this.mazos = await this.mazoApiService.getListMazos();
   }
 
+  private decodificarjwt(token:String):any{
+    //Pasarlo a base64
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    //Convertirlo a JSON
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    console.log("JSON: "+jsonPayload);
+    return JSON.parse(jsonPayload); //Devolver JSON
+  }
+  filterMazos(username: string): Mazo[] {
+    return this.mazos.filter(mazoo => username === mazoo.usuario.user);
+  }
   practicar(mazo: Mazo){
     this.router.navigateByUrl("/intranet/flashcard/"+mazo.id);
   }

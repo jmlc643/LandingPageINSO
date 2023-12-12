@@ -1,9 +1,8 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {MazoApiService, SaveMazoRequest} from "../../../api/mazo-api/mazo-api.service";
+import {Mazo, MazoApiService, SaveMazoRequest} from "../../../api/mazo-api/mazo-api.service";
 import {Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {UserApiService} from "../../../api/user-api/user-api.service";
-//import {DialogApiService} from "../../../api/dialog-api/dialog-api.service";
 
 @Component({
   selector: 'app-crearmazo',
@@ -20,9 +19,9 @@ export class CrearmazoComponent implements OnInit{
   //Modelo del objeto a ser creado
   mazo: SaveMazoRequest = {
     titulo: '',
-    descripcion: '',
-    imagen: '',
-    username: ''
+    descripcion : '',
+    imagen : '',
+    username : ''
   };
 
   //En caso salga algun error
@@ -34,7 +33,6 @@ export class CrearmazoComponent implements OnInit{
   formBuilder = inject(FormBuilder);
   userApiService = inject(UserApiService);
   mazoApiService = inject(MazoApiService);
-  //dialogApiService = inject(DialogApiService);
 
   //Validaciones del formulario
   createMazoForm = this.formBuilder.group({
@@ -42,8 +40,7 @@ export class CrearmazoComponent implements OnInit{
     descripcion: ['', Validators.maxLength(200)],
     imagen: ['', Validators.required]
   })
-
-  ngOnInit() {
+  async ngOnInit() {
     this.userApiService.currentUserLoginOn.subscribe({
       next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
@@ -51,19 +48,15 @@ export class CrearmazoComponent implements OnInit{
     })
     let token = this.userApiService.userToken;
     this.usuarioLogeado = this.decodificarjwt(token);
-    console.log(this.usuarioLogeado);
-    this.mazo.username = this.usuarioLogeado.sub as string;
   }
-
 
   //Para desencriptar el token
   private decodificarjwt(token: String): any {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-    console.log("JSON: " + jsonPayload);
     return JSON.parse(jsonPayload);
   }
 
@@ -80,24 +73,18 @@ export class CrearmazoComponent implements OnInit{
     return this.createMazoForm.controls.imagen;
   }
 
-  //Funcion de crear Mazo
+  //Funcion de subir premio
   saveMazo() {
-    console.log(this.mazo)
     if (this.createMazoForm.valid) {
-      console.log("Estado del formulario:", this.createMazoForm.value);
-      this.formError = "";
-      console.log("Este es mi mazo: "+this.mazo);
+      this.mazo.username = this.usuarioLogeado.sub as string;
       this.mazoApiService.saveMazo(this.mazo).subscribe({
-        next: (mazoData) => {
-          console.log(mazoData)
-        },
         error: (errorData: any) => {
           console.error(errorData);
           this.formError = "Error al crear";
         },
         complete: () => {
-          console.info("Creacion completada");
-    //      this.dialogApiService.openDialogCustom();
+          console.info("Creacion completada")
+          this.router.navigateByUrl('/intranet/tusmazo');
           this.createMazoForm.reset();
         }
       });
@@ -107,12 +94,13 @@ export class CrearmazoComponent implements OnInit{
     }
   }
 
-  //Conversion de la imagen a Base64
   handleImageSelect(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files[0]) {
       const imageFile = inputElement.files[0];
       this.convertImageToBase64(imageFile, (base64String) => {
+        // Aquí puedes usar la variable 'base64String' como desees
+        console.log('Imagen en base64:', base64String);
         this.mazo.imagen = base64String as string;
       });
     }
@@ -126,8 +114,9 @@ export class CrearmazoComponent implements OnInit{
     };
     reader.readAsDataURL(file);
   }
-
+  //Funcion para verificar si el usuario esta logeado y es administrador
   tieneAcceso(): boolean {
     return this.userLoginOn;
   }
 }
+

@@ -1,18 +1,9 @@
-.topics-container {
-  width: 100%; /* Ancho del contenedor de los temas */
-  padding: 10px;
-  margin-left: 250px;
-
-  box-sizing: border-box; /* Considerar el borde dentro del ancho */
-}
-
-.bold{
-  font: bold;
-}
 
 .topics-list {
   list-style: none;
   padding: 0;
+  margin-left:250px;
+  margin-bottom: 400px;
 }
 
 .topics-list li {
@@ -22,7 +13,7 @@
 
 #orden{
   display: grid;
-  grid-template-columns: 2fr 8fr 2fr;
+  grid-template-columns: 6fr 8fr 6fr;
   align-items: center;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -31,19 +22,18 @@
 .main-container {
   display: flex;
   height: 50%;
+  width: 40%;
+  margin-left: 50px;
 }
 
-.side-container {
-  text-align: center;
-  padding: 20px;
-}
 
 .user-icon {
   width: 50px;
   height: 50px;
-  background-color: #ccc; /* Estilos del ícono del usuario */
+  background-color: #cccccc; /* Estilos del ícono del usuario */
   border-radius: 50%;
-  margin: 0 auto 20px;
+  margin-left: 45px;
+  margin-bottom: 15px
 }
 
 .publish-button {
@@ -54,10 +44,11 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-left: 26px;
 }
 
 .body-secundario {
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: red; /* Fondo blanco */
   padding: 15px;
   border: 1px solid #999;
   text-align: center; /* Centrado del contenido */
@@ -66,8 +57,8 @@
   height: 500px;
 }
 
-.login-container {
-  width: 300px; /* Ancho del contenedor */
-  margin: auto; /* Auto-margin para centrar horizontalmente */
-  text-align: center; /* Centrar texto */
+.bienvenida-usuario{
+  font-size: 15px;
+
 }
+

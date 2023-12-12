@@ -1,19 +1,22 @@
 <body>
-<div id="orden" *ngIf="userLoginOn == true">
-<div class="topics-container">
-  <ul class="topics-list" >
-    <div *ngFor="let topico of filterTopicos">
-      <li (click)="link(topico)" routerLinkActive="bold">
-        {{topico.nombre}}
-      </li>
-    </div>
+<div id="orden" *ngIf="userLoginOn">
+
+  <ul class="topics-list">
+    <li *ngFor="let topico of filterTopicos" (click)="link(topico)">
+      {{topico.nombre}}
+    </li>
   </ul>
-</div>
-<app-foro *ngIf="c==1" [topicoEncontrado] = "topicoEncontrado"></app-foro>
+
+
+  <app-foro *ngIf="c==1" [topicoEncontrado] = "topicoEncontrado"></app-foro>
   <app-publicar-hilo *ngIf="c==0" [topicoEncontrado] = "topicoEncontrado"></app-publicar-hilo>
   <div class="main-container">
     <div class="side-container">
-      <div class="user-icon">
+      <div>
+        <img class="user-icon" src="/assets/images/usericon.png" alt="#">
+      </div>
+      <div class="bienvenida-usuario">
+      <p>Bienvenido, {{usuarioLogeado.sub}}</p>
       </div>
       <button (click)="c=0" class="publish-button">Publicar</button>
 
@@ -22,13 +25,13 @@
 
 </div>
 
-<div *ngIf="userLoginOn==false">
+<div *ngIf="!userLoginOn">
   <div class="body-secundario">
     <div class="login-container">
       <img src="/assets/images/robot.jpg"><br>
       <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
       <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
-    </div>    
+    </div>
   </div>
 </div>
 </body>

@@ -45,13 +45,13 @@ export class RecuperarComponent implements OnInit{
         },
         complete: () => {
           console.info("Enviar correo completo")
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/correo');
           this.recuperarContraForm.reset();
         }
       });
     }else{
       this.recuperarContraForm.markAllAsTouched();
       alert("Error de ingreso de datos")
-    } 
+    }
   }
 }

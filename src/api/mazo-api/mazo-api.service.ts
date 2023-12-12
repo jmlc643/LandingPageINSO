@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {Usuario, UsuarioDTO} from "../user-api/user-api.service";
+import {UsuarioDTO} from "../user-api/user-api.service";
 import {HttpClient} from "@angular/common/http";
 import {lastValueFrom, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
@@ -29,6 +29,6 @@ export class MazoApiService {
   }
 
   saveMazo(mazo: SaveMazoRequest):Observable<any>{
-    return this.httpClient.post<any>(environment.urlHost+'/mazo/crear/', mazo);
+    return this.httpClient.post<any>(environment.urlHost+'/mazo/', mazo);
   }
 }

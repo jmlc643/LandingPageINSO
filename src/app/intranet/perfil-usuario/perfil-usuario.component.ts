@@ -1,13 +1,15 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {Premio, PremioApiService} from "../../../api/premio-api/premio-api.service";
 import {PuntuarRequest, UserApiService, UsuarioDTO} from "../../../api/user-api/user-api.service";
 
 @Component({
-  selector: 'app-premios',
-  templateUrl: './premios.component.html',
-  styleUrls: ['./premios.component.css']
+  selector: 'app-perfil-usuario',
+  standalone: true,
+  imports: [],
+  templateUrl: './perfil-usuario.component.html',
+  styleUrl: './perfil-usuario.component.css'
 })
-export class PremiosComponent implements OnInit{
+export class PerfilUsuarioComponent {
   //Identificador del iniciar sesion
   userLoginOn:boolean=false;
 
@@ -115,4 +117,3 @@ export class PremiosComponent implements OnInit{
   }
 
 }
-

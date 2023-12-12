@@ -1,8 +1,46 @@
 <body>
-<div *ngFor="let mazo of filterMazos(usuarioLogeado.sub)">
-  <img [src]="mazo.imagen" alt="Image">
-  <p>{{mazo.titulo}}</p>
-  <p>{{mazo.usuario.user}}</p>
-  <button (click) = "irACrearFlashCard(mazo)" class = "create-button">Añadir FlashCards</button>
+<div id="page-container"  *ngIf="tieneAcceso()">
+  <section class="decks-container">
+    <h1>Mis Mazos</h1>
+
+    <p>
+      🌟 "La creación de un mazo es el primer paso hacia el dominio de cualquier tema". 🌟
+    </p>
+
+    <button id="createDeckBtn" routerLink="/intranet/crearmazo" class="create-button">Crear Mazo</button>
+    <ul class="deck-list">
+      <!-- Aquí se mostrarán los mazos si los tienes -->
+    </ul>
+  </section>
+
+
+  <div class="contenedor">
+  <div *ngFor="let mazo of filterMazos(usuarioLogeado.sub)">
+    <div class="mazo-contenido">
+    <img [src]="mazo.imagen" alt="Image">
+    <h2>{{mazo.titulo}}</h2>
+    <p>{{mazo.usuario.user}}</p>
+    <a (click) = "irACrearFlashCard(mazo)" class = "a">Añadir FlashCards</a>
+    </div>
+  </div>
+  </div>
+
+
+
+
+  <div class="no-mazo" *ngIf="filterMazos(usuarioLogeado.sub).length == 0">
+    <img src="/assets/images/pregunta.png" alt="Pregunta" class="question-image">
+    <p class="no-decks-message">Parece que no tienes mazos. ¡Prueba creando uno nuevo!</p>
+  </div>
 </div>
 </body>
+<div *ngIf="!tieneAcceso()">
+  <div class="body-secundario">
+    <div class="login-container">
+      <img src="/assets/images/robot.jpg"><br>
+      <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
+      <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
+    </div>
+  </div>
+</div>
+

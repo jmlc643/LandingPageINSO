@@ -6,15 +6,14 @@
       <p class="text-danger">{{formError}}</p>
       <h3>Nombre:</h3>
       <div class="search-container">
-        <input formControlName="titulo" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el nombre del mazo" [(ngModel)]="mazo.titulo">
+        <input formControlName="titulo" class="form-control" type="text" id="nombre-categoria" placeholder="Ingresar el titulo del mazo" [(ngModel)]="mazo.titulo">
         <div *ngIf="title.invalid && (title.touched)" class="text-danger">
-          <!-- Corregir el nombre de las variables para representar los controles del formulario -->
-          <div *ngIf="createMazoForm.get('titulo')?.hasError('required') || createMazoForm.get('nombre')?.hasError('maxlength')">
+          <div *ngIf="createMazoForm.get('titulo')?.hasError('required') || createMazoForm.get('titulo')?.hasError('maxlength')">
             <div *ngIf="createMazoForm.get('titulo')?.hasError('required')">
-              El nombre es requerido
+              El titulo es requerido
             </div>
             <div *ngIf="createMazoForm.get('titulo')?.hasError('maxlength')">
-              El nombre puede tener máximo 30 caracteres
+              El titulo puede tener máximo 30 caracteres
             </div>
           </div>
         </div>
@@ -37,7 +36,7 @@
         </div>
       </div>
       <div class="create-buttons">
-        <button routerLink="/intranet" class = "create-button">Cancelar</button>
+        <button routerLink="/intranet/mazos" class = "create-button">Cancelar</button>
         <button class="create-button" (click)="saveMazo()">Aceptar</button>
       </div>
     </form>

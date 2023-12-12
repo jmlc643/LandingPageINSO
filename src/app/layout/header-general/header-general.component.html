@@ -1,17 +1,23 @@
-	<!-- Navigation -->
-  <header class="site-header">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-6">
-          <a routerLink="/" class="logo-text">Learn<span class="logo-span">sync</span></a>
-        </div>
-        <div class="col-6 text-end">
-          <div class="dropdown">
-            <a *ngIf="userLoginOn==true" class="btn btn-secondary custom-btn" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="logout()">
-            Cerrar Sesion
-            </a>
-          </div>
-        </div>
+<nav class="navbar">
+  <div>
+    <a routerLink="/" class="logo-text">Learn<span class="logo-span">sync</span></a>
+  </div>
+  <ul class="nav-list">
+    <li><a routerLink="/intranet">Home</a></li>
+    <li class="dropdown">
+    <a routerLink="/intranet/mazos">Mazos</a>
+      <div class="dropdown-content">
+        <a routerLink="/intranet/mazos">General</a>
+        <a routerLink="/intranet/tusmazo">Mis mazos</a>
       </div>
-    </div>
-  </header>
+    </li>
+    <li><a routerLink="/intranet/premio">Premios</a></li>
+    <li class="dropdown">
+      <a style="cursor:pointer">{{usuarioLogeado.sub}}</a>
+      <div class="dropdown-content">
+        <a routerLink="/intranet/miperfil">Ver Perfil</a>
+        <a routerLink="" (click)="logout()">Cerrar Sesión</a>
+      </div>
+    </li>
+  </ul>
+</nav>
