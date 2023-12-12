@@ -18,6 +18,13 @@
     </div>
   </div>
 </div>
+
+<div class=noflashcard *ngIf="filterFlashCards()[i]== null">
+  <img src="/assets/images/pregunta.png" alt="Pregunta" class="question-image">
+  <p class="no-decks-message">Las flashcards estan preparandose, debes esperar</p>
+</div>
+
+
 <div *ngIf="!tieneAcceso()">
   <div class="body-secundario">
     <div class="login-container">

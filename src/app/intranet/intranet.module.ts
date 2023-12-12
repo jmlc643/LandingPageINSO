@@ -18,6 +18,7 @@ import { TusmazosComponent } from './tusmazos/tusmazos.component';
 import { MazosComponent } from './mazos/mazos.component';
 import { FlashcardComponent } from './flashcard/flashcard.component';
 import {SlickCarouselModule } from 'ngx-slick-carousel';
+import {PerfilUsuarioComponent} from "./perfil-usuario/perfil-usuario.component";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {SlickCarouselModule } from 'ngx-slick-carousel';
     TusmazosComponent,
     MazosComponent,
     FlashcardComponent,
+    PerfilUsuarioComponent,
   ],
   imports: [
     CommonModule,
