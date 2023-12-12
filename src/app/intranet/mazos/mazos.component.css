@@ -1,6 +1,22 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  font-family: Arial, sans-serif; /* Agregado para quitar el margen predeterminado del cuerpo */
+  margin: 50px 200px 300px;
+}
+
+.decks-container h1,
+.decks-container button {
+  margin-bottom: 10px;
+}
+
+.question-image {
+  width: 10%;
+  height: auto;
+  display: block;
+  margin: 20px auto; /* Ajusta según sea necesario */
+}
+
+.no-decks-message {
+  text-align: center;
 }
 
 .product-container {
@@ -41,7 +57,8 @@ body {
   border-radius: 15px;
   background-color: #c4e3ff;
 }
-/* Para separar los botones y esten juntos */
+
+/* Para separar los botones y estén juntos */
 .create-button + .create-button {
   margin-left: 30px;
 }

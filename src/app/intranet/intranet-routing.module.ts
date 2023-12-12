@@ -11,6 +11,7 @@ import {TusmazosComponent} from "./tusmazos/tusmazos.component";
 import {CrearflashcardComponent} from "./crearflashcard/crearflashcard.component";
 import {MazosComponent} from "./mazos/mazos.component";
 import {FlashcardComponent} from "./flashcard/flashcard.component";
+import {PerfilUsuarioComponent} from "./perfil-usuario/perfil-usuario.component";
 
 const routes: Routes = [
 
@@ -25,7 +26,8 @@ const routes: Routes = [
         {path: 'crearmazo', component: CrearmazoComponent},
         {path: 'crearflashcard/:id', component: CrearflashcardComponent},
         {path: 'mazos', component: MazosComponent},
-        {path: 'flashcard/:id', component: FlashcardComponent}
+        {path: 'flashcard/:id', component: FlashcardComponent},
+        {path: 'miperfil', component: PerfilUsuarioComponent}
       ],
     },
 //UID, Key, Ofuscar el ID o usar el ID de la BD
