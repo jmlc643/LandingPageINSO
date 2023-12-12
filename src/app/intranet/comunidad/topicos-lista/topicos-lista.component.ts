@@ -89,7 +89,6 @@ export class TopicosListaComponent implements OnInit{
     await this.encontrarTopico(); //Encontrando el topico con el ID enrutado
     console.log(this.topicoEncontrado);
     this.listarPorCategoria(this.topicoEncontrado); //Devuelve los topicos de la izquierda
-
   }
 
   //Filtro de la lista de topicos
@@ -104,7 +103,7 @@ export class TopicosListaComponent implements OnInit{
 
   //Navegacion para el cambio de topico
   link(topico:Topico){
-    this.router.navigateByUrl('/intranet/comunidad/'+ topico.id);
-    location.reload();
+    const url :  string = '/intranet/comunidad/' + topico.id;
+    window.location.href = url;
   }
 }

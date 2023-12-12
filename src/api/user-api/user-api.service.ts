@@ -114,7 +114,7 @@ export class UserApiService {
     if(error.status===0){
       console.error('Se ha producido un error '+error.error);
     }else{
-      console.error('Backend retorno el código del estado '+error);
+      console.error('Backend retorno el código del estado '+error.message);
       console.log(this.userData);
     }return throwError(() => new Error('Error al iniciar sesión. Revise los datos enviados'));
   }

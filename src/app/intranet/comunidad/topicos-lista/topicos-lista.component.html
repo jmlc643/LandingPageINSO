@@ -1,15 +1,14 @@
 <body>
-<div id="orden" *ngIf="userLoginOn == true">
+<div id="orden" *ngIf="userLoginOn">
 
-  <ul class="topics-list" >
-    <div *ngFor="let topico of filterTopicos">
-      <li (click)="link(topico)" routerLinkActive="bold">
-        {{topico.nombre}}
-      </li>
-    </div>
+  <ul class="topics-list">
+    <li *ngFor="let topico of filterTopicos" (click)="link(topico)">
+      {{topico.nombre}}
+    </li>
   </ul>
 
-<app-foro *ngIf="c==1" [topicoEncontrado] = "topicoEncontrado"></app-foro>
+
+  <app-foro *ngIf="c==1" [topicoEncontrado] = "topicoEncontrado"></app-foro>
   <app-publicar-hilo *ngIf="c==0" [topicoEncontrado] = "topicoEncontrado"></app-publicar-hilo>
   <div class="main-container">
     <div class="side-container">
@@ -26,7 +25,7 @@
 
 </div>
 
-<div *ngIf="userLoginOn==false">
+<div *ngIf="!userLoginOn">
   <div class="body-secundario">
     <div class="login-container">
       <img src="/assets/images/robot.jpg"><br>

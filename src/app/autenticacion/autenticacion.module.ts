@@ -10,6 +10,7 @@ import { AuthenticationRoutingModule } from './autenticacion-routing.module';
 import { PorconfirmarComponent } from './porconfirmar/porconfirmar.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RecuperarComponent } from './recuperar/recuperar.component';
+import {CorreRecuperarContraComponent} from "./corre-recuperar-contra/corre-recuperar-contra.component";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { RecuperarComponent } from './recuperar/recuperar.component';
    PorconfirmarComponent,
    ResetPasswordComponent,
    RecuperarComponent,
+   CorreRecuperarContraComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,7 @@ import { RecuperarComponent } from './recuperar/recuperar.component';
     LayoutModule,
     FormsModule,
     AuthenticationRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class AutenticacionModule { }
