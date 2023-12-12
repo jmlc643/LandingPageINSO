@@ -1,23 +1,19 @@
-@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
-
 body {
-    background-color: #1976d2;
-    padding: 50px;
-
+    background-color: #f4f4f4; /* Cambiado a un fondo más claro */
+    padding: 20px;
+    margin: 0;
 }
 
 .card-no-border .card {
     border: 0px;
     border-radius: 4px;
-    -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
-    
 }
 
-.card-body {
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.25rem
+.comment-widgets .comment-row {
+    border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+    padding: 15px;
+    transition: background 0.3s ease; /* Agregada transición suave al hacer hover */
 }
 
 .comment-widgets .comment-row:hover {
@@ -25,14 +21,11 @@ body {
     cursor: pointer;
 }
 
-.comment-widgets .comment-row {
-    border-bottom: 1px solid rgba(120, 130, 140, 0.13);
-    padding: 15px;
-}
-.comment-text:hover{
+.comment-text:hover {
     visibility: hidden;
 }
-.comment-text:hover{
+
+.comment-text:hover {
     visibility: visible;
 }
 
@@ -61,39 +54,64 @@ body {
     background-color: #ef5350;
 }
 
-.action-icons a {
+.action-icons a,
+.action-iconss a {
     padding: 10px;
     vertical-align: middle;
     color: #99abb4;
+    transition: color 0.3s ease; /* Agregada transición suave al hacer hover */
 }
 
-.action-iconss a {
-    padding: 100px;
-    vertical-align: middle;
-    color: #99abb4;
-}
-
-.action-icons a:hover {
-    color: #1976d2;
-}
-
+.action-icons a:hover,
 .action-iconss a:hover {
     color: #1976d2;
 }
 
-
 .body-secundario {
-    background-color: #ffffff; /* Fondo blanco */
+    background-color: #ffffff;
     padding: 15px;
     border: 1px solid #999;
-    text-align: center; /* Centrado del contenido */
-    margin: 0 auto; /* Centrado horizontal */
-    width: 60%; /* Ancho del cuerpo secundario */
+    text-align: center;
+    margin: 0 auto;
+    width: 60%;
     height: 500px;
-  }
+}
 
-  .login-container {
-    width: 300px; /* Ancho del contenedor */
-    margin: auto; /* Auto-margin para centrar horizontalmente */
-    text-align: center; /* Centrar texto */
-  }
+.login-container {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.comentario {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    transition: background 0.3s ease; /* Agregada transición suave al hacer hover */
+}
+
+.comentario:hover {
+    background-color: #f8f8f8;
+}
+
+a {
+    text-decoration: none;
+    padding-right: 20px;
+    color: #777;
+}
+
+a:hover {
+    color: black;
+}
+
+#estrella {
+    color: rgb(243, 213, 18);
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#estrella:hover {
+    transform: scale(1.2);
+    color: rgb(255, 217, 0);
+    box-shadow: 0 0 10px rgba(243, 213, 18, 0.7);
+}

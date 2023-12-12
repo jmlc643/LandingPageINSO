@@ -4,16 +4,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
- }
- 
- h3{
-    display: inline;
-    margin: 0;
- }
-
- h5{
-  display: inline;
-  margin: 0;
+  background-color: #f4f4f4;
 }
 
 #page-container {
@@ -22,84 +13,63 @@ body {
   padding: 20px;
   background-color: #fff;
 }
-
-#search-container {
+.contenedor{
+  display: inline-flex;
+  
+}
+.container-wrapper {
   display: flex;
-  align-items: center;
-}
-
-#search-box {
-  flex: 1;
-  padding: 10px;
-  border: 2px solid black; /* Borde negro para el cuadro de búsqueda */
-  border-radius: 10px; /* Borde redondo para el cuadro de búsqueda */
-}
-
-#search-button {
-  padding: 10px;
-  margin-left: 10px;
-  border: none; /* Quitamos el borde predeterminado */
-  border-radius: 15px; /* Borde redondo para el botón de búsqueda */
-  background-color: #c4e3ff; /* Color celeste para el botón de búsqueda */
+  flex-wrap: wrap; /* Permite que los contenedores se envuelvan en pantallas más pequeñas */
+  justify-content: center;
 }
 
 .container {
-  background-color: #e9f6ff; /* Color de fondo celeste claro */
-  margin: 50px 0; /* Margen de separación de 50px arriba y abajo */
-  padding: 20px; /* Espacio interno dentro de los contenedores */
-  width: 1150px; /* Ancho de 1150px */
-  height: 280px; /* Altura de 280px */
-  position: relative;
-  border-radius: 15px; /* Borde redondo de 15px */
+  margin: 0 auto; /* Centra el contenedor en la página */
+  background-color: #e9f6ff;
+  margin-bottom: 15px;
+  padding: 20px;
+  width: 1300px; /* Ancho ajustado  */
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .container h2 {
-  position: relative; /* Añadimos posición relativa para el título */
-  font-size: 35pt; /* Cambiamos el tamaño de fuente a 40 puntos */
-  margin-top: 5px; /* Añadimos un margen superior de 5 píxeles */
+  position: relative;
+  font-size: 35pt;
+  margin-top: 3px;
 }
 
 .container h2::after {
   content: "";
   display: block;
-  border-bottom: 10px solid #b5ddff; /* Línea celeste de 10px de grosor */
-  width: 100%; /* Ancho completo del título */
+  border-bottom: 2px solid #b5ddff;
+  width: 100%;
   position: absolute;
-  bottom: -10px; /* Alinear al final del título */
+  bottom: -10px;
 }
 
-.container p {
-  margin-top: 10px;
-}
-/* Se puede justificar ambos con justify-content: space-between; */
 .create-buttons {
   display: flex;
+  justify-content: center;
   margin: 15px 0;
 }
 
-.create-button {
-  display: inline-block;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 15px;
-  background-color: #c4e3ff;
+.create-button button:hover {
+  background-color: #a5d8ff;
+  transform: scale(1.05);
 }
-/* Para separar los botones y esten juntos */
-.create-button + .create-button {
-  margin-left: 30px;
+
+.create-button button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 3px;
+  background-color: #c4e3ff;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  margin: 0 5px;
 }
 
 .container button.create-button {
-  /* Ajuste del botón "Topico" */
-  margin-top: 20px; /* Modificar el espacio entre el título y el botón */
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  margin-top: 20px;
 }
 
 .login-container {
@@ -113,5 +83,5 @@ body {
 }
 
 .text-primary {
-  color: blue; /* Cambia el color a tu preferencia */
+  color: blue;
 }

@@ -10,13 +10,19 @@
   </div>
   <!-- CONTENEDOR 1 -->
   <div class="container" id="container-1" *ngFor="let categoriaa of categorias">
-    <h2>{{categoriaa.nombre}}</h2>
-    <br>
-    <div class="create-button" *ngFor="let topicoo of filterTopicos(categoriaa)">
-      <button [routerLink]="['comunidad', topicoo.id]" class="create-button">
-        {{topicoo.nombre}}
-      </button>
+    <div>
+      <h2>{{categoriaa.nombre}}</h2>
     </div>
+
+    <br>
+    <div class="contenedor">
+      <div class="create-button" *ngFor="let topicoo of filterTopicos(categoriaa)">
+        <button [routerLink]="['comunidad', topicoo.id]" class="create-button">
+          {{topicoo.nombre}}
+        </button>
+      </div>
+    </div>
+
   </div>
 </div>
 
