@@ -1,91 +1,32 @@
-<body>
-  <div *ngIf="tieneAcceso()">
-    <div *ngFor="let premio of premios">
-      <img [src]="premio.imagen" alt="Image">
-      <p>{{premio.nombre}}</p>
-      <p>{{premio.precio}}</p>
-    </div>
-  </div>
-  <div *ngIf="!tieneAcceso()">
-    <div class="body-secundario">
-      <div class="login-container">
-        <img src="/assets/images/robot.jpg"><br>
-        <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
-        <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
-      </div>
-    </div>
-  </div>
-</body>
-
-<div class="main">
+<div class="main" *ngIf="tieneAcceso()">
   <div>
     <button class="boton" role="button">Crear Premio</button>
   </div>
 
-  <div class="container">
-    <div class = "card">
-      <img src="https://shccares.com/wp-content/uploads/2022/06/Scrubs-pros-and-cons-header.jpg" alt="">
+  <div class="container" >
+    <div class = "card" *ngFor="let premio of premios">
+      <img [src]="premio.imagen" alt="">
       <div class="card-content">
         <h2>
-          Scrub
+          {{premio.nombre}}
         </h2>
         <p>
-          Scrub en diferentes tallas para asistir a clases o al hospital
+          {{premio.descripcion}}
         </p>
         <a href="#" class="button">
           Canjear
-
-        </a>
-      </div>
-    </div>
-
-    <div class = "card">
-      <img src="https://e1.pxfuel.com/desktop-wallpaper/754/526/desktop-wallpaper-stethoscope-with-book-stethoscope.jpg" alt="">
-      <div class="card-content">
-        <h2>
-          Estetoscopio
-        </h2>
-        <p>
-          Estetoscopio Littman Cardiologist nuevo
-        </p>
-        <a href="#" class="button">
-          Canjear
-
-        </a>
-      </div>
-    </div>
-
-    <div class = "card">
-      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-      <div class="card-content">
-        <h2>
-          Reforzamiento
-        </h2>
-        <p>
-          Reforzamiento para los examenes en academias
-        </p>
-        <a href="#" class="button">
-          Canjear
-
-        </a>
-      </div>
-    </div>
-
-    <div class = "card">
-      <img src="https://img.freepik.com/foto-gratis/persona-mayor-comprobando-su-presion-arterial-tensiometro_23-2150456115.jpg" alt="">
-      <div class="card-content">
-        <h2>
-          Tensiometro
-        </h2>
-        <p>
-          Tensiometro para mediciones
-        </p>
-        <a href="#" class="button">
-          Canjear
-
         </a>
       </div>
     </div>
   </div>
+</div>
 
+<div *ngIf="!tieneAcceso()">
+  <div class="body-secundario">
+    <div class="login-container">
+      <img src="/assets/images/robot.jpg"><br>
+      <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
+      <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
+    </div>
+  </div>
 </div>
