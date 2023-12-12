@@ -107,11 +107,9 @@ export class UserApiService {
       catchError(this.handleError)
     );
   }
-
   canjear(canjeo: PuntuarRequest): Observable<any>{
     return this.httpClient.post<any>(environment.urlHost + '/user/canjear', canjeo);
   }
-
   get userData():Observable<String>{
     return this.currentUserData.asObservable();
   }

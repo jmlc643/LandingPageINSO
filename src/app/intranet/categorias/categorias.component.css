@@ -90,5 +90,12 @@ body {
   margin: 0;
 }
 
+.bienvenida-usuario h1{
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
 
+.bienvenida-usuario p{
+  margin-bottom: 60px;
+}
 
