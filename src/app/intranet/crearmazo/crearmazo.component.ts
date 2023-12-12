@@ -116,7 +116,7 @@ export class CrearmazoComponent implements OnInit{
   }
   //Funcion para verificar si el usuario esta logeado y es administrador
   tieneAcceso(): boolean {
-    return this.userLoginOn && this.usuarioLogeado.aud == 'ADMIN';
+    return this.userLoginOn;
   }
 }
 

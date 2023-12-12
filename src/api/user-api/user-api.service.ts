@@ -46,6 +46,12 @@ export interface AuthenticationUserResponse{
   mensaje : string
 }
 
+export interface PuntuarRequest {
+  username : string,
+  nombre : string,
+  puntos : number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -63,7 +69,7 @@ export class UserApiService {
 
 
   getListUser(){
-    return lastValueFrom(this.httpClient.get<Usuario[]>(environment.urlHost+'/user/listar/'))
+    return lastValueFrom(this.httpClient.get<UsuarioDTO[]>(environment.urlHost+'/user/listar/'))
   }
 
   saveUser(usuario: Usuario):Observable<any>{
@@ -101,7 +107,9 @@ export class UserApiService {
       catchError(this.handleError)
     );
   }
-
+  canjear(canjeo: PuntuarRequest): Observable<any>{
+    return this.httpClient.post<any>(environment.urlHost + '/user/canjear', canjeo);
+  }
   get userData():Observable<String>{
     return this.currentUserData.asObservable();
   }

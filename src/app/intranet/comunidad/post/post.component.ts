@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Comentario, ComentarioApiService, SaveComentarioRequest } from 'src/api/comentario-api/comentario-api.service';
 import { Hilo, HiloApiService } from 'src/api/hilo-api/hilo-api.service';
 import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
-import { UserApiService, Usuario } from 'src/api/user-api/user-api.service';
+import {UserApiService, Usuario, UsuarioDTO} from 'src/api/user-api/user-api.service';
 
 @Component({
   selector: 'app-post',
@@ -30,7 +30,7 @@ export class PostComponent implements OnInit {
 
   //Listas
   hilos: Hilo[] = [];
-  usuarios: Usuario[] = [];
+  usuarios: UsuarioDTO[] = [];
   comentarios: Comentario[] = [];
 
   //Inyeccion de servicios

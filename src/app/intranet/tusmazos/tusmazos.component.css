@@ -1,12 +1,21 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  background-color: #f2f2f2;
 }
 
 .product-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+}
+
+#page-container {
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
 }
 
 .product {
@@ -28,22 +37,28 @@ body {
   cursor: pointer;
 }
 
-.create-buttons {
-  display: flex;
-  margin: 15px 0;
-  align-items: flex-end;
-}
 
 .create-button {
-  display: inline-block;
-  padding: 10px 20px;
+
   border: none;
-  border-radius: 15px;
-  background-color: #c4e3ff;
+  display: flex;
+  margin-left: 500px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #4dbbff; /* Color celeste */
+  color: #fff; /* Color de texto blanco */
+  border-radius: 8px;
+  transition: background-color 0.3s ease; /* Transición suave de color al pasar el mouse */
+  /* Sombras para dar profundidad */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);;
+
 }
-/* Para separar los botones y esten juntos */
-.create-button + .create-button {
-  margin-left: 30px;
+
+.create-button:hover {
+  background-color: #368ec0; /* Cambia el color al pasar el mouse */
 }
 
 .login-container {
@@ -67,8 +82,136 @@ body {
   height: auto;
   display: block;
   margin: 20px auto; /* Ajusta según sea necesario */
+
 }
 
 .no-decks-message {
   text-align: center;
 }
+
+.decks-container{
+  margin-bottom: 50px;
+
+}
+
+.no-mazo{
+  margin-bottom: 300px;
+}
+
+/*MAZOS CONTENIDO*/
+
+.contenedor{
+  margin-left: 120px;
+  margin-right: 140px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 300px;
+  background-color: #ddeffa;
+}
+
+
+.mazo-contenido{
+  border: 1px solid #ccc;
+  margin: 10px;
+  width: 17.5rem; /* 25rem * 0.7 */
+  height: 12.6rem; /* 18rem * 0.7 */
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  color: rgb(240, 240, 240);
+}
+
+/*probando*/
+
+
+
+.mazo-contenido p, .mazo-contenido a {
+  position: absolute;
+  opacity: 0;
+  max-width: 80%;
+  transition: opacity 0.3s ease-out;
+}
+
+.mazo-contenido p {
+  inset: auto auto 80px 30px;
+}
+
+.mazo-contenido a {
+  inset: auto auto 40px 30px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.mazo-contenido:hover h2 {
+  inset: auto auto 150px 30px;
+  transition: inset 0.3s ease-out;
+  color: white;
+}
+
+.mazo-contenido h2 {
+  position: absolute;
+  inset: auto auto 30px 30px;
+  margin: 0;
+  transition: inset 0.3s 0.3s ease-out;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.mazo-contenido:hover p, .mazo-contenido:hover a {
+  opacity: 1;
+  transition: opacity 0.5s 0.1s ease-in;
+}
+
+.mazo-contenido:hover img {
+  transition: filter 0.3s ease-in;
+  filter: brightness(0.5);
+}
+
+
+.mazo-contenido img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.9;
+  transition: opacity 0.2s ease-out;
+}
+
+.button {
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  margin-left: 70px;
+  border: 2px solid white; /* Agrega un borde blanco de 2 píxeles */
+  border-radius: 10px; /* Aplica un radio de borde para hacerlo redondeado */
+}
+
+.decks-container p{
+  text-align: center;
+  margin: 20px 120px;
+}
+
+.decks-container h1{
+  margin-left: 120px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.decks-container h2{
+  text-align: center;
+  margin: 20px 120px;
+  font-size: 20px;
+  font-weight: bold;
+}
+

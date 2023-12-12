@@ -4,13 +4,19 @@
   </div>
   <ul class="nav-list">
     <li><a routerLink="/intranet">Home</a></li>
-    <li><a routerLink="/intranet/mazos">Mazos</a></li>
-    <li><a href="#">Premios</a></li>
     <li class="dropdown">
-      <a>{{usuarioLogeado.sub}}</a>
+    <a routerLink="/intranet/mazos">Mazos</a>
       <div class="dropdown-content">
-        <a href="#">Ver Perfil</a>
-        <a (click)="logout()">Cerrar Sesión</a>
+        <a routerLink="/intranet/mazos">General</a>
+        <a routerLink="/intranet/tusmazo">Mis mazos</a>
+      </div>
+    </li>
+    <li><a routerLink="/intranet/premio">Premios</a></li>
+    <li class="dropdown">
+      <a style="cursor:pointer">{{usuarioLogeado.sub}}</a>
+      <div class="dropdown-content">
+        <a routerLink="/intranet/miperfil">Ver Perfil</a>
+        <a routerLink="" (click)="logout()">Cerrar Sesión</a>
       </div>
     </li>
   </ul>

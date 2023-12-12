@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Premio, PremioApiService} from "../../../api/premio-api/premio-api.service";
-import {UserApiService} from "../../../api/user-api/user-api.service";
+import {PuntuarRequest, UserApiService, UsuarioDTO} from "../../../api/user-api/user-api.service";
 
 @Component({
   selector: 'app-premios',
@@ -27,6 +27,10 @@ export class PremiosComponent implements OnInit{
   base64Array: string[] = [];
   images : string[] = []
 
+  //Temporal
+  usuarios: UsuarioDTO[] = []
+  usuarioEncontrado?: UsuarioDTO;
+
   async ngOnInit() {
     //Identificar si el usuario esta logeado
     this.userApiService.currentUserLoginOn.subscribe({
@@ -45,11 +49,13 @@ export class PremiosComponent implements OnInit{
       this.images.push(premio.imagen);
     })
     this.base64Array = this.generarBase64Array(this.images);
+    this.usuarioEncontrado = this.usuarios.find(usuario => usuario.user == this.usuarioLogeado.sub)
   }
 
   private async loadData() {
     //Carga de la lista de los premios
     this.premios = await this.premioApiService.getListPremios();
+    this.usuarios = await this.userApiService.getListUser();
   }
 
   //Metodo para desencriptar token
@@ -84,4 +90,29 @@ export class PremiosComponent implements OnInit{
     return this.userLoginOn;
   }
 
+  canjeo(premio : Premio){
+    const canjeo: PuntuarRequest = {
+      username: this.usuarioLogeado.sub,
+      nombre: premio.nombre,
+      puntos: premio.precio
+    }
+    // @ts-ignore
+    if(this.usuarioEncontrado?.nroPuntos - canjeo.puntos >= 0){
+      this.userApiService.canjear(canjeo).subscribe({
+        next: (userData) => {
+          console.log(userData)
+        },
+        error : (errorData: any) => {
+          console.error(errorData);
+        },
+        complete: () => {
+          console.info("Canjeo completado");
+          location.reload();
+        }
+      });
+    }else{ console.error("Saldo insuficiente")}
+
+  }
+
 }
+
