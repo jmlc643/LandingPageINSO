@@ -13,12 +13,6 @@
     <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/creartopico" class="create-button">Crear Tópico</button>
   </div>
 
-  <div class="container-1">
-     <p>Mejora tu aprendizaje utilizando mazos para guardar tus flashcards</p>
-    <button class="flashcards" routerLink="/intranet/mazos">Ver Flashcards</button>
-  </div>
-
-
   <!-- CONTENEDOR 1 -->
   <div class="container" id="container-1" *ngFor="let categoriaa of categorias">
     <h2 class="categoria-titulo">{{categoriaa.nombre}}</h2>

@@ -9,12 +9,12 @@ import { UserApiService } from 'src/api/user-api/user-api.service';
 })
 export class HeaderGeneralComponent implements OnInit{
   public usuarioLogeado:any = {};
-  public userLoginOn:boolean=false;   
+  public userLoginOn:boolean=false;
   userDropdownOpen = false;
   usuario:String = "";
   userApiService = inject(UserApiService);
   router = inject(Router);
-  
+
 
     toggleUserDropdown() {
     this.userDropdownOpen = !this.userDropdownOpen;
@@ -47,6 +47,6 @@ export class HeaderGeneralComponent implements OnInit{
 
   logout(){
     this.userApiService.cerrarSesion();
-    this.router.navigate(['/login']);    
+    this.router.navigate(['/login']);
   }
 }
