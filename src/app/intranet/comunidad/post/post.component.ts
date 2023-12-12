@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Comentario, ComentarioApiService, SaveComentarioRequest } from 'src/api/comentario-api/comentario-api.service';
 import { Hilo, HiloApiService } from 'src/api/hilo-api/hilo-api.service';
 import { JwtInterceptorService } from 'src/api/jwt-api/jwt-interceptor.service';
-import {UserApiService, Usuario, UsuarioDTO} from 'src/api/user-api/user-api.service';
+import {PuntosRequest, PuntuarRequest, UserApiService, Usuario, UsuarioDTO} from 'src/api/user-api/user-api.service';
+import {Premio} from "../../../../api/premio-api/premio-api.service";
 
 @Component({
   selector: 'app-post',
@@ -16,17 +17,17 @@ export class PostComponent implements OnInit {
   activatedRoute = inject(ActivatedRoute);
 
   //Objeto a ser mapeado
-  comentario : SaveComentarioRequest = {
+  comentario: SaveComentarioRequest = {
     mensaje: '',
     username: '',
-    idHilo : 0
+    idHilo: 0
   }
 
   //Identificador para saber que usuario esta logeado
-  usuarioLogeado :any = {};
+  usuarioLogeado: any = {};
 
   //Identificador para saber si esta logeado
-  userLoginOn : boolean = false;
+  userLoginOn: boolean = false;
 
   //Listas
   hilos: Hilo[] = [];
@@ -43,10 +44,10 @@ export class PostComponent implements OnInit {
   hiloEncontrado?: Hilo;
   idd: number = 0;
 
-  formError : String = "";
+  formError: String = "";
 
   createComentarioForm = this.formBuilder.group({
-      mensaje: ['',[Validators.required, Validators.maxLength(200)]],
+    mensaje: ['', [Validators.required, Validators.maxLength(200)]],
   })
 
   ngOnInit() {
@@ -54,13 +55,13 @@ export class PostComponent implements OnInit {
     this.usuarioLogeado = this.decodificarjwt(token);
     console.log(this.usuarioLogeado);
     this.hiloApiService.getListHilos().subscribe({
-      next: (hiloData)=>{
+      next: (hiloData) => {
         this.hilos = hiloData;
       },
       error: (errorData) => {
         this.errorData = errorData;
       },
-      complete: () =>{
+      complete: () => {
         console.info("Data obtenida")
       }
     })
@@ -69,7 +70,7 @@ export class PostComponent implements OnInit {
       this.idd = +this.activatedRoute.snapshot.params['id'];
     });
     this.userApiService.currentUserLoginOn.subscribe({
-      next:(userLoginOn) => {
+      next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
       }
     })
@@ -77,20 +78,20 @@ export class PostComponent implements OnInit {
     this.loadData();
   }
 
-  get message(){
+  get message() {
     return this.createComentarioForm.controls.mensaje;
   }
 
-  public decodificarjwt(token:String):any{
-    console.log("Este es el token que he recibido "+ token);
+  public decodificarjwt(token: String): any {
+    console.log("Este es el token que he recibido " + token);
     var base64Url = token.split('.')[1];
-    console.log("Token base64url: "+ base64Url);
+    console.log("Token base64url: " + base64Url);
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    console.log("Token base64: "+base64);
-    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+    console.log("Token base64: " + base64);
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-    console.log("JSON: "+jsonPayload);
+    console.log("JSON: " + jsonPayload);
     return JSON.parse(jsonPayload);
   }
 
@@ -109,7 +110,8 @@ export class PostComponent implements OnInit {
           console.info("Data obtenida");
           console.log(this.comentarios);
         }
-      });;
+      });
+      ;
       this.usuarios = await this.userApiService.getListUser();
 
       // Obtener comentarios mediante observables
@@ -139,8 +141,8 @@ export class PostComponent implements OnInit {
     return this.comentarios.filter(comentarioo => this.hiloEncontrado?.id === comentarioo.hiloSerializer?.id);
   }
 
-  saveComentario(){
-    if(this.createComentarioForm.valid){
+  saveComentario() {
+    if (this.createComentarioForm.valid) {
       this.formError = "";
       this.comentario.username = this.usuarioLogeado.sub as string;
       this.comentario.idHilo = this.idd as number;
@@ -148,20 +150,39 @@ export class PostComponent implements OnInit {
         next: (comentarioData) => {
           console.log(comentarioData)
         },
-        error : (errorData: any) => {
+        error: (errorData: any) => {
           console.error(errorData);
-          this.formError="Error al crear";
+          this.formError = "Error al crear";
         },
         complete: () => {
           console.info("Creacion completada")
-          this.router.navigateByUrl('/intranet/comunidad/'+this.hiloEncontrado?.topico.id+'/post/'+this.hiloEncontrado?.id);
+          this.router.navigateByUrl('/intranet/comunidad/' + this.hiloEncontrado?.topico.id + '/post/' + this.hiloEncontrado?.id);
           this.createComentarioForm.reset();
           location.reload();
         }
       });
-  }else{
-    this.createComentarioForm.markAllAsTouched();
-    alert("Error de ingreso de datos")
+    } else {
+      this.createComentarioForm.markAllAsTouched();
+      alert("Error de ingreso de datos")
+    }
   }
+
+  puntos(puntos: number) {
+    const puntuando: PuntosRequest = {
+      username: this.usuarioLogeado.sub,
+      puntos: puntos
+    }
+    this.userApiService.puntuar(puntuando).subscribe({
+      next: (userData) => {
+        console.log(userData)
+      },
+      error: (errorData: any) => {
+        console.error(errorData);
+      },
+      complete: () => {
+        console.info("Canjeo completado");
+        location.reload();
+      }
+    });
   }
 }
