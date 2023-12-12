@@ -80,4 +80,8 @@ export class PremiosComponent implements OnInit{
     return btoa(dato);
   }
 
+  tieneAcceso(){
+    return this.userLoginOn;
+  }
+
 }

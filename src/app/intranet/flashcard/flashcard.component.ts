@@ -2,6 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {Flashcard, FlashcardApiService} from "../../../api/flashcard-api/flashcard-api.service";
 import {Mazo, MazoApiService} from "../../../api/mazo-api/mazo-api.service";
 import {ActivatedRoute} from "@angular/router";
+import {UserApiService} from "../../../api/user-api/user-api.service";
 
 @Component({
   selector: 'app-flashcard',
@@ -9,6 +10,9 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./flashcard.component.css']
 })
 export class FlashcardComponent implements OnInit{
+
+  //Identificador para saber si esta logeado
+  userLoginOn : boolean = false;
 
   //MazoEncontrado
   idd: number = 0;
@@ -21,8 +25,14 @@ export class FlashcardComponent implements OnInit{
   flashcardApiService = inject(FlashcardApiService);
   mazoApiService = inject(MazoApiService);
   activatedRoute = inject(ActivatedRoute);
+  userApiService = inject(UserApiService);
 
   async ngOnInit() {
+    this.userApiService.currentUserLoginOn.subscribe({
+      next:(userLoginOn) => {
+        this.userLoginOn = userLoginOn;
+      }
+    })
     this.activatedRoute.params.subscribe(prm => {
       console.log(`El id es: ${prm['id']}`);
       this.idd = +this.activatedRoute.snapshot.params['id'];
@@ -66,6 +76,10 @@ export class FlashcardComponent implements OnInit{
     if(this.i == this.flashcards.length){
       this.message = "Gracias por usar este mazo. Tu puntaje ha sido de "+this.puntaje;
     }
+  }
+
+  tieneAcceso(): boolean {
+    return this.userLoginOn;
   }
 
 }

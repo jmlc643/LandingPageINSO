@@ -1,24 +1,18 @@
-
-<div *ngFor="let mazo of mazos">
-  <img [src]="mazo.imagen" alt="Image">
-  <p>{{mazo.titulo}}</p>
-  <p>{{mazo.usuario.user}}</p>
-  <button (click) = "practicar(mazo)" class = "create-button">Practicar</button>
+<div *ngIf="tieneAcceso()">
+  <div *ngFor="let mazo of mazos">
+    <img [src]="mazo.imagen" alt="Image">
+    <p>{{mazo.titulo}}</p>
+    <p>{{mazo.usuario.user}}</p>
+    <button (click) = "practicar(mazo)" class = "create-button">Practicar</button>
+  </div>
 </div>
 
-<body>
-
-<section class="decks-container">
-  <h1>Mis Mazos</h1>
-  <!-- Botón para crear un nuevo mazo -->
-  <button id="createDeckBtn" routerLink="/intranet/crearmazo" class="create-button">Crear Mazo</button>
-
-  <ul class="deck-list">
-    <!-- Aquí se mostrarán los mazos si los tienes -->
-  </ul>
-</section>
-
-<img src="/assets/images/pregunta.png" alt="Pregunta" class="question-image">
-<p class="no-decks-message">Parece que no tienes mazos. ¡Prueba creando uno nuevo!</p>
-
-</body>
+<div *ngIf="!tieneAcceso()">
+  <div class="body-secundario">
+    <div class="login-container">
+      <img src="/assets/images/robot.jpg"><br>
+      <h3 class="text-center text-primary iniciarsesion-title">¡Vaya! Al parecer estás intentando entrar a la página</h3>
+      <p class="text-center text-black">Lo siento, no te has autenticado. Autentícate para que puedas tener acceso a Learnsync.</p>
+    </div>
+  </div>
+</div>

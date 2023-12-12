@@ -44,7 +44,6 @@ export class TusmazosComponent implements OnInit{
     //Carga de datos
     await this.loadData();
   }
-
   private async loadData() {
     //Carga de la lista de los premios
     this.mazos = await this.mazoApiService.getListMazos();
@@ -69,5 +68,9 @@ export class TusmazosComponent implements OnInit{
 
   irACrearFlashCard(mazo : Mazo){
     this.router.navigateByUrl("/intranet/crearflashcard/"+mazo.id);
+  }
+
+  tieneAcceso(): boolean {
+    return this.userLoginOn;
   }
 }
