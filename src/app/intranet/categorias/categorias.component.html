@@ -1,12 +1,11 @@
 
 <div id="page-container" *ngIf="userLoginOn==true">
   <div>
-    <h3>Bienvenido, </h3>
-    <h5>{{usuarioLogeado.sub!}}</h5>
+    <h3>Bienvenido, {{usuarioLogeado.sub!}}</h3>
   </div>
   <div class="create-buttons">
-    <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/crearcategoria" class="create-button">Crear Categoría</button>
-    <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/creartopico" class="create-button">Crear Tópico</button>
+    <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/crearcategoria" class="boton">Crear Categoría</button>
+    <button *ngIf="this.usuarioLogeado.aud == 'ADMIN'" routerLink="/intranet/creartopico" class="boton">Crear Tópico</button>
   </div>
   <!-- CONTENEDOR 1 -->
   <div class="container" id="container-1" *ngFor="let categoriaa of categorias">
