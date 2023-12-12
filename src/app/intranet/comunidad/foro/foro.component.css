@@ -1,39 +1,64 @@
-.forum {
-  width: 90%; /* 70% - 30% */
-  margin: 14px auto; /* 20px - 30% */
-  border: 0.7px solid #ccc; /* 1px - 30% */
-  padding: 14px; /* 20px - 30% */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
+.forum {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd; /* Borde suave */
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #fff; /* Fondo blanco */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .post-container {
-  border: 0.7px solid #ccc; /* 1px - 30% */
-  padding: 7px; /* 10px - 30% */
-  margin-bottom: 40px; /* 15px - 30% */
-  overflow: auto; /* Clearfix to contain floats */
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow: hidden; /* Clearfix para contener floats y evitar problemas de layout */
+  border-radius: 8px;
+  background-color: #fff; /* Fondo blanco */
+  transition: box-shadow 0.3s, background-color 0.3s, transform 0.3s;
+}
+
+.post-container:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02); /* Escala ligeramente al pasar el cursor */
 }
 
 .user-info {
   font-weight: bold;
-  font-size: 100%; /* 100% - 30% */
+  font-size: 18px;
+  color: #333;
+}
+
+.post-title {
+  font-size: 22px; /* Tamaño de fuente más grande */
+  color: #444;
+  margin-bottom: 10px; /* Espacio adicional debajo del título */
 }
 
 .reply-btn {
   float: right;
-  padding: 5.6px 10.5px; /* 8px - 30%, 15px - 30% */
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  clear: both; /* Clear the float */
 }
 
 .reply-btn:hover {
   background-color: #0056b3;
 }
 
-.topico-encontrado{
-  font-size: 30px;
+.topico-encontrado {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #6c6c6c;
+  margin-left: 40px;
 }
