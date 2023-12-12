@@ -52,6 +52,11 @@ export interface PuntuarRequest {
   puntos : number
 }
 
+export interface PuntosRequest{
+  username : string,
+  puntos : number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -106,6 +111,10 @@ export class UserApiService {
     return this.httpClient.post<any>(environment.urlHost+'/autenticacion/change-pass/'+token, password).pipe(
       catchError(this.handleError)
     );
+  }
+
+  puntuar(puntos: PuntosRequest): Observable<any>{
+    return this.httpClient.post<any>(environment.urlHost + '/user/puntuar/', puntos);
   }
   canjear(canjeo: PuntuarRequest): Observable<any>{
     return this.httpClient.post<any>(environment.urlHost + '/user/canjear', canjeo);
