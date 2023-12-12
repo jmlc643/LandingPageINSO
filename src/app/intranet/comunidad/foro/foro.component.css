@@ -57,8 +57,15 @@ body {
 }
 
 .topico-encontrado {
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #6c6c6c;
-  margin-left: 40px;
+  font-size: 28.8px; /* Reducción del 20% */
+  margin-bottom: 16px; /* Ajuste para mantener el espaciado */
+  color: #006fe5c4;
+  text-align: center;
+  padding: 12px; /* Ajuste proporcional */
+  background-color: #006fe5c4;
+  color: #fff;
+  border-radius: 6.4px; /* Ajuste proporcional */
+  box-shadow: 0 3.2px 6.4px rgba(0, 0, 0, 0.1); /* Ajuste proporcional */
+  width: 91%; /* Reducción del ancho en un 20% */
+  margin: 0 auto; /* Centrar horizontalmente */
 }
