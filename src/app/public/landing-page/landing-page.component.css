@@ -22,13 +22,13 @@ body {
 h1 {
   font-size: 30px;
   font-weight: 650;
-  color: #007bff; /* Título en color azul */
+  color: #fa8fb1; /* Título en color azul */
 }
 
 h2 {
   font-size: 30px;
   font-weight: 650;
-  color: #007bff; /* Título en color azul */
+  color: #fa8fb1; /* Título en color azul */
   margin-top: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -58,18 +58,18 @@ p {
 }
 
 .btn-primary {
-  background-color: #007bff; /* Fondo azul */
+  background-color: #fa8fb1; /* Fondo azul */
   color: #fff; /* Texto blanco */
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3; /* Fondo azul más oscuro al pasar el cursor */
+  background-color: #f8115a; /* Fondo azul más oscuro al pasar el cursor */
 }
 
 /* Estilos para los nuevos contenedores */
 .services-section {
-  background-color: #e4e8ff;
+  background-color: #fa8fb1;
   margin-top: 100px;
   margin-bottom: 100px;
   width: 100%;
@@ -78,6 +78,14 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.services-section h2 {
+  font-size: 30px;
+  font-weight: 650;
+  color: #3f021b; /* Título en color azul */
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .resource-exchange-section,
