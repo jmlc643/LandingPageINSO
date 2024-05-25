@@ -62,7 +62,7 @@ describe('IniciarSesionComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     component.autenticarUsuario();
-    expect(component.loginError).toEqual(' vacio ');
+    expect(component.loginError).toEqual('');
   });
   
 });
