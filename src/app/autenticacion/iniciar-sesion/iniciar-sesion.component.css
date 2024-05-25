@@ -1,5 +1,5 @@
 body {
-  background-color: #8095ff;
+  background-color: #ff8095;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -13,15 +13,8 @@ body {
   padding: 20px;
 }
 
-.login-form {
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-}
 .container {
-  padding: 20px;
+  padding: 70px;
   flex: 1; /* El contenedor llenará el espacio disponible verticalmente */
   display: flex;
   align-items: center;
@@ -36,7 +29,7 @@ body {
 }
 
 .form-control {
-  background-color: #ecf6ff; /* Cambia este valor al color celeste que desees */
+  background-color: #fcfcfd; /* Cambia este valor al color celeste que desees */
 }
 
 .form-group {
@@ -66,16 +59,18 @@ body {
 }
 
 .iniciar-sesion-button {
-  background-color: #0099ff; /* Cambia el color de fondo del botón de Iniciar Sesión a azul */
+  background-color: #ff8095; /* Cambia el color de fondo del botón de Iniciar Sesión a azul */
   color: white; /* Cambia el color del texto a blanco */
-  transition: none; /* Elimina la transición en hover */
+  border-color: #ff8095;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .iniciar-sesion-button:hover {
-  background-color: #0099ff; /* Mantén el color de fondo azul en hover para el botón de Iniciar Sesión */
+  background-color: #f8115a; /* Mantén el color de fondo azul en hover para el botón de Iniciar Sesión */
+  border-color: #f8115a;
 }
 
-.learnsync-title {
+.educom-title {
   font-size: 20pt;
   font-weight: bold;
   text-transform: uppercase;
@@ -86,12 +81,13 @@ body {
   font-size: 24pt; /* Cambia el tamaño del texto a 24 puntos */
   font-weight: bold; /* Hace que el texto sea negrita */
   font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto */
+  color: #000000;
 }
 
 .ng-valid:not(form).ng-touched {
-  border-left: 5px solid #42a948;
+  border-left: 5px solid #ff8095;
 }
 
 .ng-invalid:not(form).ng-touched {
-  border-left: 5px solid #a94442;
+  border-left: 5px solid #ff8095;
 }
