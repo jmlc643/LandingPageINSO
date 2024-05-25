@@ -1,5 +1,5 @@
 body {
-    background-color: #8095ff;
+    background-color: #ff8095;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -13,12 +13,13 @@ body {
     font-size: 28px;
   }
   .container {
-    padding: 20px;
+    padding: 10px;
   }
 
   .login-form {
     background-color: #fff;
     padding: 20px;
+    margin-top: 120px;
     border: 1px solid #000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
@@ -32,7 +33,7 @@ body {
 
   .login-form {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
@@ -68,6 +69,9 @@ body {
     align-items: center;
   }
 
+  .img-fluid{
+    margin-bottom: 70px;
+  }
   .iniciar-sesion-button {
     background-color: #0099ff; /* Cambia el color de fondo del botón de Iniciar Sesión a azul */
     color: white; /* Cambia el color del texto a blanco */
