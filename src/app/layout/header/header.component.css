@@ -31,25 +31,22 @@
 
 .header-link {
   text-decoration: none;
-  font-size: 16px;
   margin-left: 20px;
-  padding: 10px 15px;
-  border: none;
+  padding: 5px 10px;
+  border: 2px solid #0066cc;
   border-radius: 5px;
-  background-color: #ff8095;
-  color: #fff;
- 
-  transition: background-color 0.5s ease, color 0.5s ease;
+  color: #0066cc;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .header-link:hover {
-  background-color: #f8115a;
+  background-color: #0066cc;
   color: #fff;
 }
 
 .logo-text {
   font-size: 2.5rem;
-  color: #ff8095;
+  color: #fa8fb1;
   margin: 0;
 }
 
@@ -62,6 +59,10 @@
 }
 
 
+.header-link:hover {
+  background-color: #0066cc;
+  color: #fff;
+}
 
 .custom-btn {
   background-color: #5bc0de; /* Color celeste personalizado */

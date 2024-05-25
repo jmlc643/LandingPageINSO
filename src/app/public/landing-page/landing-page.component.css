@@ -22,13 +22,13 @@ body {
 h1 {
   font-size: 30px;
   font-weight: 650;
-  color: #ff8095; /* Título en color azul */
+  color: #fa8fb1; /* Título en color azul */
 }
 
 h2 {
   font-size: 30px;
   font-weight: 650;
-  color: #ff8095; /* Título en color azul */
+  color: #fa8fb1; /* Título en color azul */
   margin-top: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -58,20 +58,18 @@ p {
 }
 
 .btn-primary {
-  background-color: #ff8095; /* Fondo azul */
+  background-color: #fa8fb1; /* Fondo azul */
   color: #fff; /* Texto blanco */
   border: none;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
 }
 
 .btn-primary:hover {
-  transform: scale(1.03);
   background-color: #f8115a; /* Fondo azul más oscuro al pasar el cursor */
 }
 
 /* Estilos para los nuevos contenedores */
 .services-section {
-  background-color: #ff8095;
+  background-color: #fa8fb1;
   margin-top: 100px;
   margin-bottom: 100px;
   width: 100%;
@@ -85,7 +83,7 @@ p {
 .services-section h2 {
   font-size: 30px;
   font-weight: 650;
-  color: #ffffff; /* Título en color azul */
+  color: #3f021b; /* Título en color azul */
   margin-top: 2rem;
   margin-bottom: 1.5rem;
 }
